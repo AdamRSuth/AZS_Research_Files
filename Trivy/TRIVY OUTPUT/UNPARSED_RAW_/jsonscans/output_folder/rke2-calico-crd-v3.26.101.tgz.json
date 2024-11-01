@@ -1,0 +1,855 @@
+{
+  "SchemaVersion": 2,
+  "ArtifactName": "/home/kali/Desktop/SharedFiles/rke2-calico-crd-v3.26.101.tgz",
+  "ArtifactType": "filesystem",
+  "Metadata": {
+    "ImageConfig": {
+      "architecture": "",
+      "created": "0001-01-01T00:00:00Z",
+      "os": "",
+      "rootfs": {
+        "type": "",
+        "diff_ids": null
+      },
+      "config": {}
+    }
+  },
+  "Results": [
+    {
+      "Target": "rke2-calico-crd-v3.26.101.tgz:templates/calico/crd.projectcalico.org_bgpconfigurations.yaml",
+      "Class": "config",
+      "Type": "helm",
+      "MisconfSummary": {
+        "Successes": 151,
+        "Failures": 1,
+        "Exceptions": 0
+      },
+      "Misconfigurations": [
+        {
+          "Type": "Helm Security Check",
+          "ID": "KSV116",
+          "AVDID": "AVD-KSV-0116",
+          "Title": "Runs with a root primary or supplementary GID",
+          "Description": "According to pod security standard 'Non-root groups', containers should be forbidden from running with a root primary or supplementary GID.",
+          "Message": "customresourcedefinition bgpconfigurations.crd.projectcalico.org in default namespace should set spec.securityContext.runAsGroup, spec.securityContext.supplementalGroups[*] and spec.securityContext.fsGroup to integer greater than 0",
+          "Namespace": "builtin.kubernetes.KSV116",
+          "Query": "data.builtin.kubernetes.KSV116.deny",
+          "Resolution": "Set 'containers[].securityContext.runAsGroup' to a non-zero integer or leave undefined.",
+          "Severity": "LOW",
+          "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv116",
+          "References": [
+            "https://kubesec.io/basics/containers-securitycontext-runasuser/",
+            "https://avd.aquasec.com/misconfig/ksv116"
+          ],
+          "Status": "FAIL",
+          "Layer": {},
+          "CauseMetadata": {
+            "Provider": "Kubernetes",
+            "Service": "general",
+            "Code": {
+              "Lines": null
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Target": "rke2-calico-crd-v3.26.101.tgz:templates/calico/crd.projectcalico.org_bgpfilters.yaml",
+      "Class": "config",
+      "Type": "helm",
+      "MisconfSummary": {
+        "Successes": 151,
+        "Failures": 1,
+        "Exceptions": 0
+      },
+      "Misconfigurations": [
+        {
+          "Type": "Helm Security Check",
+          "ID": "KSV116",
+          "AVDID": "AVD-KSV-0116",
+          "Title": "Runs with a root primary or supplementary GID",
+          "Description": "According to pod security standard 'Non-root groups', containers should be forbidden from running with a root primary or supplementary GID.",
+          "Message": "customresourcedefinition bgpfilters.crd.projectcalico.org in default namespace should set spec.securityContext.runAsGroup, spec.securityContext.supplementalGroups[*] and spec.securityContext.fsGroup to integer greater than 0",
+          "Namespace": "builtin.kubernetes.KSV116",
+          "Query": "data.builtin.kubernetes.KSV116.deny",
+          "Resolution": "Set 'containers[].securityContext.runAsGroup' to a non-zero integer or leave undefined.",
+          "Severity": "LOW",
+          "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv116",
+          "References": [
+            "https://kubesec.io/basics/containers-securitycontext-runasuser/",
+            "https://avd.aquasec.com/misconfig/ksv116"
+          ],
+          "Status": "FAIL",
+          "Layer": {},
+          "CauseMetadata": {
+            "Provider": "Kubernetes",
+            "Service": "general",
+            "Code": {
+              "Lines": null
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Target": "rke2-calico-crd-v3.26.101.tgz:templates/calico/crd.projectcalico.org_bgppeers.yaml",
+      "Class": "config",
+      "Type": "helm",
+      "MisconfSummary": {
+        "Successes": 151,
+        "Failures": 1,
+        "Exceptions": 0
+      },
+      "Misconfigurations": [
+        {
+          "Type": "Helm Security Check",
+          "ID": "KSV116",
+          "AVDID": "AVD-KSV-0116",
+          "Title": "Runs with a root primary or supplementary GID",
+          "Description": "According to pod security standard 'Non-root groups', containers should be forbidden from running with a root primary or supplementary GID.",
+          "Message": "customresourcedefinition bgppeers.crd.projectcalico.org in default namespace should set spec.securityContext.runAsGroup, spec.securityContext.supplementalGroups[*] and spec.securityContext.fsGroup to integer greater than 0",
+          "Namespace": "builtin.kubernetes.KSV116",
+          "Query": "data.builtin.kubernetes.KSV116.deny",
+          "Resolution": "Set 'containers[].securityContext.runAsGroup' to a non-zero integer or leave undefined.",
+          "Severity": "LOW",
+          "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv116",
+          "References": [
+            "https://kubesec.io/basics/containers-securitycontext-runasuser/",
+            "https://avd.aquasec.com/misconfig/ksv116"
+          ],
+          "Status": "FAIL",
+          "Layer": {},
+          "CauseMetadata": {
+            "Provider": "Kubernetes",
+            "Service": "general",
+            "Code": {
+              "Lines": null
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Target": "rke2-calico-crd-v3.26.101.tgz:templates/calico/crd.projectcalico.org_blockaffinities.yaml",
+      "Class": "config",
+      "Type": "helm",
+      "MisconfSummary": {
+        "Successes": 151,
+        "Failures": 1,
+        "Exceptions": 0
+      },
+      "Misconfigurations": [
+        {
+          "Type": "Helm Security Check",
+          "ID": "KSV116",
+          "AVDID": "AVD-KSV-0116",
+          "Title": "Runs with a root primary or supplementary GID",
+          "Description": "According to pod security standard 'Non-root groups', containers should be forbidden from running with a root primary or supplementary GID.",
+          "Message": "customresourcedefinition blockaffinities.crd.projectcalico.org in default namespace should set spec.securityContext.runAsGroup, spec.securityContext.supplementalGroups[*] and spec.securityContext.fsGroup to integer greater than 0",
+          "Namespace": "builtin.kubernetes.KSV116",
+          "Query": "data.builtin.kubernetes.KSV116.deny",
+          "Resolution": "Set 'containers[].securityContext.runAsGroup' to a non-zero integer or leave undefined.",
+          "Severity": "LOW",
+          "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv116",
+          "References": [
+            "https://kubesec.io/basics/containers-securitycontext-runasuser/",
+            "https://avd.aquasec.com/misconfig/ksv116"
+          ],
+          "Status": "FAIL",
+          "Layer": {},
+          "CauseMetadata": {
+            "Provider": "Kubernetes",
+            "Service": "general",
+            "Code": {
+              "Lines": null
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Target": "rke2-calico-crd-v3.26.101.tgz:templates/calico/crd.projectcalico.org_caliconodestatuses.yaml",
+      "Class": "config",
+      "Type": "helm",
+      "MisconfSummary": {
+        "Successes": 151,
+        "Failures": 1,
+        "Exceptions": 0
+      },
+      "Misconfigurations": [
+        {
+          "Type": "Helm Security Check",
+          "ID": "KSV116",
+          "AVDID": "AVD-KSV-0116",
+          "Title": "Runs with a root primary or supplementary GID",
+          "Description": "According to pod security standard 'Non-root groups', containers should be forbidden from running with a root primary or supplementary GID.",
+          "Message": "customresourcedefinition caliconodestatuses.crd.projectcalico.org in default namespace should set spec.securityContext.runAsGroup, spec.securityContext.supplementalGroups[*] and spec.securityContext.fsGroup to integer greater than 0",
+          "Namespace": "builtin.kubernetes.KSV116",
+          "Query": "data.builtin.kubernetes.KSV116.deny",
+          "Resolution": "Set 'containers[].securityContext.runAsGroup' to a non-zero integer or leave undefined.",
+          "Severity": "LOW",
+          "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv116",
+          "References": [
+            "https://kubesec.io/basics/containers-securitycontext-runasuser/",
+            "https://avd.aquasec.com/misconfig/ksv116"
+          ],
+          "Status": "FAIL",
+          "Layer": {},
+          "CauseMetadata": {
+            "Provider": "Kubernetes",
+            "Service": "general",
+            "Code": {
+              "Lines": null
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Target": "rke2-calico-crd-v3.26.101.tgz:templates/calico/crd.projectcalico.org_clusterinformations.yaml",
+      "Class": "config",
+      "Type": "helm",
+      "MisconfSummary": {
+        "Successes": 151,
+        "Failures": 1,
+        "Exceptions": 0
+      },
+      "Misconfigurations": [
+        {
+          "Type": "Helm Security Check",
+          "ID": "KSV116",
+          "AVDID": "AVD-KSV-0116",
+          "Title": "Runs with a root primary or supplementary GID",
+          "Description": "According to pod security standard 'Non-root groups', containers should be forbidden from running with a root primary or supplementary GID.",
+          "Message": "customresourcedefinition clusterinformations.crd.projectcalico.org in default namespace should set spec.securityContext.runAsGroup, spec.securityContext.supplementalGroups[*] and spec.securityContext.fsGroup to integer greater than 0",
+          "Namespace": "builtin.kubernetes.KSV116",
+          "Query": "data.builtin.kubernetes.KSV116.deny",
+          "Resolution": "Set 'containers[].securityContext.runAsGroup' to a non-zero integer or leave undefined.",
+          "Severity": "LOW",
+          "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv116",
+          "References": [
+            "https://kubesec.io/basics/containers-securitycontext-runasuser/",
+            "https://avd.aquasec.com/misconfig/ksv116"
+          ],
+          "Status": "FAIL",
+          "Layer": {},
+          "CauseMetadata": {
+            "Provider": "Kubernetes",
+            "Service": "general",
+            "Code": {
+              "Lines": null
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Target": "rke2-calico-crd-v3.26.101.tgz:templates/calico/crd.projectcalico.org_felixconfigurations.yaml",
+      "Class": "config",
+      "Type": "helm",
+      "MisconfSummary": {
+        "Successes": 151,
+        "Failures": 1,
+        "Exceptions": 0
+      },
+      "Misconfigurations": [
+        {
+          "Type": "Helm Security Check",
+          "ID": "KSV116",
+          "AVDID": "AVD-KSV-0116",
+          "Title": "Runs with a root primary or supplementary GID",
+          "Description": "According to pod security standard 'Non-root groups', containers should be forbidden from running with a root primary or supplementary GID.",
+          "Message": "customresourcedefinition felixconfigurations.crd.projectcalico.org in default namespace should set spec.securityContext.runAsGroup, spec.securityContext.supplementalGroups[*] and spec.securityContext.fsGroup to integer greater than 0",
+          "Namespace": "builtin.kubernetes.KSV116",
+          "Query": "data.builtin.kubernetes.KSV116.deny",
+          "Resolution": "Set 'containers[].securityContext.runAsGroup' to a non-zero integer or leave undefined.",
+          "Severity": "LOW",
+          "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv116",
+          "References": [
+            "https://kubesec.io/basics/containers-securitycontext-runasuser/",
+            "https://avd.aquasec.com/misconfig/ksv116"
+          ],
+          "Status": "FAIL",
+          "Layer": {},
+          "CauseMetadata": {
+            "Provider": "Kubernetes",
+            "Service": "general",
+            "Code": {
+              "Lines": null
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Target": "rke2-calico-crd-v3.26.101.tgz:templates/calico/crd.projectcalico.org_globalnetworkpolicies.yaml",
+      "Class": "config",
+      "Type": "helm",
+      "MisconfSummary": {
+        "Successes": 151,
+        "Failures": 1,
+        "Exceptions": 0
+      },
+      "Misconfigurations": [
+        {
+          "Type": "Helm Security Check",
+          "ID": "KSV116",
+          "AVDID": "AVD-KSV-0116",
+          "Title": "Runs with a root primary or supplementary GID",
+          "Description": "According to pod security standard 'Non-root groups', containers should be forbidden from running with a root primary or supplementary GID.",
+          "Message": "customresourcedefinition globalnetworkpolicies.crd.projectcalico.org in default namespace should set spec.securityContext.runAsGroup, spec.securityContext.supplementalGroups[*] and spec.securityContext.fsGroup to integer greater than 0",
+          "Namespace": "builtin.kubernetes.KSV116",
+          "Query": "data.builtin.kubernetes.KSV116.deny",
+          "Resolution": "Set 'containers[].securityContext.runAsGroup' to a non-zero integer or leave undefined.",
+          "Severity": "LOW",
+          "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv116",
+          "References": [
+            "https://kubesec.io/basics/containers-securitycontext-runasuser/",
+            "https://avd.aquasec.com/misconfig/ksv116"
+          ],
+          "Status": "FAIL",
+          "Layer": {},
+          "CauseMetadata": {
+            "Provider": "Kubernetes",
+            "Service": "general",
+            "Code": {
+              "Lines": null
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Target": "rke2-calico-crd-v3.26.101.tgz:templates/calico/crd.projectcalico.org_globalnetworksets.yaml",
+      "Class": "config",
+      "Type": "helm",
+      "MisconfSummary": {
+        "Successes": 151,
+        "Failures": 1,
+        "Exceptions": 0
+      },
+      "Misconfigurations": [
+        {
+          "Type": "Helm Security Check",
+          "ID": "KSV116",
+          "AVDID": "AVD-KSV-0116",
+          "Title": "Runs with a root primary or supplementary GID",
+          "Description": "According to pod security standard 'Non-root groups', containers should be forbidden from running with a root primary or supplementary GID.",
+          "Message": "customresourcedefinition globalnetworksets.crd.projectcalico.org in default namespace should set spec.securityContext.runAsGroup, spec.securityContext.supplementalGroups[*] and spec.securityContext.fsGroup to integer greater than 0",
+          "Namespace": "builtin.kubernetes.KSV116",
+          "Query": "data.builtin.kubernetes.KSV116.deny",
+          "Resolution": "Set 'containers[].securityContext.runAsGroup' to a non-zero integer or leave undefined.",
+          "Severity": "LOW",
+          "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv116",
+          "References": [
+            "https://kubesec.io/basics/containers-securitycontext-runasuser/",
+            "https://avd.aquasec.com/misconfig/ksv116"
+          ],
+          "Status": "FAIL",
+          "Layer": {},
+          "CauseMetadata": {
+            "Provider": "Kubernetes",
+            "Service": "general",
+            "Code": {
+              "Lines": null
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Target": "rke2-calico-crd-v3.26.101.tgz:templates/calico/crd.projectcalico.org_hostendpoints.yaml",
+      "Class": "config",
+      "Type": "helm",
+      "MisconfSummary": {
+        "Successes": 151,
+        "Failures": 1,
+        "Exceptions": 0
+      },
+      "Misconfigurations": [
+        {
+          "Type": "Helm Security Check",
+          "ID": "KSV116",
+          "AVDID": "AVD-KSV-0116",
+          "Title": "Runs with a root primary or supplementary GID",
+          "Description": "According to pod security standard 'Non-root groups', containers should be forbidden from running with a root primary or supplementary GID.",
+          "Message": "customresourcedefinition hostendpoints.crd.projectcalico.org in default namespace should set spec.securityContext.runAsGroup, spec.securityContext.supplementalGroups[*] and spec.securityContext.fsGroup to integer greater than 0",
+          "Namespace": "builtin.kubernetes.KSV116",
+          "Query": "data.builtin.kubernetes.KSV116.deny",
+          "Resolution": "Set 'containers[].securityContext.runAsGroup' to a non-zero integer or leave undefined.",
+          "Severity": "LOW",
+          "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv116",
+          "References": [
+            "https://kubesec.io/basics/containers-securitycontext-runasuser/",
+            "https://avd.aquasec.com/misconfig/ksv116"
+          ],
+          "Status": "FAIL",
+          "Layer": {},
+          "CauseMetadata": {
+            "Provider": "Kubernetes",
+            "Service": "general",
+            "Code": {
+              "Lines": null
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Target": "rke2-calico-crd-v3.26.101.tgz:templates/calico/crd.projectcalico.org_ipamblocks.yaml",
+      "Class": "config",
+      "Type": "helm",
+      "MisconfSummary": {
+        "Successes": 151,
+        "Failures": 1,
+        "Exceptions": 0
+      },
+      "Misconfigurations": [
+        {
+          "Type": "Helm Security Check",
+          "ID": "KSV116",
+          "AVDID": "AVD-KSV-0116",
+          "Title": "Runs with a root primary or supplementary GID",
+          "Description": "According to pod security standard 'Non-root groups', containers should be forbidden from running with a root primary or supplementary GID.",
+          "Message": "customresourcedefinition ipamblocks.crd.projectcalico.org in default namespace should set spec.securityContext.runAsGroup, spec.securityContext.supplementalGroups[*] and spec.securityContext.fsGroup to integer greater than 0",
+          "Namespace": "builtin.kubernetes.KSV116",
+          "Query": "data.builtin.kubernetes.KSV116.deny",
+          "Resolution": "Set 'containers[].securityContext.runAsGroup' to a non-zero integer or leave undefined.",
+          "Severity": "LOW",
+          "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv116",
+          "References": [
+            "https://kubesec.io/basics/containers-securitycontext-runasuser/",
+            "https://avd.aquasec.com/misconfig/ksv116"
+          ],
+          "Status": "FAIL",
+          "Layer": {},
+          "CauseMetadata": {
+            "Provider": "Kubernetes",
+            "Service": "general",
+            "Code": {
+              "Lines": null
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Target": "rke2-calico-crd-v3.26.101.tgz:templates/calico/crd.projectcalico.org_ipamconfigs.yaml",
+      "Class": "config",
+      "Type": "helm",
+      "MisconfSummary": {
+        "Successes": 151,
+        "Failures": 1,
+        "Exceptions": 0
+      },
+      "Misconfigurations": [
+        {
+          "Type": "Helm Security Check",
+          "ID": "KSV116",
+          "AVDID": "AVD-KSV-0116",
+          "Title": "Runs with a root primary or supplementary GID",
+          "Description": "According to pod security standard 'Non-root groups', containers should be forbidden from running with a root primary or supplementary GID.",
+          "Message": "customresourcedefinition ipamconfigs.crd.projectcalico.org in default namespace should set spec.securityContext.runAsGroup, spec.securityContext.supplementalGroups[*] and spec.securityContext.fsGroup to integer greater than 0",
+          "Namespace": "builtin.kubernetes.KSV116",
+          "Query": "data.builtin.kubernetes.KSV116.deny",
+          "Resolution": "Set 'containers[].securityContext.runAsGroup' to a non-zero integer or leave undefined.",
+          "Severity": "LOW",
+          "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv116",
+          "References": [
+            "https://kubesec.io/basics/containers-securitycontext-runasuser/",
+            "https://avd.aquasec.com/misconfig/ksv116"
+          ],
+          "Status": "FAIL",
+          "Layer": {},
+          "CauseMetadata": {
+            "Provider": "Kubernetes",
+            "Service": "general",
+            "Code": {
+              "Lines": null
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Target": "rke2-calico-crd-v3.26.101.tgz:templates/calico/crd.projectcalico.org_ipamhandles.yaml",
+      "Class": "config",
+      "Type": "helm",
+      "MisconfSummary": {
+        "Successes": 151,
+        "Failures": 1,
+        "Exceptions": 0
+      },
+      "Misconfigurations": [
+        {
+          "Type": "Helm Security Check",
+          "ID": "KSV116",
+          "AVDID": "AVD-KSV-0116",
+          "Title": "Runs with a root primary or supplementary GID",
+          "Description": "According to pod security standard 'Non-root groups', containers should be forbidden from running with a root primary or supplementary GID.",
+          "Message": "customresourcedefinition ipamhandles.crd.projectcalico.org in default namespace should set spec.securityContext.runAsGroup, spec.securityContext.supplementalGroups[*] and spec.securityContext.fsGroup to integer greater than 0",
+          "Namespace": "builtin.kubernetes.KSV116",
+          "Query": "data.builtin.kubernetes.KSV116.deny",
+          "Resolution": "Set 'containers[].securityContext.runAsGroup' to a non-zero integer or leave undefined.",
+          "Severity": "LOW",
+          "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv116",
+          "References": [
+            "https://kubesec.io/basics/containers-securitycontext-runasuser/",
+            "https://avd.aquasec.com/misconfig/ksv116"
+          ],
+          "Status": "FAIL",
+          "Layer": {},
+          "CauseMetadata": {
+            "Provider": "Kubernetes",
+            "Service": "general",
+            "Code": {
+              "Lines": null
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Target": "rke2-calico-crd-v3.26.101.tgz:templates/calico/crd.projectcalico.org_ippools.yaml",
+      "Class": "config",
+      "Type": "helm",
+      "MisconfSummary": {
+        "Successes": 151,
+        "Failures": 1,
+        "Exceptions": 0
+      },
+      "Misconfigurations": [
+        {
+          "Type": "Helm Security Check",
+          "ID": "KSV116",
+          "AVDID": "AVD-KSV-0116",
+          "Title": "Runs with a root primary or supplementary GID",
+          "Description": "According to pod security standard 'Non-root groups', containers should be forbidden from running with a root primary or supplementary GID.",
+          "Message": "customresourcedefinition ippools.crd.projectcalico.org in default namespace should set spec.securityContext.runAsGroup, spec.securityContext.supplementalGroups[*] and spec.securityContext.fsGroup to integer greater than 0",
+          "Namespace": "builtin.kubernetes.KSV116",
+          "Query": "data.builtin.kubernetes.KSV116.deny",
+          "Resolution": "Set 'containers[].securityContext.runAsGroup' to a non-zero integer or leave undefined.",
+          "Severity": "LOW",
+          "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv116",
+          "References": [
+            "https://kubesec.io/basics/containers-securitycontext-runasuser/",
+            "https://avd.aquasec.com/misconfig/ksv116"
+          ],
+          "Status": "FAIL",
+          "Layer": {},
+          "CauseMetadata": {
+            "Provider": "Kubernetes",
+            "Service": "general",
+            "Code": {
+              "Lines": null
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Target": "rke2-calico-crd-v3.26.101.tgz:templates/calico/crd.projectcalico.org_ipreservations.yaml",
+      "Class": "config",
+      "Type": "helm",
+      "MisconfSummary": {
+        "Successes": 151,
+        "Failures": 1,
+        "Exceptions": 0
+      },
+      "Misconfigurations": [
+        {
+          "Type": "Helm Security Check",
+          "ID": "KSV116",
+          "AVDID": "AVD-KSV-0116",
+          "Title": "Runs with a root primary or supplementary GID",
+          "Description": "According to pod security standard 'Non-root groups', containers should be forbidden from running with a root primary or supplementary GID.",
+          "Message": "customresourcedefinition ipreservations.crd.projectcalico.org in default namespace should set spec.securityContext.runAsGroup, spec.securityContext.supplementalGroups[*] and spec.securityContext.fsGroup to integer greater than 0",
+          "Namespace": "builtin.kubernetes.KSV116",
+          "Query": "data.builtin.kubernetes.KSV116.deny",
+          "Resolution": "Set 'containers[].securityContext.runAsGroup' to a non-zero integer or leave undefined.",
+          "Severity": "LOW",
+          "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv116",
+          "References": [
+            "https://kubesec.io/basics/containers-securitycontext-runasuser/",
+            "https://avd.aquasec.com/misconfig/ksv116"
+          ],
+          "Status": "FAIL",
+          "Layer": {},
+          "CauseMetadata": {
+            "Provider": "Kubernetes",
+            "Service": "general",
+            "Code": {
+              "Lines": null
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Target": "rke2-calico-crd-v3.26.101.tgz:templates/calico/crd.projectcalico.org_kubecontrollersconfigurations.yaml",
+      "Class": "config",
+      "Type": "helm",
+      "MisconfSummary": {
+        "Successes": 151,
+        "Failures": 1,
+        "Exceptions": 0
+      },
+      "Misconfigurations": [
+        {
+          "Type": "Helm Security Check",
+          "ID": "KSV116",
+          "AVDID": "AVD-KSV-0116",
+          "Title": "Runs with a root primary or supplementary GID",
+          "Description": "According to pod security standard 'Non-root groups', containers should be forbidden from running with a root primary or supplementary GID.",
+          "Message": "customresourcedefinition kubecontrollersconfigurations.crd.projectcalico.org in default namespace should set spec.securityContext.runAsGroup, spec.securityContext.supplementalGroups[*] and spec.securityContext.fsGroup to integer greater than 0",
+          "Namespace": "builtin.kubernetes.KSV116",
+          "Query": "data.builtin.kubernetes.KSV116.deny",
+          "Resolution": "Set 'containers[].securityContext.runAsGroup' to a non-zero integer or leave undefined.",
+          "Severity": "LOW",
+          "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv116",
+          "References": [
+            "https://kubesec.io/basics/containers-securitycontext-runasuser/",
+            "https://avd.aquasec.com/misconfig/ksv116"
+          ],
+          "Status": "FAIL",
+          "Layer": {},
+          "CauseMetadata": {
+            "Provider": "Kubernetes",
+            "Service": "general",
+            "Code": {
+              "Lines": null
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Target": "rke2-calico-crd-v3.26.101.tgz:templates/calico/crd.projectcalico.org_networkpolicies.yaml",
+      "Class": "config",
+      "Type": "helm",
+      "MisconfSummary": {
+        "Successes": 151,
+        "Failures": 1,
+        "Exceptions": 0
+      },
+      "Misconfigurations": [
+        {
+          "Type": "Helm Security Check",
+          "ID": "KSV116",
+          "AVDID": "AVD-KSV-0116",
+          "Title": "Runs with a root primary or supplementary GID",
+          "Description": "According to pod security standard 'Non-root groups', containers should be forbidden from running with a root primary or supplementary GID.",
+          "Message": "customresourcedefinition networkpolicies.crd.projectcalico.org in default namespace should set spec.securityContext.runAsGroup, spec.securityContext.supplementalGroups[*] and spec.securityContext.fsGroup to integer greater than 0",
+          "Namespace": "builtin.kubernetes.KSV116",
+          "Query": "data.builtin.kubernetes.KSV116.deny",
+          "Resolution": "Set 'containers[].securityContext.runAsGroup' to a non-zero integer or leave undefined.",
+          "Severity": "LOW",
+          "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv116",
+          "References": [
+            "https://kubesec.io/basics/containers-securitycontext-runasuser/",
+            "https://avd.aquasec.com/misconfig/ksv116"
+          ],
+          "Status": "FAIL",
+          "Layer": {},
+          "CauseMetadata": {
+            "Provider": "Kubernetes",
+            "Service": "general",
+            "Code": {
+              "Lines": null
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Target": "rke2-calico-crd-v3.26.101.tgz:templates/calico/crd.projectcalico.org_networksets.yaml",
+      "Class": "config",
+      "Type": "helm",
+      "MisconfSummary": {
+        "Successes": 151,
+        "Failures": 1,
+        "Exceptions": 0
+      },
+      "Misconfigurations": [
+        {
+          "Type": "Helm Security Check",
+          "ID": "KSV116",
+          "AVDID": "AVD-KSV-0116",
+          "Title": "Runs with a root primary or supplementary GID",
+          "Description": "According to pod security standard 'Non-root groups', containers should be forbidden from running with a root primary or supplementary GID.",
+          "Message": "customresourcedefinition networksets.crd.projectcalico.org in default namespace should set spec.securityContext.runAsGroup, spec.securityContext.supplementalGroups[*] and spec.securityContext.fsGroup to integer greater than 0",
+          "Namespace": "builtin.kubernetes.KSV116",
+          "Query": "data.builtin.kubernetes.KSV116.deny",
+          "Resolution": "Set 'containers[].securityContext.runAsGroup' to a non-zero integer or leave undefined.",
+          "Severity": "LOW",
+          "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv116",
+          "References": [
+            "https://kubesec.io/basics/containers-securitycontext-runasuser/",
+            "https://avd.aquasec.com/misconfig/ksv116"
+          ],
+          "Status": "FAIL",
+          "Layer": {},
+          "CauseMetadata": {
+            "Provider": "Kubernetes",
+            "Service": "general",
+            "Code": {
+              "Lines": null
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Target": "rke2-calico-crd-v3.26.101.tgz:templates/operator.tigera.io_apiservers_crd.yaml",
+      "Class": "config",
+      "Type": "helm",
+      "MisconfSummary": {
+        "Successes": 151,
+        "Failures": 1,
+        "Exceptions": 0
+      },
+      "Misconfigurations": [
+        {
+          "Type": "Helm Security Check",
+          "ID": "KSV116",
+          "AVDID": "AVD-KSV-0116",
+          "Title": "Runs with a root primary or supplementary GID",
+          "Description": "According to pod security standard 'Non-root groups', containers should be forbidden from running with a root primary or supplementary GID.",
+          "Message": "customresourcedefinition apiservers.operator.tigera.io in default namespace should set spec.securityContext.runAsGroup, spec.securityContext.supplementalGroups[*] and spec.securityContext.fsGroup to integer greater than 0",
+          "Namespace": "builtin.kubernetes.KSV116",
+          "Query": "data.builtin.kubernetes.KSV116.deny",
+          "Resolution": "Set 'containers[].securityContext.runAsGroup' to a non-zero integer or leave undefined.",
+          "Severity": "LOW",
+          "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv116",
+          "References": [
+            "https://kubesec.io/basics/containers-securitycontext-runasuser/",
+            "https://avd.aquasec.com/misconfig/ksv116"
+          ],
+          "Status": "FAIL",
+          "Layer": {},
+          "CauseMetadata": {
+            "Provider": "Kubernetes",
+            "Service": "general",
+            "Code": {
+              "Lines": null
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Target": "rke2-calico-crd-v3.26.101.tgz:templates/operator.tigera.io_imagesets_crd.yaml",
+      "Class": "config",
+      "Type": "helm",
+      "MisconfSummary": {
+        "Successes": 151,
+        "Failures": 1,
+        "Exceptions": 0
+      },
+      "Misconfigurations": [
+        {
+          "Type": "Helm Security Check",
+          "ID": "KSV116",
+          "AVDID": "AVD-KSV-0116",
+          "Title": "Runs with a root primary or supplementary GID",
+          "Description": "According to pod security standard 'Non-root groups', containers should be forbidden from running with a root primary or supplementary GID.",
+          "Message": "customresourcedefinition imagesets.operator.tigera.io in default namespace should set spec.securityContext.runAsGroup, spec.securityContext.supplementalGroups[*] and spec.securityContext.fsGroup to integer greater than 0",
+          "Namespace": "builtin.kubernetes.KSV116",
+          "Query": "data.builtin.kubernetes.KSV116.deny",
+          "Resolution": "Set 'containers[].securityContext.runAsGroup' to a non-zero integer or leave undefined.",
+          "Severity": "LOW",
+          "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv116",
+          "References": [
+            "https://kubesec.io/basics/containers-securitycontext-runasuser/",
+            "https://avd.aquasec.com/misconfig/ksv116"
+          ],
+          "Status": "FAIL",
+          "Layer": {},
+          "CauseMetadata": {
+            "Provider": "Kubernetes",
+            "Service": "general",
+            "Code": {
+              "Lines": null
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Target": "rke2-calico-crd-v3.26.101.tgz:templates/operator.tigera.io_installations_crd.yaml",
+      "Class": "config",
+      "Type": "helm",
+      "MisconfSummary": {
+        "Successes": 151,
+        "Failures": 1,
+        "Exceptions": 0
+      },
+      "Misconfigurations": [
+        {
+          "Type": "Helm Security Check",
+          "ID": "KSV116",
+          "AVDID": "AVD-KSV-0116",
+          "Title": "Runs with a root primary or supplementary GID",
+          "Description": "According to pod security standard 'Non-root groups', containers should be forbidden from running with a root primary or supplementary GID.",
+          "Message": "customresourcedefinition installations.operator.tigera.io in default namespace should set spec.securityContext.runAsGroup, spec.securityContext.supplementalGroups[*] and spec.securityContext.fsGroup to integer greater than 0",
+          "Namespace": "builtin.kubernetes.KSV116",
+          "Query": "data.builtin.kubernetes.KSV116.deny",
+          "Resolution": "Set 'containers[].securityContext.runAsGroup' to a non-zero integer or leave undefined.",
+          "Severity": "LOW",
+          "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv116",
+          "References": [
+            "https://kubesec.io/basics/containers-securitycontext-runasuser/",
+            "https://avd.aquasec.com/misconfig/ksv116"
+          ],
+          "Status": "FAIL",
+          "Layer": {},
+          "CauseMetadata": {
+            "Provider": "Kubernetes",
+            "Service": "general",
+            "Code": {
+              "Lines": null
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Target": "rke2-calico-crd-v3.26.101.tgz:templates/operator.tigera.io_tigerastatuses_crd.yaml",
+      "Class": "config",
+      "Type": "helm",
+      "MisconfSummary": {
+        "Successes": 151,
+        "Failures": 1,
+        "Exceptions": 0
+      },
+      "Misconfigurations": [
+        {
+          "Type": "Helm Security Check",
+          "ID": "KSV116",
+          "AVDID": "AVD-KSV-0116",
+          "Title": "Runs with a root primary or supplementary GID",
+          "Description": "According to pod security standard 'Non-root groups', containers should be forbidden from running with a root primary or supplementary GID.",
+          "Message": "customresourcedefinition tigerastatuses.operator.tigera.io in default namespace should set spec.securityContext.runAsGroup, spec.securityContext.supplementalGroups[*] and spec.securityContext.fsGroup to integer greater than 0",
+          "Namespace": "builtin.kubernetes.KSV116",
+          "Query": "data.builtin.kubernetes.KSV116.deny",
+          "Resolution": "Set 'containers[].securityContext.runAsGroup' to a non-zero integer or leave undefined.",
+          "Severity": "LOW",
+          "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv116",
+          "References": [
+            "https://kubesec.io/basics/containers-securitycontext-runasuser/",
+            "https://avd.aquasec.com/misconfig/ksv116"
+          ],
+          "Status": "FAIL",
+          "Layer": {},
+          "CauseMetadata": {
+            "Provider": "Kubernetes",
+            "Service": "general",
+            "Code": {
+              "Lines": null
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

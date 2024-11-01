@@ -1,0 +1,1065 @@
+{
+  "SchemaVersion": 2,
+  "ArtifactName": "/home/kali/Desktop/SharedFiles/traefik-hub-2.6.0.tgz",
+  "ArtifactType": "filesystem",
+  "Metadata": {
+    "ImageConfig": {
+      "architecture": "",
+      "created": "0001-01-01T00:00:00Z",
+      "os": "",
+      "rootfs": {
+        "type": "",
+        "diff_ids": null
+      },
+      "config": {}
+    }
+  },
+  "Results": [
+    {
+      "Target": "traefik-hub-2.6.0.tgz:templates/admission-controller.yaml",
+      "Class": "config",
+      "Type": "helm",
+      "MisconfSummary": {
+        "Successes": 151,
+        "Failures": 5,
+        "Exceptions": 0
+      },
+      "Misconfigurations": [
+        {
+          "Type": "Helm Security Check",
+          "ID": "KSV116",
+          "AVDID": "AVD-KSV-0116",
+          "Title": "Runs with a root primary or supplementary GID",
+          "Description": "According to pod security standard 'Non-root groups', containers should be forbidden from running with a root primary or supplementary GID.",
+          "Message": "mutatingwebhookconfiguration hub-acp in null namespace should set spec.securityContext.runAsGroup, spec.securityContext.supplementalGroups[*] and spec.securityContext.fsGroup to integer greater than 0",
+          "Namespace": "builtin.kubernetes.KSV116",
+          "Query": "data.builtin.kubernetes.KSV116.deny",
+          "Resolution": "Set 'containers[].securityContext.runAsGroup' to a non-zero integer or leave undefined.",
+          "Severity": "LOW",
+          "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv116",
+          "References": [
+            "https://kubesec.io/basics/containers-securitycontext-runasuser/",
+            "https://avd.aquasec.com/misconfig/ksv116"
+          ],
+          "Status": "FAIL",
+          "Layer": {},
+          "CauseMetadata": {
+            "Provider": "Kubernetes",
+            "Service": "general",
+            "Code": {
+              "Lines": null
+            }
+          }
+        },
+        {
+          "Type": "Helm Security Check",
+          "ID": "KSV116",
+          "AVDID": "AVD-KSV-0116",
+          "Title": "Runs with a root primary or supplementary GID",
+          "Description": "According to pod security standard 'Non-root groups', containers should be forbidden from running with a root primary or supplementary GID.",
+          "Message": "mutatingwebhookconfiguration hub-api in null namespace should set spec.securityContext.runAsGroup, spec.securityContext.supplementalGroups[*] and spec.securityContext.fsGroup to integer greater than 0",
+          "Namespace": "builtin.kubernetes.KSV116",
+          "Query": "data.builtin.kubernetes.KSV116.deny",
+          "Resolution": "Set 'containers[].securityContext.runAsGroup' to a non-zero integer or leave undefined.",
+          "Severity": "LOW",
+          "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv116",
+          "References": [
+            "https://kubesec.io/basics/containers-securitycontext-runasuser/",
+            "https://avd.aquasec.com/misconfig/ksv116"
+          ],
+          "Status": "FAIL",
+          "Layer": {},
+          "CauseMetadata": {
+            "Provider": "Kubernetes",
+            "Service": "general",
+            "Code": {
+              "Lines": null
+            }
+          }
+        },
+        {
+          "Type": "Helm Security Check",
+          "ID": "KSV116",
+          "AVDID": "AVD-KSV-0116",
+          "Title": "Runs with a root primary or supplementary GID",
+          "Description": "According to pod security standard 'Non-root groups', containers should be forbidden from running with a root primary or supplementary GID.",
+          "Message": "mutatingwebhookconfiguration hub-edge-ingress in null namespace should set spec.securityContext.runAsGroup, spec.securityContext.supplementalGroups[*] and spec.securityContext.fsGroup to integer greater than 0",
+          "Namespace": "builtin.kubernetes.KSV116",
+          "Query": "data.builtin.kubernetes.KSV116.deny",
+          "Resolution": "Set 'containers[].securityContext.runAsGroup' to a non-zero integer or leave undefined.",
+          "Severity": "LOW",
+          "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv116",
+          "References": [
+            "https://kubesec.io/basics/containers-securitycontext-runasuser/",
+            "https://avd.aquasec.com/misconfig/ksv116"
+          ],
+          "Status": "FAIL",
+          "Layer": {},
+          "CauseMetadata": {
+            "Provider": "Kubernetes",
+            "Service": "general",
+            "Code": {
+              "Lines": null
+            }
+          }
+        },
+        {
+          "Type": "Helm Security Check",
+          "ID": "KSV116",
+          "AVDID": "AVD-KSV-0116",
+          "Title": "Runs with a root primary or supplementary GID",
+          "Description": "According to pod security standard 'Non-root groups', containers should be forbidden from running with a root primary or supplementary GID.",
+          "Message": "secret hub-agent-cert in null namespace should set spec.securityContext.runAsGroup, spec.securityContext.supplementalGroups[*] and spec.securityContext.fsGroup to integer greater than 0",
+          "Namespace": "builtin.kubernetes.KSV116",
+          "Query": "data.builtin.kubernetes.KSV116.deny",
+          "Resolution": "Set 'containers[].securityContext.runAsGroup' to a non-zero integer or leave undefined.",
+          "Severity": "LOW",
+          "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv116",
+          "References": [
+            "https://kubesec.io/basics/containers-securitycontext-runasuser/",
+            "https://avd.aquasec.com/misconfig/ksv116"
+          ],
+          "Status": "FAIL",
+          "Layer": {},
+          "CauseMetadata": {
+            "Provider": "Kubernetes",
+            "Service": "general",
+            "Code": {
+              "Lines": null
+            }
+          }
+        },
+        {
+          "Type": "Helm Security Check",
+          "ID": "KSV116",
+          "AVDID": "AVD-KSV-0116",
+          "Title": "Runs with a root primary or supplementary GID",
+          "Description": "According to pod security standard 'Non-root groups', containers should be forbidden from running with a root primary or supplementary GID.",
+          "Message": "service admission in null namespace should set spec.securityContext.runAsGroup, spec.securityContext.supplementalGroups[*] and spec.securityContext.fsGroup to integer greater than 0",
+          "Namespace": "builtin.kubernetes.KSV116",
+          "Query": "data.builtin.kubernetes.KSV116.deny",
+          "Resolution": "Set 'containers[].securityContext.runAsGroup' to a non-zero integer or leave undefined.",
+          "Severity": "LOW",
+          "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv116",
+          "References": [
+            "https://kubesec.io/basics/containers-securitycontext-runasuser/",
+            "https://avd.aquasec.com/misconfig/ksv116"
+          ],
+          "Status": "FAIL",
+          "Layer": {},
+          "CauseMetadata": {
+            "Provider": "Kubernetes",
+            "Service": "general",
+            "Code": {
+              "Lines": null
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Target": "traefik-hub-2.6.0.tgz:templates/cluster-role-binding.yaml",
+      "Class": "config",
+      "Type": "helm",
+      "MisconfSummary": {
+        "Successes": 151,
+        "Failures": 1,
+        "Exceptions": 0
+      },
+      "Misconfigurations": [
+        {
+          "Type": "Helm Security Check",
+          "ID": "KSV116",
+          "AVDID": "AVD-KSV-0116",
+          "Title": "Runs with a root primary or supplementary GID",
+          "Description": "According to pod security standard 'Non-root groups', containers should be forbidden from running with a root primary or supplementary GID.",
+          "Message": "clusterrolebinding traefik-hub-controller in default namespace should set spec.securityContext.runAsGroup, spec.securityContext.supplementalGroups[*] and spec.securityContext.fsGroup to integer greater than 0",
+          "Namespace": "builtin.kubernetes.KSV116",
+          "Query": "data.builtin.kubernetes.KSV116.deny",
+          "Resolution": "Set 'containers[].securityContext.runAsGroup' to a non-zero integer or leave undefined.",
+          "Severity": "LOW",
+          "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv116",
+          "References": [
+            "https://kubesec.io/basics/containers-securitycontext-runasuser/",
+            "https://avd.aquasec.com/misconfig/ksv116"
+          ],
+          "Status": "FAIL",
+          "Layer": {},
+          "CauseMetadata": {
+            "Provider": "Kubernetes",
+            "Service": "general",
+            "Code": {
+              "Lines": null
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Target": "traefik-hub-2.6.0.tgz:templates/deployment.yaml",
+      "Class": "config",
+      "Type": "helm",
+      "MisconfSummary": {
+        "Successes": 147,
+        "Failures": 5,
+        "Exceptions": 0
+      },
+      "Misconfigurations": [
+        {
+          "Type": "Helm Security Check",
+          "ID": "KSV011",
+          "AVDID": "AVD-KSV-0011",
+          "Title": "CPU not limited",
+          "Description": "Enforcing CPU limits prevents DoS via resource exhaustion.",
+          "Message": "Container 'traefik' of Deployment 'traefik' should set 'resources.limits.cpu'",
+          "Namespace": "builtin.kubernetes.KSV011",
+          "Query": "data.builtin.kubernetes.KSV011.deny",
+          "Resolution": "Set a limit value under 'containers[].resources.limits.cpu'.",
+          "Severity": "LOW",
+          "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv011",
+          "References": [
+            "https://cloud.google.com/blog/products/containers-kubernetes/kubernetes-best-practices-resource-requests-and-limits",
+            "https://avd.aquasec.com/misconfig/ksv011"
+          ],
+          "Status": "FAIL",
+          "Layer": {},
+          "CauseMetadata": {
+            "Provider": "Kubernetes",
+            "Service": "general",
+            "StartLine": 62,
+            "EndLine": 149,
+            "Code": {
+              "Lines": [
+                {
+                  "Number": 62,
+                  "Content": "    sideEffects: None",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": true,
+                  "LastCause": false
+                },
+                {
+                  "Number": 63,
+                  "Content": "    admissionReviewVersions:",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 64,
+                  "Content": "      - v1",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 65,
+                  "Content": "    rules:",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 66,
+                  "Content": "      - operations:",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 67,
+                  "Content": "          - CREATE",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 68,
+                  "Content": "          - UPDATE",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 69,
+                  "Content": "          - DELETE",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 70,
+                  "Content": "        apiGroups:",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": true
+                },
+                {
+                  "Number": 71,
+                  "Content": "",
+                  "IsCause": false,
+                  "Annotation": "",
+                  "Truncated": true,
+                  "FirstCause": false,
+                  "LastCause": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "Type": "Helm Security Check",
+          "ID": "KSV015",
+          "AVDID": "AVD-KSV-0015",
+          "Title": "CPU requests not specified",
+          "Description": "When containers have resource requests specified, the scheduler can make better decisions about which nodes to place pods on, and how to deal with resource contention.",
+          "Message": "Container 'traefik' of Deployment 'traefik' should set 'resources.requests.cpu'",
+          "Namespace": "builtin.kubernetes.KSV015",
+          "Query": "data.builtin.kubernetes.KSV015.deny",
+          "Resolution": "Set 'containers[].resources.requests.cpu'.",
+          "Severity": "LOW",
+          "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv015",
+          "References": [
+            "https://cloud.google.com/blog/products/containers-kubernetes/kubernetes-best-practices-resource-requests-and-limits",
+            "https://avd.aquasec.com/misconfig/ksv015"
+          ],
+          "Status": "FAIL",
+          "Layer": {},
+          "CauseMetadata": {
+            "Provider": "Kubernetes",
+            "Service": "general",
+            "StartLine": 62,
+            "EndLine": 149,
+            "Code": {
+              "Lines": [
+                {
+                  "Number": 62,
+                  "Content": "    sideEffects: None",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": true,
+                  "LastCause": false
+                },
+                {
+                  "Number": 63,
+                  "Content": "    admissionReviewVersions:",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 64,
+                  "Content": "      - v1",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 65,
+                  "Content": "    rules:",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 66,
+                  "Content": "      - operations:",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 67,
+                  "Content": "          - CREATE",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 68,
+                  "Content": "          - UPDATE",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 69,
+                  "Content": "          - DELETE",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 70,
+                  "Content": "        apiGroups:",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": true
+                },
+                {
+                  "Number": 71,
+                  "Content": "",
+                  "IsCause": false,
+                  "Annotation": "",
+                  "Truncated": true,
+                  "FirstCause": false,
+                  "LastCause": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "Type": "Helm Security Check",
+          "ID": "KSV016",
+          "AVDID": "AVD-KSV-0016",
+          "Title": "Memory requests not specified",
+          "Description": "When containers have memory requests specified, the scheduler can make better decisions about which nodes to place pods on, and how to deal with resource contention.",
+          "Message": "Container 'traefik' of Deployment 'traefik' should set 'resources.requests.memory'",
+          "Namespace": "builtin.kubernetes.KSV016",
+          "Query": "data.builtin.kubernetes.KSV016.deny",
+          "Resolution": "Set 'containers[].resources.requests.memory'.",
+          "Severity": "LOW",
+          "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv016",
+          "References": [
+            "https://kubesec.io/basics/containers-resources-limits-memory/",
+            "https://avd.aquasec.com/misconfig/ksv016"
+          ],
+          "Status": "FAIL",
+          "Layer": {},
+          "CauseMetadata": {
+            "Provider": "Kubernetes",
+            "Service": "general",
+            "StartLine": 62,
+            "EndLine": 149,
+            "Code": {
+              "Lines": [
+                {
+                  "Number": 62,
+                  "Content": "    sideEffects: None",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": true,
+                  "LastCause": false
+                },
+                {
+                  "Number": 63,
+                  "Content": "    admissionReviewVersions:",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 64,
+                  "Content": "      - v1",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 65,
+                  "Content": "    rules:",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 66,
+                  "Content": "      - operations:",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 67,
+                  "Content": "          - CREATE",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 68,
+                  "Content": "          - UPDATE",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 69,
+                  "Content": "          - DELETE",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 70,
+                  "Content": "        apiGroups:",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": true
+                },
+                {
+                  "Number": 71,
+                  "Content": "",
+                  "IsCause": false,
+                  "Annotation": "",
+                  "Truncated": true,
+                  "FirstCause": false,
+                  "LastCause": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "Type": "Helm Security Check",
+          "ID": "KSV018",
+          "AVDID": "AVD-KSV-0018",
+          "Title": "Memory not limited",
+          "Description": "Enforcing memory limits prevents DoS via resource exhaustion.",
+          "Message": "Container 'traefik' of Deployment 'traefik' should set 'resources.limits.memory'",
+          "Namespace": "builtin.kubernetes.KSV018",
+          "Query": "data.builtin.kubernetes.KSV018.deny",
+          "Resolution": "Set a limit value under 'containers[].resources.limits.memory'.",
+          "Severity": "LOW",
+          "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv018",
+          "References": [
+            "https://kubesec.io/basics/containers-resources-limits-memory/",
+            "https://avd.aquasec.com/misconfig/ksv018"
+          ],
+          "Status": "FAIL",
+          "Layer": {},
+          "CauseMetadata": {
+            "Provider": "Kubernetes",
+            "Service": "general",
+            "StartLine": 62,
+            "EndLine": 149,
+            "Code": {
+              "Lines": [
+                {
+                  "Number": 62,
+                  "Content": "    sideEffects: None",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": true,
+                  "LastCause": false
+                },
+                {
+                  "Number": 63,
+                  "Content": "    admissionReviewVersions:",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 64,
+                  "Content": "      - v1",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 65,
+                  "Content": "    rules:",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 66,
+                  "Content": "      - operations:",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 67,
+                  "Content": "          - CREATE",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 68,
+                  "Content": "          - UPDATE",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 69,
+                  "Content": "          - DELETE",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 70,
+                  "Content": "        apiGroups:",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": true
+                },
+                {
+                  "Number": 71,
+                  "Content": "",
+                  "IsCause": false,
+                  "Annotation": "",
+                  "Truncated": true,
+                  "FirstCause": false,
+                  "LastCause": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "Type": "Helm Security Check",
+          "ID": "KSV116",
+          "AVDID": "AVD-KSV-0116",
+          "Title": "Runs with a root primary or supplementary GID",
+          "Description": "According to pod security standard 'Non-root groups', containers should be forbidden from running with a root primary or supplementary GID.",
+          "Message": "deployment traefik in null namespace should set spec.securityContext.runAsGroup, spec.securityContext.supplementalGroups[*] and spec.securityContext.fsGroup to integer greater than 0",
+          "Namespace": "builtin.kubernetes.KSV116",
+          "Query": "data.builtin.kubernetes.KSV116.deny",
+          "Resolution": "Set 'containers[].securityContext.runAsGroup' to a non-zero integer or leave undefined.",
+          "Severity": "LOW",
+          "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv116",
+          "References": [
+            "https://kubesec.io/basics/containers-securitycontext-runasuser/",
+            "https://avd.aquasec.com/misconfig/ksv116"
+          ],
+          "Status": "FAIL",
+          "Layer": {},
+          "CauseMetadata": {
+            "Provider": "Kubernetes",
+            "Service": "general",
+            "Code": {
+              "Lines": null
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Target": "traefik-hub-2.6.0.tgz:templates/rbac.yaml",
+      "Class": "config",
+      "Type": "helm",
+      "MisconfSummary": {
+        "Successes": 149,
+        "Failures": 3,
+        "Exceptions": 0
+      },
+      "Misconfigurations": [
+        {
+          "Type": "Helm Security Check",
+          "ID": "KSV041",
+          "AVDID": "AVD-KSV-0041",
+          "Title": "Manage secrets",
+          "Description": "Viewing secrets at the cluster-scope is akin to cluster-admin in most clusters as there are typically at least one service accounts (their token stored in a secret) bound to cluster-admin directly or a role/clusterrole that gives similar permissions.",
+          "Message": "ClusterRole 'traefik-hub-controller' shouldn't have access to manage resource 'secrets'",
+          "Namespace": "builtin.kubernetes.KSV041",
+          "Query": "data.builtin.kubernetes.KSV041.deny",
+          "Resolution": "Manage secrets are not allowed. Remove resource 'secrets' from cluster role",
+          "Severity": "CRITICAL",
+          "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv041",
+          "References": [
+            "https://kubernetes.io/docs/concepts/security/rbac-good-practices/",
+            "https://avd.aquasec.com/misconfig/ksv041"
+          ],
+          "Status": "FAIL",
+          "Layer": {},
+          "CauseMetadata": {
+            "Provider": "Kubernetes",
+            "Service": "general",
+            "StartLine": 119,
+            "EndLine": 129,
+            "Code": {
+              "Lines": [
+                {
+                  "Number": 119,
+                  "Content": "    clientConfig:",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": true,
+                  "LastCause": false
+                },
+                {
+                  "Number": 120,
+                  "Content": "      service:",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 121,
+                  "Content": "        name: admission",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 122,
+                  "Content": "        namespace: ",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 123,
+                  "Content": "        path: /api-rate-limit",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 124,
+                  "Content": "      caBundle: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURGakNDQWY2Z0F3SUJBZ0lRUjF2MjZ3MTJTM1N1K0pGU2NuOU5FVEFOQmdrcWhraUc5dzBCQVFzRkFEQVoKTVJjd0ZRWURWUVFERXc1aFpHMXBjM05wYjI0dUxuTjJZekFlRncweU5EQXhNalV3TmpBeE16ZGFGdzB5TlRBeApNalF3TmpBeE16ZGFNQmt4RnpBVkJnTlZCQU1URG1Ga2JXbHpjMmx2Ymk0dWMzWmpNSUlCSWpBTkJna3Foa2lHCjl3MEJBUUVGQUFPQ0FROEFNSUlCQ2dLQ0FRRUF4a3ZlTFBDa25PUVNhTnUzSGU3WUNvOHIxdE9McHYwZUgyL3MKU0w2S2NNclQ1M1lyckx5UWxKUXhGRSt2NTNteVlUYWIvQmZ4ZytKUUdQazgzNkkzamJyT3RjYzhOWDV0N1h4LwpCd0tlUzJBVTdzMmJlTzBhVjZBckJJS0xMTUdLZlVNbEFBRTlVZ01ycmUraDVDQnQ2ZE1FQllnR2NZZExkMG02ClRyNE1TNVVxUS9SdzJpbHJOM3VQd3doSlk4ZExTZytaV0l3dVRodzl1R2pOTmh4RnpXQ0EzVzB0dnZwRHBVLzAKZXVoWE1uV0hiN0YxU2RyS2dGUml1bUNQSllFZ2ZId1huOUZ0Vm5LbUs0cGU4MXdWc2RTWWFEeDV4QlVsVWJrYwpKL3R4Y05EUzVNNGpGTXFZaGdUS2hjckNwWVc5L211eEtzT1g5MWZmZW1IZTh3L0l5d0lEQVFBQm8xb3dXREFPCkJnTlZIUThCQWY4RUJBTUNCYUF3SFFZRFZSMGxCQll3RkFZSUt3WUJCUVVIQXdFR0NDc0dBUVVGQndNQ01Bd0cKQTFVZEV3RUIvd1FDTUFBd0dRWURWUjBSQkJJd0VJSU9ZV1J0YVhOemFXOXVMaTV6ZG1Nd0RRWUpLb1pJaHZjTgpBUUVMQlFBRGdnRUJBSFpoVDJienpaYk55bHVKaHQ4blk4Rk9ta3NjaW5YdWJHTTgwU3F3ak5JaTB3YmovTVhaCndVTE9ON0JJN1Q1cGd0YTJOeERWS0pwQnk3NnJQZUlyNzlEY1RnbkZtVDUvMjBkUXlmNHlHQk1ZLyt6MXhvMVUKRk9ubmptbk81UkFSb3IwTjBHcHcrU3BWdy9MRndyL3VFOGJEdE5JUDY4VThCa2FpTGJ4MWtWbFJCcHdzZ04zcwpGSmdNTmdjN2Rqemh1L1o0Mkx0bjdEbWNTRzdEWjlWODBmSkl2bE1qRDZ1WCtmV3grMlQzMFhyVndOWmtPVWtiCk5OZ0MwMmhWS2JvR2lIbDh3T3hrRThWR29TOE1IVTJoa0Vudzc3bDFRak9kZzlTbUhFSmF3WTNVUmppM1c3WjcKRTBJOTU0anFxTmRWbEJmUjlHNzdBWWJMV1M2MHNvZzVyVTQ9Ci0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0K",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 125,
+                  "Content": "    sideEffects: None",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 126,
+                  "Content": "    admissionReviewVersions:",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 127,
+                  "Content": "      - v1",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": true
+                },
+                {
+                  "Number": 128,
+                  "Content": "",
+                  "IsCause": false,
+                  "Annotation": "",
+                  "Truncated": true,
+                  "FirstCause": false,
+                  "LastCause": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "Type": "Helm Security Check",
+          "ID": "KSV056",
+          "AVDID": "AVD-KSV-0056",
+          "Title": "Manage Kubernetes networking",
+          "Description": "The ability to control which pods get service traffic directed to them allows for interception attacks. Controlling network policy allows for bypassing lateral movement restrictions.",
+          "Message": "ClusterRole 'traefik-hub-controller' should not have access to resources [\"services\", \"endpoints\", \"endpointslices\", \"networkpolicies\", \"ingresses\"] for verbs [\"create\", \"update\", \"patch\", \"delete\", \"deletecollection\", \"impersonate\", \"*\"]",
+          "Namespace": "builtin.kubernetes.KSV056",
+          "Query": "data.builtin.kubernetes.KSV056.deny",
+          "Resolution": "Networking resources are only allowed for verbs 'list', 'watch', 'get'",
+          "Severity": "HIGH",
+          "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv056",
+          "References": [
+            "https://kubernetes.io/docs/concepts/security/rbac-good-practices/",
+            "https://avd.aquasec.com/misconfig/ksv056"
+          ],
+          "Status": "FAIL",
+          "Layer": {},
+          "CauseMetadata": {
+            "Provider": "Kubernetes",
+            "Service": "general",
+            "StartLine": 95,
+            "EndLine": 107,
+            "Code": {
+              "Lines": [
+                {
+                  "Number": 95,
+                  "Content": "        resources:",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": true,
+                  "LastCause": false
+                },
+                {
+                  "Number": 96,
+                  "Content": "          - apicollections",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 97,
+                  "Content": "  - name: hub-agent.traefik.access",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 98,
+                  "Content": "    clientConfig:",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 99,
+                  "Content": "      service:",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 100,
+                  "Content": "        name: admission",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 101,
+                  "Content": "        namespace: ",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 102,
+                  "Content": "        path: /api-access",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 103,
+                  "Content": "      caBundle: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURGakNDQWY2Z0F3SUJBZ0lRUjF2MjZ3MTJTM1N1K0pGU2NuOU5FVEFOQmdrcWhraUc5dzBCQVFzRkFEQVoKTVJjd0ZRWURWUVFERXc1aFpHMXBjM05wYjI0dUxuTjJZekFlRncweU5EQXhNalV3TmpBeE16ZGFGdzB5TlRBeApNalF3TmpBeE16ZGFNQmt4RnpBVkJnTlZCQU1URG1Ga2JXbHpjMmx2Ymk0dWMzWmpNSUlCSWpBTkJna3Foa2lHCjl3MEJBUUVGQUFPQ0FROEFNSUlCQ2dLQ0FRRUF4a3ZlTFBDa25PUVNhTnUzSGU3WUNvOHIxdE9McHYwZUgyL3MKU0w2S2NNclQ1M1lyckx5UWxKUXhGRSt2NTNteVlUYWIvQmZ4ZytKUUdQazgzNkkzamJyT3RjYzhOWDV0N1h4LwpCd0tlUzJBVTdzMmJlTzBhVjZBckJJS0xMTUdLZlVNbEFBRTlVZ01ycmUraDVDQnQ2ZE1FQllnR2NZZExkMG02ClRyNE1TNVVxUS9SdzJpbHJOM3VQd3doSlk4ZExTZytaV0l3dVRodzl1R2pOTmh4RnpXQ0EzVzB0dnZwRHBVLzAKZXVoWE1uV0hiN0YxU2RyS2dGUml1bUNQSllFZ2ZId1huOUZ0Vm5LbUs0cGU4MXdWc2RTWWFEeDV4QlVsVWJrYwpKL3R4Y05EUzVNNGpGTXFZaGdUS2hjckNwWVc5L211eEtzT1g5MWZmZW1IZTh3L0l5d0lEQVFBQm8xb3dXREFPCkJnTlZIUThCQWY4RUJBTUNCYUF3SFFZRFZSMGxCQll3RkFZSUt3WUJCUVVIQXdFR0NDc0dBUVVGQndNQ01Bd0cKQTFVZEV3RUIvd1FDTUFBd0dRWURWUjBSQkJJd0VJSU9ZV1J0YVhOemFXOXVMaTV6ZG1Nd0RRWUpLb1pJaHZjTgpBUUVMQlFBRGdnRUJBSFpoVDJienpaYk55bHVKaHQ4blk4Rk9ta3NjaW5YdWJHTTgwU3F3ak5JaTB3YmovTVhaCndVTE9ON0JJN1Q1cGd0YTJOeERWS0pwQnk3NnJQZUlyNzlEY1RnbkZtVDUvMjBkUXlmNHlHQk1ZLyt6MXhvMVUKRk9ubmptbk81UkFSb3IwTjBHcHcrU3BWdy9MRndyL3VFOGJEdE5JUDY4VThCa2FpTGJ4MWtWbFJCcHdzZ04zcwpGSmdNTmdjN2Rqemh1L1o0Mkx0bjdEbWNTRzdEWjlWODBmSkl2bE1qRDZ1WCtmV3grMlQzMFhyVndOWmtPVWtiCk5OZ0MwMmhWS2JvR2lIbDh3T3hrRThWR29TOE1IVTJoa0Vudzc3bDFRak9kZzlTbUhFSmF3WTNVUmppM1c3WjcKRTBJOTU0anFxTmRWbEJmUjlHNzdBWWJMV1M2MHNvZzVyVTQ9Ci0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0K",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": true
+                },
+                {
+                  "Number": 104,
+                  "Content": "",
+                  "IsCause": false,
+                  "Annotation": "",
+                  "Truncated": true,
+                  "FirstCause": false,
+                  "LastCause": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "Type": "Helm Security Check",
+          "ID": "KSV116",
+          "AVDID": "AVD-KSV-0116",
+          "Title": "Runs with a root primary or supplementary GID",
+          "Description": "According to pod security standard 'Non-root groups', containers should be forbidden from running with a root primary or supplementary GID.",
+          "Message": "clusterrole traefik-hub-controller in default namespace should set spec.securityContext.runAsGroup, spec.securityContext.supplementalGroups[*] and spec.securityContext.fsGroup to integer greater than 0",
+          "Namespace": "builtin.kubernetes.KSV116",
+          "Query": "data.builtin.kubernetes.KSV116.deny",
+          "Resolution": "Set 'containers[].securityContext.runAsGroup' to a non-zero integer or leave undefined.",
+          "Severity": "LOW",
+          "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv116",
+          "References": [
+            "https://kubesec.io/basics/containers-securitycontext-runasuser/",
+            "https://avd.aquasec.com/misconfig/ksv116"
+          ],
+          "Status": "FAIL",
+          "Layer": {},
+          "CauseMetadata": {
+            "Provider": "Kubernetes",
+            "Service": "general",
+            "Code": {
+              "Lines": null
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Target": "traefik-hub-2.6.0.tgz:templates/service-account.yaml",
+      "Class": "config",
+      "Type": "helm",
+      "MisconfSummary": {
+        "Successes": 151,
+        "Failures": 1,
+        "Exceptions": 0
+      },
+      "Misconfigurations": [
+        {
+          "Type": "Helm Security Check",
+          "ID": "KSV116",
+          "AVDID": "AVD-KSV-0116",
+          "Title": "Runs with a root primary or supplementary GID",
+          "Description": "According to pod security standard 'Non-root groups', containers should be forbidden from running with a root primary or supplementary GID.",
+          "Message": "serviceaccount traefik-hub-controller in null namespace should set spec.securityContext.runAsGroup, spec.securityContext.supplementalGroups[*] and spec.securityContext.fsGroup to integer greater than 0",
+          "Namespace": "builtin.kubernetes.KSV116",
+          "Query": "data.builtin.kubernetes.KSV116.deny",
+          "Resolution": "Set 'containers[].securityContext.runAsGroup' to a non-zero integer or leave undefined.",
+          "Severity": "LOW",
+          "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv116",
+          "References": [
+            "https://kubesec.io/basics/containers-securitycontext-runasuser/",
+            "https://avd.aquasec.com/misconfig/ksv116"
+          ],
+          "Status": "FAIL",
+          "Layer": {},
+          "CauseMetadata": {
+            "Provider": "Kubernetes",
+            "Service": "general",
+            "Code": {
+              "Lines": null
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Target": "traefik-hub-2.6.0.tgz:templates/service.yaml",
+      "Class": "config",
+      "Type": "helm",
+      "MisconfSummary": {
+        "Successes": 151,
+        "Failures": 1,
+        "Exceptions": 0
+      },
+      "Misconfigurations": [
+        {
+          "Type": "Helm Security Check",
+          "ID": "KSV116",
+          "AVDID": "AVD-KSV-0116",
+          "Title": "Runs with a root primary or supplementary GID",
+          "Description": "According to pod security standard 'Non-root groups', containers should be forbidden from running with a root primary or supplementary GID.",
+          "Message": "service traefik in null namespace should set spec.securityContext.runAsGroup, spec.securityContext.supplementalGroups[*] and spec.securityContext.fsGroup to integer greater than 0",
+          "Namespace": "builtin.kubernetes.KSV116",
+          "Query": "data.builtin.kubernetes.KSV116.deny",
+          "Resolution": "Set 'containers[].securityContext.runAsGroup' to a non-zero integer or leave undefined.",
+          "Severity": "LOW",
+          "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv116",
+          "References": [
+            "https://kubesec.io/basics/containers-securitycontext-runasuser/",
+            "https://avd.aquasec.com/misconfig/ksv116"
+          ],
+          "Status": "FAIL",
+          "Layer": {},
+          "CauseMetadata": {
+            "Provider": "Kubernetes",
+            "Service": "general",
+            "Code": {
+              "Lines": null
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

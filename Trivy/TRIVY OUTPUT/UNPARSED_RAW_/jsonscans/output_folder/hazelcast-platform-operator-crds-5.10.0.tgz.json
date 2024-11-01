@@ -1,0 +1,395 @@
+{
+  "SchemaVersion": 2,
+  "ArtifactName": "/home/kali/Desktop/SharedFiles/hazelcast-platform-operator-crds-5.10.0.tgz",
+  "ArtifactType": "filesystem",
+  "Metadata": {
+    "ImageConfig": {
+      "architecture": "",
+      "created": "0001-01-01T00:00:00Z",
+      "os": "",
+      "rootfs": {
+        "type": "",
+        "diff_ids": null
+      },
+      "config": {}
+    }
+  },
+  "Results": [
+    {
+      "Target": "hazelcast-platform-operator-crds-5.10.0.tgz:templates/all-crds.yaml",
+      "Class": "config",
+      "Type": "helm",
+      "MisconfSummary": {
+        "Successes": 151,
+        "Failures": 14,
+        "Exceptions": 0
+      },
+      "Misconfigurations": [
+        {
+          "Type": "Helm Security Check",
+          "ID": "KSV116",
+          "AVDID": "AVD-KSV-0116",
+          "Title": "Runs with a root primary or supplementary GID",
+          "Description": "According to pod security standard 'Non-root groups', containers should be forbidden from running with a root primary or supplementary GID.",
+          "Message": "customresourcedefinition caches.hazelcast.com in default namespace should set spec.securityContext.runAsGroup, spec.securityContext.supplementalGroups[*] and spec.securityContext.fsGroup to integer greater than 0",
+          "Namespace": "builtin.kubernetes.KSV116",
+          "Query": "data.builtin.kubernetes.KSV116.deny",
+          "Resolution": "Set 'containers[].securityContext.runAsGroup' to a non-zero integer or leave undefined.",
+          "Severity": "LOW",
+          "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv116",
+          "References": [
+            "https://kubesec.io/basics/containers-securitycontext-runasuser/",
+            "https://avd.aquasec.com/misconfig/ksv116"
+          ],
+          "Status": "FAIL",
+          "Layer": {},
+          "CauseMetadata": {
+            "Provider": "Kubernetes",
+            "Service": "general",
+            "Code": {
+              "Lines": null
+            }
+          }
+        },
+        {
+          "Type": "Helm Security Check",
+          "ID": "KSV116",
+          "AVDID": "AVD-KSV-0116",
+          "Title": "Runs with a root primary or supplementary GID",
+          "Description": "According to pod security standard 'Non-root groups', containers should be forbidden from running with a root primary or supplementary GID.",
+          "Message": "customresourcedefinition cronhotbackups.hazelcast.com in default namespace should set spec.securityContext.runAsGroup, spec.securityContext.supplementalGroups[*] and spec.securityContext.fsGroup to integer greater than 0",
+          "Namespace": "builtin.kubernetes.KSV116",
+          "Query": "data.builtin.kubernetes.KSV116.deny",
+          "Resolution": "Set 'containers[].securityContext.runAsGroup' to a non-zero integer or leave undefined.",
+          "Severity": "LOW",
+          "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv116",
+          "References": [
+            "https://kubesec.io/basics/containers-securitycontext-runasuser/",
+            "https://avd.aquasec.com/misconfig/ksv116"
+          ],
+          "Status": "FAIL",
+          "Layer": {},
+          "CauseMetadata": {
+            "Provider": "Kubernetes",
+            "Service": "general",
+            "Code": {
+              "Lines": null
+            }
+          }
+        },
+        {
+          "Type": "Helm Security Check",
+          "ID": "KSV116",
+          "AVDID": "AVD-KSV-0116",
+          "Title": "Runs with a root primary or supplementary GID",
+          "Description": "According to pod security standard 'Non-root groups', containers should be forbidden from running with a root primary or supplementary GID.",
+          "Message": "customresourcedefinition hazelcastendpoints.hazelcast.com in default namespace should set spec.securityContext.runAsGroup, spec.securityContext.supplementalGroups[*] and spec.securityContext.fsGroup to integer greater than 0",
+          "Namespace": "builtin.kubernetes.KSV116",
+          "Query": "data.builtin.kubernetes.KSV116.deny",
+          "Resolution": "Set 'containers[].securityContext.runAsGroup' to a non-zero integer or leave undefined.",
+          "Severity": "LOW",
+          "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv116",
+          "References": [
+            "https://kubesec.io/basics/containers-securitycontext-runasuser/",
+            "https://avd.aquasec.com/misconfig/ksv116"
+          ],
+          "Status": "FAIL",
+          "Layer": {},
+          "CauseMetadata": {
+            "Provider": "Kubernetes",
+            "Service": "general",
+            "Code": {
+              "Lines": null
+            }
+          }
+        },
+        {
+          "Type": "Helm Security Check",
+          "ID": "KSV116",
+          "AVDID": "AVD-KSV-0116",
+          "Title": "Runs with a root primary or supplementary GID",
+          "Description": "According to pod security standard 'Non-root groups', containers should be forbidden from running with a root primary or supplementary GID.",
+          "Message": "customresourcedefinition hazelcasts.hazelcast.com in default namespace should set spec.securityContext.runAsGroup, spec.securityContext.supplementalGroups[*] and spec.securityContext.fsGroup to integer greater than 0",
+          "Namespace": "builtin.kubernetes.KSV116",
+          "Query": "data.builtin.kubernetes.KSV116.deny",
+          "Resolution": "Set 'containers[].securityContext.runAsGroup' to a non-zero integer or leave undefined.",
+          "Severity": "LOW",
+          "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv116",
+          "References": [
+            "https://kubesec.io/basics/containers-securitycontext-runasuser/",
+            "https://avd.aquasec.com/misconfig/ksv116"
+          ],
+          "Status": "FAIL",
+          "Layer": {},
+          "CauseMetadata": {
+            "Provider": "Kubernetes",
+            "Service": "general",
+            "Code": {
+              "Lines": null
+            }
+          }
+        },
+        {
+          "Type": "Helm Security Check",
+          "ID": "KSV116",
+          "AVDID": "AVD-KSV-0116",
+          "Title": "Runs with a root primary or supplementary GID",
+          "Description": "According to pod security standard 'Non-root groups', containers should be forbidden from running with a root primary or supplementary GID.",
+          "Message": "customresourcedefinition hotbackups.hazelcast.com in default namespace should set spec.securityContext.runAsGroup, spec.securityContext.supplementalGroups[*] and spec.securityContext.fsGroup to integer greater than 0",
+          "Namespace": "builtin.kubernetes.KSV116",
+          "Query": "data.builtin.kubernetes.KSV116.deny",
+          "Resolution": "Set 'containers[].securityContext.runAsGroup' to a non-zero integer or leave undefined.",
+          "Severity": "LOW",
+          "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv116",
+          "References": [
+            "https://kubesec.io/basics/containers-securitycontext-runasuser/",
+            "https://avd.aquasec.com/misconfig/ksv116"
+          ],
+          "Status": "FAIL",
+          "Layer": {},
+          "CauseMetadata": {
+            "Provider": "Kubernetes",
+            "Service": "general",
+            "Code": {
+              "Lines": null
+            }
+          }
+        },
+        {
+          "Type": "Helm Security Check",
+          "ID": "KSV116",
+          "AVDID": "AVD-KSV-0116",
+          "Title": "Runs with a root primary or supplementary GID",
+          "Description": "According to pod security standard 'Non-root groups', containers should be forbidden from running with a root primary or supplementary GID.",
+          "Message": "customresourcedefinition jetjobs.hazelcast.com in default namespace should set spec.securityContext.runAsGroup, spec.securityContext.supplementalGroups[*] and spec.securityContext.fsGroup to integer greater than 0",
+          "Namespace": "builtin.kubernetes.KSV116",
+          "Query": "data.builtin.kubernetes.KSV116.deny",
+          "Resolution": "Set 'containers[].securityContext.runAsGroup' to a non-zero integer or leave undefined.",
+          "Severity": "LOW",
+          "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv116",
+          "References": [
+            "https://kubesec.io/basics/containers-securitycontext-runasuser/",
+            "https://avd.aquasec.com/misconfig/ksv116"
+          ],
+          "Status": "FAIL",
+          "Layer": {},
+          "CauseMetadata": {
+            "Provider": "Kubernetes",
+            "Service": "general",
+            "Code": {
+              "Lines": null
+            }
+          }
+        },
+        {
+          "Type": "Helm Security Check",
+          "ID": "KSV116",
+          "AVDID": "AVD-KSV-0116",
+          "Title": "Runs with a root primary or supplementary GID",
+          "Description": "According to pod security standard 'Non-root groups', containers should be forbidden from running with a root primary or supplementary GID.",
+          "Message": "customresourcedefinition jetjobsnapshots.hazelcast.com in default namespace should set spec.securityContext.runAsGroup, spec.securityContext.supplementalGroups[*] and spec.securityContext.fsGroup to integer greater than 0",
+          "Namespace": "builtin.kubernetes.KSV116",
+          "Query": "data.builtin.kubernetes.KSV116.deny",
+          "Resolution": "Set 'containers[].securityContext.runAsGroup' to a non-zero integer or leave undefined.",
+          "Severity": "LOW",
+          "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv116",
+          "References": [
+            "https://kubesec.io/basics/containers-securitycontext-runasuser/",
+            "https://avd.aquasec.com/misconfig/ksv116"
+          ],
+          "Status": "FAIL",
+          "Layer": {},
+          "CauseMetadata": {
+            "Provider": "Kubernetes",
+            "Service": "general",
+            "Code": {
+              "Lines": null
+            }
+          }
+        },
+        {
+          "Type": "Helm Security Check",
+          "ID": "KSV116",
+          "AVDID": "AVD-KSV-0116",
+          "Title": "Runs with a root primary or supplementary GID",
+          "Description": "According to pod security standard 'Non-root groups', containers should be forbidden from running with a root primary or supplementary GID.",
+          "Message": "customresourcedefinition managementcenters.hazelcast.com in default namespace should set spec.securityContext.runAsGroup, spec.securityContext.supplementalGroups[*] and spec.securityContext.fsGroup to integer greater than 0",
+          "Namespace": "builtin.kubernetes.KSV116",
+          "Query": "data.builtin.kubernetes.KSV116.deny",
+          "Resolution": "Set 'containers[].securityContext.runAsGroup' to a non-zero integer or leave undefined.",
+          "Severity": "LOW",
+          "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv116",
+          "References": [
+            "https://kubesec.io/basics/containers-securitycontext-runasuser/",
+            "https://avd.aquasec.com/misconfig/ksv116"
+          ],
+          "Status": "FAIL",
+          "Layer": {},
+          "CauseMetadata": {
+            "Provider": "Kubernetes",
+            "Service": "general",
+            "Code": {
+              "Lines": null
+            }
+          }
+        },
+        {
+          "Type": "Helm Security Check",
+          "ID": "KSV116",
+          "AVDID": "AVD-KSV-0116",
+          "Title": "Runs with a root primary or supplementary GID",
+          "Description": "According to pod security standard 'Non-root groups', containers should be forbidden from running with a root primary or supplementary GID.",
+          "Message": "customresourcedefinition maps.hazelcast.com in default namespace should set spec.securityContext.runAsGroup, spec.securityContext.supplementalGroups[*] and spec.securityContext.fsGroup to integer greater than 0",
+          "Namespace": "builtin.kubernetes.KSV116",
+          "Query": "data.builtin.kubernetes.KSV116.deny",
+          "Resolution": "Set 'containers[].securityContext.runAsGroup' to a non-zero integer or leave undefined.",
+          "Severity": "LOW",
+          "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv116",
+          "References": [
+            "https://kubesec.io/basics/containers-securitycontext-runasuser/",
+            "https://avd.aquasec.com/misconfig/ksv116"
+          ],
+          "Status": "FAIL",
+          "Layer": {},
+          "CauseMetadata": {
+            "Provider": "Kubernetes",
+            "Service": "general",
+            "Code": {
+              "Lines": null
+            }
+          }
+        },
+        {
+          "Type": "Helm Security Check",
+          "ID": "KSV116",
+          "AVDID": "AVD-KSV-0116",
+          "Title": "Runs with a root primary or supplementary GID",
+          "Description": "According to pod security standard 'Non-root groups', containers should be forbidden from running with a root primary or supplementary GID.",
+          "Message": "customresourcedefinition multimaps.hazelcast.com in default namespace should set spec.securityContext.runAsGroup, spec.securityContext.supplementalGroups[*] and spec.securityContext.fsGroup to integer greater than 0",
+          "Namespace": "builtin.kubernetes.KSV116",
+          "Query": "data.builtin.kubernetes.KSV116.deny",
+          "Resolution": "Set 'containers[].securityContext.runAsGroup' to a non-zero integer or leave undefined.",
+          "Severity": "LOW",
+          "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv116",
+          "References": [
+            "https://kubesec.io/basics/containers-securitycontext-runasuser/",
+            "https://avd.aquasec.com/misconfig/ksv116"
+          ],
+          "Status": "FAIL",
+          "Layer": {},
+          "CauseMetadata": {
+            "Provider": "Kubernetes",
+            "Service": "general",
+            "Code": {
+              "Lines": null
+            }
+          }
+        },
+        {
+          "Type": "Helm Security Check",
+          "ID": "KSV116",
+          "AVDID": "AVD-KSV-0116",
+          "Title": "Runs with a root primary or supplementary GID",
+          "Description": "According to pod security standard 'Non-root groups', containers should be forbidden from running with a root primary or supplementary GID.",
+          "Message": "customresourcedefinition queues.hazelcast.com in default namespace should set spec.securityContext.runAsGroup, spec.securityContext.supplementalGroups[*] and spec.securityContext.fsGroup to integer greater than 0",
+          "Namespace": "builtin.kubernetes.KSV116",
+          "Query": "data.builtin.kubernetes.KSV116.deny",
+          "Resolution": "Set 'containers[].securityContext.runAsGroup' to a non-zero integer or leave undefined.",
+          "Severity": "LOW",
+          "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv116",
+          "References": [
+            "https://kubesec.io/basics/containers-securitycontext-runasuser/",
+            "https://avd.aquasec.com/misconfig/ksv116"
+          ],
+          "Status": "FAIL",
+          "Layer": {},
+          "CauseMetadata": {
+            "Provider": "Kubernetes",
+            "Service": "general",
+            "Code": {
+              "Lines": null
+            }
+          }
+        },
+        {
+          "Type": "Helm Security Check",
+          "ID": "KSV116",
+          "AVDID": "AVD-KSV-0116",
+          "Title": "Runs with a root primary or supplementary GID",
+          "Description": "According to pod security standard 'Non-root groups', containers should be forbidden from running with a root primary or supplementary GID.",
+          "Message": "customresourcedefinition replicatedmaps.hazelcast.com in default namespace should set spec.securityContext.runAsGroup, spec.securityContext.supplementalGroups[*] and spec.securityContext.fsGroup to integer greater than 0",
+          "Namespace": "builtin.kubernetes.KSV116",
+          "Query": "data.builtin.kubernetes.KSV116.deny",
+          "Resolution": "Set 'containers[].securityContext.runAsGroup' to a non-zero integer or leave undefined.",
+          "Severity": "LOW",
+          "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv116",
+          "References": [
+            "https://kubesec.io/basics/containers-securitycontext-runasuser/",
+            "https://avd.aquasec.com/misconfig/ksv116"
+          ],
+          "Status": "FAIL",
+          "Layer": {},
+          "CauseMetadata": {
+            "Provider": "Kubernetes",
+            "Service": "general",
+            "Code": {
+              "Lines": null
+            }
+          }
+        },
+        {
+          "Type": "Helm Security Check",
+          "ID": "KSV116",
+          "AVDID": "AVD-KSV-0116",
+          "Title": "Runs with a root primary or supplementary GID",
+          "Description": "According to pod security standard 'Non-root groups', containers should be forbidden from running with a root primary or supplementary GID.",
+          "Message": "customresourcedefinition topics.hazelcast.com in default namespace should set spec.securityContext.runAsGroup, spec.securityContext.supplementalGroups[*] and spec.securityContext.fsGroup to integer greater than 0",
+          "Namespace": "builtin.kubernetes.KSV116",
+          "Query": "data.builtin.kubernetes.KSV116.deny",
+          "Resolution": "Set 'containers[].securityContext.runAsGroup' to a non-zero integer or leave undefined.",
+          "Severity": "LOW",
+          "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv116",
+          "References": [
+            "https://kubesec.io/basics/containers-securitycontext-runasuser/",
+            "https://avd.aquasec.com/misconfig/ksv116"
+          ],
+          "Status": "FAIL",
+          "Layer": {},
+          "CauseMetadata": {
+            "Provider": "Kubernetes",
+            "Service": "general",
+            "Code": {
+              "Lines": null
+            }
+          }
+        },
+        {
+          "Type": "Helm Security Check",
+          "ID": "KSV116",
+          "AVDID": "AVD-KSV-0116",
+          "Title": "Runs with a root primary or supplementary GID",
+          "Description": "According to pod security standard 'Non-root groups', containers should be forbidden from running with a root primary or supplementary GID.",
+          "Message": "customresourcedefinition wanreplications.hazelcast.com in default namespace should set spec.securityContext.runAsGroup, spec.securityContext.supplementalGroups[*] and spec.securityContext.fsGroup to integer greater than 0",
+          "Namespace": "builtin.kubernetes.KSV116",
+          "Query": "data.builtin.kubernetes.KSV116.deny",
+          "Resolution": "Set 'containers[].securityContext.runAsGroup' to a non-zero integer or leave undefined.",
+          "Severity": "LOW",
+          "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv116",
+          "References": [
+            "https://kubesec.io/basics/containers-securitycontext-runasuser/",
+            "https://avd.aquasec.com/misconfig/ksv116"
+          ],
+          "Status": "FAIL",
+          "Layer": {},
+          "CauseMetadata": {
+            "Provider": "Kubernetes",
+            "Service": "general",
+            "Code": {
+              "Lines": null
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

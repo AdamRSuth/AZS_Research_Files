@@ -1,0 +1,26 @@
+{{- if .Values.networking.service.ports }}
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "12factor.fullname" . }}
+  labels:
+    app.kubernetes.io/component: app
+    {{- include "12factor.labels" . | nindent 4 }}
+  {{- with .Values.networking.service.annotations }}
+  annotations:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
+spec:
+  type: {{ .Values.networking.service.type }}
+  clusterIP: {{ .Values.networking.service.clusterIP }}
+  ports:
+    {{- range .Values.networking.service.ports }}
+    - name: {{ .name | required "networking.service.ports.name must be specified" }}
+      port: {{ .port | required "networking.service.ports.port must be specified" }}
+      targetPort: {{ .targetPort | required "networking.service.ports.targetPort must be specified" }}
+      protocol: {{ .protocol | default "TCP" }}
+    {{- end }}
+  selector:
+    app.kubernetes.io/component: app
+    {{- include "12factor.selectorLabels" . | nindent 4 }}
+{{- end }}

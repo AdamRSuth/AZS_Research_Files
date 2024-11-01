@@ -1,0 +1,6 @@
+apiVersion: v2
+appVersion: fedora-32
+description: 389 Directory Server
+name: 389ds
+type: application
+version: 0.1.0

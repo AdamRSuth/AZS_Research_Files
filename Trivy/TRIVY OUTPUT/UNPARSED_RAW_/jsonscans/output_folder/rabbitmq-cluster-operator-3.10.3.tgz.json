@@ -1,0 +1,3388 @@
+{
+  "SchemaVersion": 2,
+  "ArtifactName": "/home/kali/Desktop/SharedFiles/rabbitmq-cluster-operator-3.10.3.tgz",
+  "ArtifactType": "filesystem",
+  "Metadata": {
+    "ImageConfig": {
+      "architecture": "",
+      "created": "0001-01-01T00:00:00Z",
+      "os": "",
+      "rootfs": {
+        "type": "",
+        "diff_ids": null
+      },
+      "config": {}
+    }
+  },
+  "Results": [
+    {
+      "Target": "rabbitmq-cluster-operator-3.10.3.tgz:templates/cluster-operator/clusterrole.yaml",
+      "Class": "config",
+      "Type": "helm",
+      "MisconfSummary": {
+        "Successes": 145,
+        "Failures": 9,
+        "Exceptions": 0
+      },
+      "Misconfigurations": [
+        {
+          "Type": "Helm Security Check",
+          "ID": "KSV041",
+          "AVDID": "AVD-KSV-0041",
+          "Title": "Manage secrets",
+          "Description": "Viewing secrets at the cluster-scope is akin to cluster-admin in most clusters as there are typically at least one service accounts (their token stored in a secret) bound to cluster-admin directly or a role/clusterrole that gives similar permissions.",
+          "Message": "ClusterRole 'rabbitmq-cluster-operator' shouldn't have access to manage resource 'secrets'",
+          "Namespace": "builtin.kubernetes.KSV041",
+          "Query": "data.builtin.kubernetes.KSV041.deny",
+          "Resolution": "Manage secrets are not allowed. Remove resource 'secrets' from cluster role",
+          "Severity": "CRITICAL",
+          "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv041",
+          "References": [
+            "https://kubernetes.io/docs/concepts/security/rbac-good-practices/",
+            "https://avd.aquasec.com/misconfig/ksv041"
+          ],
+          "Status": "FAIL",
+          "Layer": {},
+          "CauseMetadata": {
+            "Provider": "Kubernetes",
+            "Service": "general",
+            "StartLine": 66,
+            "EndLine": 75,
+            "Code": {
+              "Lines": [
+                {
+                  "Number": 66,
+                  "Content": "        namespace: \"\"",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": true,
+                  "LastCause": false
+                },
+                {
+                  "Number": 67,
+                  "Content": "        path: /validate-rabbitmq-com-v1beta1-federation",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 68,
+                  "Content": "        port: 443",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 69,
+                  "Content": "    failurePolicy: Fail",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 70,
+                  "Content": "    name: vfederation.kb.io",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 71,
+                  "Content": "    rules:",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 72,
+                  "Content": "      - apiGroups:",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 73,
+                  "Content": "          - rabbitmq.com",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 74,
+                  "Content": "        apiVersions:",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 75,
+                  "Content": "          - v1beta1",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": true
+                }
+              ]
+            }
+          }
+        },
+        {
+          "Type": "Helm Security Check",
+          "ID": "KSV048",
+          "AVDID": "AVD-KSV-0048",
+          "Title": "Manage Kubernetes workloads and pods",
+          "Description": "Depending on the policies enforced by the admission controller, this permission ranges from the ability to steal compute (crypto) by running workloads or allowing for creating workloads that escape to the node as root and escalation to cluster-admin.",
+          "Message": "ClusterRole 'rabbitmq-cluster-operator' should not have access to resources [\"pods\", \"deployments\", \"jobs\", \"cronjobs\", \"statefulsets\", \"daemonsets\", \"replicasets\", \"replicationcontrollers\"] for verbs [\"create\", \"update\", \"patch\", \"delete\", \"deletecollection\", \"impersonate\", \"*\"]",
+          "Namespace": "builtin.kubernetes.KSV048",
+          "Query": "data.builtin.kubernetes.KSV048.deny",
+          "Resolution": "Kubernetes workloads resources are only allowed for verbs 'list', 'watch', 'get'",
+          "Severity": "MEDIUM",
+          "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv048",
+          "References": [
+            "https://kubernetes.io/docs/concepts/security/rbac-good-practices/",
+            "https://avd.aquasec.com/misconfig/ksv048"
+          ],
+          "Status": "FAIL",
+          "Layer": {},
+          "CauseMetadata": {
+            "Provider": "Kubernetes",
+            "Service": "general",
+            "StartLine": 51,
+            "EndLine": 59,
+            "Code": {
+              "Lines": [
+                {
+                  "Number": 51,
+                  "Content": "          - rabbitmq.com",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": true,
+                  "LastCause": false
+                },
+                {
+                  "Number": 52,
+                  "Content": "        apiVersions:",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 53,
+                  "Content": "          - v1beta1",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 54,
+                  "Content": "        operations:",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 55,
+                  "Content": "          - CREATE",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 56,
+                  "Content": "          - UPDATE",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 57,
+                  "Content": "        resources:",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 58,
+                  "Content": "          - exchanges",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 59,
+                  "Content": "    sideEffects: None",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": true
+                }
+              ]
+            }
+          }
+        },
+        {
+          "Type": "Helm Security Check",
+          "ID": "KSV048",
+          "AVDID": "AVD-KSV-0048",
+          "Title": "Manage Kubernetes workloads and pods",
+          "Description": "Depending on the policies enforced by the admission controller, this permission ranges from the ability to steal compute (crypto) by running workloads or allowing for creating workloads that escape to the node as root and escalation to cluster-admin.",
+          "Message": "ClusterRole 'rabbitmq-cluster-operator' should not have access to resources [\"pods\", \"deployments\", \"jobs\", \"cronjobs\", \"statefulsets\", \"daemonsets\", \"replicasets\", \"replicationcontrollers\"] for verbs [\"create\", \"update\", \"patch\", \"delete\", \"deletecollection\", \"impersonate\", \"*\"]",
+          "Namespace": "builtin.kubernetes.KSV048",
+          "Query": "data.builtin.kubernetes.KSV048.deny",
+          "Resolution": "Kubernetes workloads resources are only allowed for verbs 'list', 'watch', 'get'",
+          "Severity": "MEDIUM",
+          "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv048",
+          "References": [
+            "https://kubernetes.io/docs/concepts/security/rbac-good-practices/",
+            "https://avd.aquasec.com/misconfig/ksv048"
+          ],
+          "Status": "FAIL",
+          "Layer": {},
+          "CauseMetadata": {
+            "Provider": "Kubernetes",
+            "Service": "general",
+            "StartLine": 96,
+            "EndLine": 106,
+            "Code": {
+              "Lines": [
+                {
+                  "Number": 96,
+                  "Content": "        apiVersions:",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": true,
+                  "LastCause": false
+                },
+                {
+                  "Number": 97,
+                  "Content": "          - v1alpha1",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 98,
+                  "Content": "        operations:",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 99,
+                  "Content": "          - CREATE",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 100,
+                  "Content": "          - UPDATE",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 101,
+                  "Content": "        resources:",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 102,
+                  "Content": "          - superstreams",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 103,
+                  "Content": "    sideEffects: None",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 104,
+                  "Content": "  - admissionReviewVersions:",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": true
+                },
+                {
+                  "Number": 105,
+                  "Content": "",
+                  "IsCause": false,
+                  "Annotation": "",
+                  "Truncated": true,
+                  "FirstCause": false,
+                  "LastCause": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "Type": "Helm Security Check",
+          "ID": "KSV049",
+          "AVDID": "AVD-KSV-0049",
+          "Title": "Manage configmaps",
+          "Description": "Some workloads leverage configmaps to store sensitive data or configuration parameters that affect runtime behavior that can be modified by an attacker or combined with another issue to potentially lead to compromise.",
+          "Message": "ClusterRole 'rabbitmq-cluster-operator' should not have access to resource 'configmaps' for verbs [\"create\", \"update\", \"patch\", \"delete\", \"deletecollection\", \"impersonate\", \"*\"]",
+          "Namespace": "builtin.kubernetes.KSV049",
+          "Query": "data.builtin.kubernetes.KSV049.deny",
+          "Resolution": "Remove write permission verbs for resource 'configmaps'",
+          "Severity": "MEDIUM",
+          "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv049",
+          "References": [
+            "https://kubernetes.io/docs/concepts/security/rbac-good-practices/",
+            "https://avd.aquasec.com/misconfig/ksv049"
+          ],
+          "Status": "FAIL",
+          "Layer": {},
+          "CauseMetadata": {
+            "Provider": "Kubernetes",
+            "Service": "general",
+            "StartLine": 15,
+            "EndLine": 24,
+            "Code": {
+              "Lines": [
+                {
+                  "Number": 15,
+                  "Content": "webhooks:",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": true,
+                  "LastCause": false
+                },
+                {
+                  "Number": 16,
+                  "Content": "  - admissionReviewVersions:",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 17,
+                  "Content": "      - v1",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 18,
+                  "Content": "    clientConfig:",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 19,
+                  "Content": "      caBundle: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURKekNDQWcrZ0F3SUJBZ0lRQ2c4VXpXaVVlc3oyVFd4SklUclJBakFOQmdrcWhraUc5dzBCQVFzRkFEQWUKTVJ3d0dnWURWUVFERXhOeWJYRXRiWE5uTFhSdmNHOXNiMmQ1TFdOaE1CNFhEVEkwTURFeU5UQXdOVGd3T0ZvWApEVEkxTURFeU5EQXdOVGd3T0Zvd0hqRWNNQm9HQTFVRUF4TVRjbTF4TFcxelp5MTBiM0J2Ykc5bmVTMWpZVENDCkFTSXdEUVlKS29aSWh2Y05BUUVCQlFBRGdnRVBBRENDQVFvQ2dnRUJBS1lkRXdhYXdvdC84SUEzY1lpK1hGenkKS2NTSmdXSTdBcjh0Rm5lSzNnZEFGYXpBZ2pGTUxNdXhzR000blpBSU1yaUFRL20zd3YvTERPR1ljM0wxMFp5bgpmc3RyUldIUDIrd05HeFN5YU9uTWVFRXdtWDBQZEl5ZStQRkR5WGV6KzRpTGwrOThEZ3k3cUdKYzF0Um44T2ZuCllWSzg0L3lmYzhDWHJIalQ5QXh4aUlkRWJ1NmlWV25FbVR1MjcyOGNMY2pHWHYzaC9pQ1dWU2tydTRyTGhuMS8KdHZlNXp3UklSbkVZMjhsaDVSaXJYa3dJN0l3Vkl5MzI5d3JpTGIraUZnSEFGRjFPK29heHplckNrdzUyM09VNQpKMkNWZW0zN3VrUFlqMjRWOWt2akNHdHNxZnNnelEyYlo2dVZsaStxSGVaV2d6NUJQSlNrb2k1M2xKajJWZVVDCkF3RUFBYU5oTUY4d0RnWURWUjBQQVFIL0JBUURBZ0trTUIwR0ExVWRKUVFXTUJRR0NDc0dBUVVGQndNQkJnZ3IKQmdFRkJRY0RBakFQQmdOVkhSTUJBZjhFQlRBREFRSC9NQjBHQTFVZERnUVdCQlNDa0JUTEVqVEZDMEdUL3RTTQpaLzJwUUg1dEdqQU5CZ2txaGtpRzl3MEJBUXNGQUFPQ0FRRUFsSlR2Zkx6dFo2UXJDT3JwYlRuVHBoTGJGK0EyCnl2ZWtlWEl5ZnAra2tZNFA1eGRiemZ6M29ScG1OKzZLWjJmd0l3MzhiWHNyTHpSMGp2aTZxejdhV0pjWis3TGUKc0pqeWkrOG1PUVJqQ1lmWDIvZFA4QlJidEh0OGlhcTkyWW9sejNnQ280QXFXVHZ1MlA1eGp5SGxQeHdOeWE5agpYUkpEL3NvUm1nTDgzTWF5N29FTXh5TkV3SE9PMXIwOUs2djBMT3pCQUZ1eU1ITFM0UkNiWUR5dzQwWlBPRWFoCkpDcnZlYXpIQWRSTThsdGlabk5Pa0lteEN6cE5LOCs3NWdpV0MwSyttUW9HZkFOWS9QMFFCaUc2U0FITmJOWTcKTWtZQTd3TngyTTVRUTluQ29mNGRJb1pkUGNpaS9FZlc5OHQzVzNzNmZZKzdjWUNBVVZGM1ZuM2t6UT09Ci0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0K",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 20,
+                  "Content": "      service:",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 21,
+                  "Content": "        name: rabbitmq-cluster-operator-rabbitmq-messaging-topology-operator",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 22,
+                  "Content": "        namespace: \"\"",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 23,
+                  "Content": "        path: /validate-rabbitmq-com-v1beta1-binding",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 24,
+                  "Content": "        port: 443",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": true
+                }
+              ]
+            }
+          }
+        },
+        {
+          "Type": "Helm Security Check",
+          "ID": "KSV050",
+          "AVDID": "AVD-KSV-0050",
+          "Title": "Manage Kubernetes RBAC resources",
+          "Description": "An effective level of access equivalent to cluster-admin should not be provided.",
+          "Message": "ClusterRole 'rabbitmq-cluster-operator' should not have access to resources [\"roles\", \"rolebindings\"] for verbs [\"create\", \"update\", \"delete\", \"deletecollection\", \"impersonate\", \"*\"]",
+          "Namespace": "builtin.kubernetes.KSV050",
+          "Query": "data.builtin.kubernetes.KSV050.deny",
+          "Resolution": "Remove write permission verbs for resource 'roles' and 'rolebindings'",
+          "Severity": "CRITICAL",
+          "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv050",
+          "References": [
+            "https://kubernetes.io/docs/concepts/security/rbac-good-practices/",
+            "https://avd.aquasec.com/misconfig/ksv050"
+          ],
+          "Status": "FAIL",
+          "Layer": {},
+          "CauseMetadata": {
+            "Provider": "Kubernetes",
+            "Service": "general",
+            "StartLine": 130,
+            "EndLine": 139,
+            "Code": {
+              "Lines": [
+                {
+                  "Number": 130,
+                  "Content": "      service:",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": true,
+                  "LastCause": false
+                },
+                {
+                  "Number": 131,
+                  "Content": "        name: rabbitmq-cluster-operator-rabbitmq-messaging-topology-operator",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 132,
+                  "Content": "        namespace: \"\"",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 133,
+                  "Content": "        path: /validate-rabbitmq-com-v1beta1-policy",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 134,
+                  "Content": "        port: 443",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 135,
+                  "Content": "    failurePolicy: Fail",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 136,
+                  "Content": "    name: vpolicy.kb.io",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 137,
+                  "Content": "    rules:",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 138,
+                  "Content": "      - apiGroups:",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 139,
+                  "Content": "          - rabbitmq.com",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": true
+                }
+              ]
+            }
+          }
+        },
+        {
+          "Type": "Helm Security Check",
+          "ID": "KSV050",
+          "AVDID": "AVD-KSV-0050",
+          "Title": "Manage Kubernetes RBAC resources",
+          "Description": "An effective level of access equivalent to cluster-admin should not be provided.",
+          "Message": "ClusterRole 'rabbitmq-cluster-operator' should not have access to resources [\"roles\", \"rolebindings\"] for verbs [\"create\", \"update\", \"delete\", \"deletecollection\", \"impersonate\", \"*\"]",
+          "Namespace": "builtin.kubernetes.KSV050",
+          "Query": "data.builtin.kubernetes.KSV050.deny",
+          "Resolution": "Remove write permission verbs for resource 'roles' and 'rolebindings'",
+          "Severity": "CRITICAL",
+          "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv050",
+          "References": [
+            "https://kubernetes.io/docs/concepts/security/rbac-good-practices/",
+            "https://avd.aquasec.com/misconfig/ksv050"
+          ],
+          "Status": "FAIL",
+          "Layer": {},
+          "CauseMetadata": {
+            "Provider": "Kubernetes",
+            "Service": "general",
+            "StartLine": 140,
+            "EndLine": 149,
+            "Code": {
+              "Lines": [
+                {
+                  "Number": 140,
+                  "Content": "        apiVersions:",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": true,
+                  "LastCause": false
+                },
+                {
+                  "Number": 141,
+                  "Content": "          - v1beta1",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 142,
+                  "Content": "        operations:",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 143,
+                  "Content": "          - CREATE",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 144,
+                  "Content": "          - UPDATE",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 145,
+                  "Content": "        resources:",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 146,
+                  "Content": "          - policies",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 147,
+                  "Content": "    sideEffects: None",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 148,
+                  "Content": "  - admissionReviewVersions:",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 149,
+                  "Content": "      - v1",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": true
+                }
+              ]
+            }
+          }
+        },
+        {
+          "Type": "Helm Security Check",
+          "ID": "KSV053",
+          "AVDID": "AVD-KSV-0053",
+          "Title": "Exec into Pods",
+          "Description": "The ability to exec into a container with privileged access to the host or with an attached SA with higher RBAC permissions is a common escalation path to cluster-admin.",
+          "Message": "ClusterRole 'rabbitmq-cluster-operator' should not have access to resource '[\"pods/exec\"]' for verbs [\"create\", \"update\", \"patch\", \"delete\", \"deletecollection\", \"impersonate\", \"*\"]",
+          "Namespace": "builtin.kubernetes.KSV053",
+          "Query": "data.builtin.kubernetes.KSV053.deny",
+          "Resolution": "Remove write permission verbs for resource 'pods/exec'",
+          "Severity": "HIGH",
+          "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv053",
+          "References": [
+            "https://kubernetes.io/docs/concepts/security/rbac-good-practices/",
+            "https://avd.aquasec.com/misconfig/ksv053"
+          ],
+          "Status": "FAIL",
+          "Layer": {},
+          "CauseMetadata": {
+            "Provider": "Kubernetes",
+            "Service": "general",
+            "StartLine": 60,
+            "EndLine": 65,
+            "Code": {
+              "Lines": [
+                {
+                  "Number": 60,
+                  "Content": "  - admissionReviewVersions:",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": true,
+                  "LastCause": false
+                },
+                {
+                  "Number": 61,
+                  "Content": "      - v1",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 62,
+                  "Content": "    clientConfig:",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 63,
+                  "Content": "      caBundle: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURKekNDQWcrZ0F3SUJBZ0lRQ2c4VXpXaVVlc3oyVFd4SklUclJBakFOQmdrcWhraUc5dzBCQVFzRkFEQWUKTVJ3d0dnWURWUVFERXhOeWJYRXRiWE5uTFhSdmNHOXNiMmQ1TFdOaE1CNFhEVEkwTURFeU5UQXdOVGd3T0ZvWApEVEkxTURFeU5EQXdOVGd3T0Zvd0hqRWNNQm9HQTFVRUF4TVRjbTF4TFcxelp5MTBiM0J2Ykc5bmVTMWpZVENDCkFTSXdEUVlKS29aSWh2Y05BUUVCQlFBRGdnRVBBRENDQVFvQ2dnRUJBS1lkRXdhYXdvdC84SUEzY1lpK1hGenkKS2NTSmdXSTdBcjh0Rm5lSzNnZEFGYXpBZ2pGTUxNdXhzR000blpBSU1yaUFRL20zd3YvTERPR1ljM0wxMFp5bgpmc3RyUldIUDIrd05HeFN5YU9uTWVFRXdtWDBQZEl5ZStQRkR5WGV6KzRpTGwrOThEZ3k3cUdKYzF0Um44T2ZuCllWSzg0L3lmYzhDWHJIalQ5QXh4aUlkRWJ1NmlWV25FbVR1MjcyOGNMY2pHWHYzaC9pQ1dWU2tydTRyTGhuMS8KdHZlNXp3UklSbkVZMjhsaDVSaXJYa3dJN0l3Vkl5MzI5d3JpTGIraUZnSEFGRjFPK29heHplckNrdzUyM09VNQpKMkNWZW0zN3VrUFlqMjRWOWt2akNHdHNxZnNnelEyYlo2dVZsaStxSGVaV2d6NUJQSlNrb2k1M2xKajJWZVVDCkF3RUFBYU5oTUY4d0RnWURWUjBQQVFIL0JBUURBZ0trTUIwR0ExVWRKUVFXTUJRR0NDc0dBUVVGQndNQkJnZ3IKQmdFRkJRY0RBakFQQmdOVkhSTUJBZjhFQlRBREFRSC9NQjBHQTFVZERnUVdCQlNDa0JUTEVqVEZDMEdUL3RTTQpaLzJwUUg1dEdqQU5CZ2txaGtpRzl3MEJBUXNGQUFPQ0FRRUFsSlR2Zkx6dFo2UXJDT3JwYlRuVHBoTGJGK0EyCnl2ZWtlWEl5ZnAra2tZNFA1eGRiemZ6M29ScG1OKzZLWjJmd0l3MzhiWHNyTHpSMGp2aTZxejdhV0pjWis3TGUKc0pqeWkrOG1PUVJqQ1lmWDIvZFA4QlJidEh0OGlhcTkyWW9sejNnQ280QXFXVHZ1MlA1eGp5SGxQeHdOeWE5agpYUkpEL3NvUm1nTDgzTWF5N29FTXh5TkV3SE9PMXIwOUs2djBMT3pCQUZ1eU1ITFM0UkNiWUR5dzQwWlBPRWFoCkpDcnZlYXpIQWRSTThsdGlabk5Pa0lteEN6cE5LOCs3NWdpV0MwSyttUW9HZkFOWS9QMFFCaUc2U0FITmJOWTcKTWtZQTd3TngyTTVRUTluQ29mNGRJb1pkUGNpaS9FZlc5OHQzVzNzNmZZKzdjWUNBVVZGM1ZuM2t6UT09Ci0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0K",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 64,
+                  "Content": "      service:",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 65,
+                  "Content": "        name: rabbitmq-cluster-operator-rabbitmq-messaging-topology-operator",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": true
+                }
+              ]
+            }
+          }
+        },
+        {
+          "Type": "Helm Security Check",
+          "ID": "KSV056",
+          "AVDID": "AVD-KSV-0056",
+          "Title": "Manage Kubernetes networking",
+          "Description": "The ability to control which pods get service traffic directed to them allows for interception attacks. Controlling network policy allows for bypassing lateral movement restrictions.",
+          "Message": "ClusterRole 'rabbitmq-cluster-operator' should not have access to resources [\"services\", \"endpoints\", \"endpointslices\", \"networkpolicies\", \"ingresses\"] for verbs [\"create\", \"update\", \"patch\", \"delete\", \"deletecollection\", \"impersonate\", \"*\"]",
+          "Namespace": "builtin.kubernetes.KSV056",
+          "Query": "data.builtin.kubernetes.KSV056.deny",
+          "Resolution": "Networking resources are only allowed for verbs 'list', 'watch', 'get'",
+          "Severity": "HIGH",
+          "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv056",
+          "References": [
+            "https://kubernetes.io/docs/concepts/security/rbac-good-practices/",
+            "https://avd.aquasec.com/misconfig/ksv056"
+          ],
+          "Status": "FAIL",
+          "Layer": {},
+          "CauseMetadata": {
+            "Provider": "Kubernetes",
+            "Service": "general",
+            "StartLine": 86,
+            "EndLine": 95,
+            "Code": {
+              "Lines": [
+                {
+                  "Number": 86,
+                  "Content": "      service:",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": true,
+                  "LastCause": false
+                },
+                {
+                  "Number": 87,
+                  "Content": "        name: rabbitmq-cluster-operator-rabbitmq-messaging-topology-operator",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 88,
+                  "Content": "        namespace: \"\"",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 89,
+                  "Content": "        path: /validate-rabbitmq-com-v1alpha1-superstream",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 90,
+                  "Content": "        port: 443",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 91,
+                  "Content": "    failurePolicy: Fail",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 92,
+                  "Content": "    name: vsuperstream.kb.io",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 93,
+                  "Content": "    rules:",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 94,
+                  "Content": "      - apiGroups:",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 95,
+                  "Content": "          - rabbitmq.com",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": true
+                }
+              ]
+            }
+          }
+        },
+        {
+          "Type": "Helm Security Check",
+          "ID": "KSV116",
+          "AVDID": "AVD-KSV-0116",
+          "Title": "Runs with a root primary or supplementary GID",
+          "Description": "According to pod security standard 'Non-root groups', containers should be forbidden from running with a root primary or supplementary GID.",
+          "Message": "clusterrole rabbitmq-cluster-operator in default namespace should set spec.securityContext.runAsGroup, spec.securityContext.supplementalGroups[*] and spec.securityContext.fsGroup to integer greater than 0",
+          "Namespace": "builtin.kubernetes.KSV116",
+          "Query": "data.builtin.kubernetes.KSV116.deny",
+          "Resolution": "Set 'containers[].securityContext.runAsGroup' to a non-zero integer or leave undefined.",
+          "Severity": "LOW",
+          "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv116",
+          "References": [
+            "https://kubesec.io/basics/containers-securitycontext-runasuser/",
+            "https://avd.aquasec.com/misconfig/ksv116"
+          ],
+          "Status": "FAIL",
+          "Layer": {},
+          "CauseMetadata": {
+            "Provider": "Kubernetes",
+            "Service": "general",
+            "Code": {
+              "Lines": null
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Target": "rabbitmq-cluster-operator-3.10.3.tgz:templates/cluster-operator/clusterrolebinding.yaml",
+      "Class": "config",
+      "Type": "helm",
+      "MisconfSummary": {
+        "Successes": 151,
+        "Failures": 1,
+        "Exceptions": 0
+      },
+      "Misconfigurations": [
+        {
+          "Type": "Helm Security Check",
+          "ID": "KSV116",
+          "AVDID": "AVD-KSV-0116",
+          "Title": "Runs with a root primary or supplementary GID",
+          "Description": "According to pod security standard 'Non-root groups', containers should be forbidden from running with a root primary or supplementary GID.",
+          "Message": "clusterrolebinding rabbitmq-cluster-operator in default namespace should set spec.securityContext.runAsGroup, spec.securityContext.supplementalGroups[*] and spec.securityContext.fsGroup to integer greater than 0",
+          "Namespace": "builtin.kubernetes.KSV116",
+          "Query": "data.builtin.kubernetes.KSV116.deny",
+          "Resolution": "Set 'containers[].securityContext.runAsGroup' to a non-zero integer or leave undefined.",
+          "Severity": "LOW",
+          "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv116",
+          "References": [
+            "https://kubesec.io/basics/containers-securitycontext-runasuser/",
+            "https://avd.aquasec.com/misconfig/ksv116"
+          ],
+          "Status": "FAIL",
+          "Layer": {},
+          "CauseMetadata": {
+            "Provider": "Kubernetes",
+            "Service": "general",
+            "Code": {
+              "Lines": null
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Target": "rabbitmq-cluster-operator-3.10.3.tgz:templates/cluster-operator/deployment.yaml",
+      "Class": "config",
+      "Type": "helm",
+      "MisconfSummary": {
+        "Successes": 144,
+        "Failures": 8,
+        "Exceptions": 0
+      },
+      "Misconfigurations": [
+        {
+          "Type": "Helm Security Check",
+          "ID": "KSV011",
+          "AVDID": "AVD-KSV-0011",
+          "Title": "CPU not limited",
+          "Description": "Enforcing CPU limits prevents DoS via resource exhaustion.",
+          "Message": "Container 'rabbitmq-cluster-operator' of Deployment 'rabbitmq-cluster-operator' should set 'resources.limits.cpu'",
+          "Namespace": "builtin.kubernetes.KSV011",
+          "Query": "data.builtin.kubernetes.KSV011.deny",
+          "Resolution": "Set a limit value under 'containers[].resources.limits.cpu'.",
+          "Severity": "LOW",
+          "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv011",
+          "References": [
+            "https://cloud.google.com/blog/products/containers-kubernetes/kubernetes-best-practices-resource-requests-and-limits",
+            "https://avd.aquasec.com/misconfig/ksv011"
+          ],
+          "Status": "FAIL",
+          "Layer": {},
+          "CauseMetadata": {
+            "Provider": "Kubernetes",
+            "Service": "general",
+            "StartLine": 56,
+            "EndLine": 108,
+            "Code": {
+              "Lines": [
+                {
+                  "Number": 56,
+                  "Content": "          - UPDATE",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": true,
+                  "LastCause": false
+                },
+                {
+                  "Number": 57,
+                  "Content": "        resources:",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 58,
+                  "Content": "          - exchanges",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 59,
+                  "Content": "    sideEffects: None",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 60,
+                  "Content": "  - admissionReviewVersions:",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 61,
+                  "Content": "      - v1",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 62,
+                  "Content": "    clientConfig:",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 63,
+                  "Content": "      caBundle: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURKekNDQWcrZ0F3SUJBZ0lRQ2c4VXpXaVVlc3oyVFd4SklUclJBakFOQmdrcWhraUc5dzBCQVFzRkFEQWUKTVJ3d0dnWURWUVFERXhOeWJYRXRiWE5uTFhSdmNHOXNiMmQ1TFdOaE1CNFhEVEkwTURFeU5UQXdOVGd3T0ZvWApEVEkxTURFeU5EQXdOVGd3T0Zvd0hqRWNNQm9HQTFVRUF4TVRjbTF4TFcxelp5MTBiM0J2Ykc5bmVTMWpZVENDCkFTSXdEUVlKS29aSWh2Y05BUUVCQlFBRGdnRVBBRENDQVFvQ2dnRUJBS1lkRXdhYXdvdC84SUEzY1lpK1hGenkKS2NTSmdXSTdBcjh0Rm5lSzNnZEFGYXpBZ2pGTUxNdXhzR000blpBSU1yaUFRL20zd3YvTERPR1ljM0wxMFp5bgpmc3RyUldIUDIrd05HeFN5YU9uTWVFRXdtWDBQZEl5ZStQRkR5WGV6KzRpTGwrOThEZ3k3cUdKYzF0Um44T2ZuCllWSzg0L3lmYzhDWHJIalQ5QXh4aUlkRWJ1NmlWV25FbVR1MjcyOGNMY2pHWHYzaC9pQ1dWU2tydTRyTGhuMS8KdHZlNXp3UklSbkVZMjhsaDVSaXJYa3dJN0l3Vkl5MzI5d3JpTGIraUZnSEFGRjFPK29heHplckNrdzUyM09VNQpKMkNWZW0zN3VrUFlqMjRWOWt2akNHdHNxZnNnelEyYlo2dVZsaStxSGVaV2d6NUJQSlNrb2k1M2xKajJWZVVDCkF3RUFBYU5oTUY4d0RnWURWUjBQQVFIL0JBUURBZ0trTUIwR0ExVWRKUVFXTUJRR0NDc0dBUVVGQndNQkJnZ3IKQmdFRkJRY0RBakFQQmdOVkhSTUJBZjhFQlRBREFRSC9NQjBHQTFVZERnUVdCQlNDa0JUTEVqVEZDMEdUL3RTTQpaLzJwUUg1dEdqQU5CZ2txaGtpRzl3MEJBUXNGQUFPQ0FRRUFsSlR2Zkx6dFo2UXJDT3JwYlRuVHBoTGJGK0EyCnl2ZWtlWEl5ZnAra2tZNFA1eGRiemZ6M29ScG1OKzZLWjJmd0l3MzhiWHNyTHpSMGp2aTZxejdhV0pjWis3TGUKc0pqeWkrOG1PUVJqQ1lmWDIvZFA4QlJidEh0OGlhcTkyWW9sejNnQ280QXFXVHZ1MlA1eGp5SGxQeHdOeWE5agpYUkpEL3NvUm1nTDgzTWF5N29FTXh5TkV3SE9PMXIwOUs2djBMT3pCQUZ1eU1ITFM0UkNiWUR5dzQwWlBPRWFoCkpDcnZlYXpIQWRSTThsdGlabk5Pa0lteEN6cE5LOCs3NWdpV0MwSyttUW9HZkFOWS9QMFFCaUc2U0FITmJOWTcKTWtZQTd3TngyTTVRUTluQ29mNGRJb1pkUGNpaS9FZlc5OHQzVzNzNmZZKzdjWUNBVVZGM1ZuM2t6UT09Ci0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0K",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 64,
+                  "Content": "      service:",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": true
+                },
+                {
+                  "Number": 65,
+                  "Content": "",
+                  "IsCause": false,
+                  "Annotation": "",
+                  "Truncated": true,
+                  "FirstCause": false,
+                  "LastCause": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "Type": "Helm Security Check",
+          "ID": "KSV014",
+          "AVDID": "AVD-KSV-0014",
+          "Title": "Root file system is not read-only",
+          "Description": "An immutable root file system prevents applications from writing to their local disk. This can limit intrusions, as attackers will not be able to tamper with the file system or write foreign executables to disk.",
+          "Message": "Container 'rabbitmq-cluster-operator' of Deployment 'rabbitmq-cluster-operator' should set 'securityContext.readOnlyRootFilesystem' to true",
+          "Namespace": "builtin.kubernetes.KSV014",
+          "Query": "data.builtin.kubernetes.KSV014.deny",
+          "Resolution": "Change 'containers[].securityContext.readOnlyRootFilesystem' to 'true'.",
+          "Severity": "LOW",
+          "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv014",
+          "References": [
+            "https://kubesec.io/basics/containers-securitycontext-readonlyrootfilesystem-true/",
+            "https://avd.aquasec.com/misconfig/ksv014"
+          ],
+          "Status": "FAIL",
+          "Layer": {},
+          "CauseMetadata": {
+            "Provider": "Kubernetes",
+            "Service": "general",
+            "StartLine": 56,
+            "EndLine": 108,
+            "Code": {
+              "Lines": [
+                {
+                  "Number": 56,
+                  "Content": "          - UPDATE",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": true,
+                  "LastCause": false
+                },
+                {
+                  "Number": 57,
+                  "Content": "        resources:",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 58,
+                  "Content": "          - exchanges",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 59,
+                  "Content": "    sideEffects: None",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 60,
+                  "Content": "  - admissionReviewVersions:",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 61,
+                  "Content": "      - v1",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 62,
+                  "Content": "    clientConfig:",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 63,
+                  "Content": "      caBundle: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURKekNDQWcrZ0F3SUJBZ0lRQ2c4VXpXaVVlc3oyVFd4SklUclJBakFOQmdrcWhraUc5dzBCQVFzRkFEQWUKTVJ3d0dnWURWUVFERXhOeWJYRXRiWE5uTFhSdmNHOXNiMmQ1TFdOaE1CNFhEVEkwTURFeU5UQXdOVGd3T0ZvWApEVEkxTURFeU5EQXdOVGd3T0Zvd0hqRWNNQm9HQTFVRUF4TVRjbTF4TFcxelp5MTBiM0J2Ykc5bmVTMWpZVENDCkFTSXdEUVlKS29aSWh2Y05BUUVCQlFBRGdnRVBBRENDQVFvQ2dnRUJBS1lkRXdhYXdvdC84SUEzY1lpK1hGenkKS2NTSmdXSTdBcjh0Rm5lSzNnZEFGYXpBZ2pGTUxNdXhzR000blpBSU1yaUFRL20zd3YvTERPR1ljM0wxMFp5bgpmc3RyUldIUDIrd05HeFN5YU9uTWVFRXdtWDBQZEl5ZStQRkR5WGV6KzRpTGwrOThEZ3k3cUdKYzF0Um44T2ZuCllWSzg0L3lmYzhDWHJIalQ5QXh4aUlkRWJ1NmlWV25FbVR1MjcyOGNMY2pHWHYzaC9pQ1dWU2tydTRyTGhuMS8KdHZlNXp3UklSbkVZMjhsaDVSaXJYa3dJN0l3Vkl5MzI5d3JpTGIraUZnSEFGRjFPK29heHplckNrdzUyM09VNQpKMkNWZW0zN3VrUFlqMjRWOWt2akNHdHNxZnNnelEyYlo2dVZsaStxSGVaV2d6NUJQSlNrb2k1M2xKajJWZVVDCkF3RUFBYU5oTUY4d0RnWURWUjBQQVFIL0JBUURBZ0trTUIwR0ExVWRKUVFXTUJRR0NDc0dBUVVGQndNQkJnZ3IKQmdFRkJRY0RBakFQQmdOVkhSTUJBZjhFQlRBREFRSC9NQjBHQTFVZERnUVdCQlNDa0JUTEVqVEZDMEdUL3RTTQpaLzJwUUg1dEdqQU5CZ2txaGtpRzl3MEJBUXNGQUFPQ0FRRUFsSlR2Zkx6dFo2UXJDT3JwYlRuVHBoTGJGK0EyCnl2ZWtlWEl5ZnAra2tZNFA1eGRiemZ6M29ScG1OKzZLWjJmd0l3MzhiWHNyTHpSMGp2aTZxejdhV0pjWis3TGUKc0pqeWkrOG1PUVJqQ1lmWDIvZFA4QlJidEh0OGlhcTkyWW9sejNnQ280QXFXVHZ1MlA1eGp5SGxQeHdOeWE5agpYUkpEL3NvUm1nTDgzTWF5N29FTXh5TkV3SE9PMXIwOUs2djBMT3pCQUZ1eU1ITFM0UkNiWUR5dzQwWlBPRWFoCkpDcnZlYXpIQWRSTThsdGlabk5Pa0lteEN6cE5LOCs3NWdpV0MwSyttUW9HZkFOWS9QMFFCaUc2U0FITmJOWTcKTWtZQTd3TngyTTVRUTluQ29mNGRJb1pkUGNpaS9FZlc5OHQzVzNzNmZZKzdjWUNBVVZGM1ZuM2t6UT09Ci0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0K",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 64,
+                  "Content": "      service:",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": true
+                },
+                {
+                  "Number": 65,
+                  "Content": "",
+                  "IsCause": false,
+                  "Annotation": "",
+                  "Truncated": true,
+                  "FirstCause": false,
+                  "LastCause": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "Type": "Helm Security Check",
+          "ID": "KSV015",
+          "AVDID": "AVD-KSV-0015",
+          "Title": "CPU requests not specified",
+          "Description": "When containers have resource requests specified, the scheduler can make better decisions about which nodes to place pods on, and how to deal with resource contention.",
+          "Message": "Container 'rabbitmq-cluster-operator' of Deployment 'rabbitmq-cluster-operator' should set 'resources.requests.cpu'",
+          "Namespace": "builtin.kubernetes.KSV015",
+          "Query": "data.builtin.kubernetes.KSV015.deny",
+          "Resolution": "Set 'containers[].resources.requests.cpu'.",
+          "Severity": "LOW",
+          "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv015",
+          "References": [
+            "https://cloud.google.com/blog/products/containers-kubernetes/kubernetes-best-practices-resource-requests-and-limits",
+            "https://avd.aquasec.com/misconfig/ksv015"
+          ],
+          "Status": "FAIL",
+          "Layer": {},
+          "CauseMetadata": {
+            "Provider": "Kubernetes",
+            "Service": "general",
+            "StartLine": 56,
+            "EndLine": 108,
+            "Code": {
+              "Lines": [
+                {
+                  "Number": 56,
+                  "Content": "          - UPDATE",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": true,
+                  "LastCause": false
+                },
+                {
+                  "Number": 57,
+                  "Content": "        resources:",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 58,
+                  "Content": "          - exchanges",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 59,
+                  "Content": "    sideEffects: None",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 60,
+                  "Content": "  - admissionReviewVersions:",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 61,
+                  "Content": "      - v1",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 62,
+                  "Content": "    clientConfig:",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 63,
+                  "Content": "      caBundle: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURKekNDQWcrZ0F3SUJBZ0lRQ2c4VXpXaVVlc3oyVFd4SklUclJBakFOQmdrcWhraUc5dzBCQVFzRkFEQWUKTVJ3d0dnWURWUVFERXhOeWJYRXRiWE5uTFhSdmNHOXNiMmQ1TFdOaE1CNFhEVEkwTURFeU5UQXdOVGd3T0ZvWApEVEkxTURFeU5EQXdOVGd3T0Zvd0hqRWNNQm9HQTFVRUF4TVRjbTF4TFcxelp5MTBiM0J2Ykc5bmVTMWpZVENDCkFTSXdEUVlKS29aSWh2Y05BUUVCQlFBRGdnRVBBRENDQVFvQ2dnRUJBS1lkRXdhYXdvdC84SUEzY1lpK1hGenkKS2NTSmdXSTdBcjh0Rm5lSzNnZEFGYXpBZ2pGTUxNdXhzR000blpBSU1yaUFRL20zd3YvTERPR1ljM0wxMFp5bgpmc3RyUldIUDIrd05HeFN5YU9uTWVFRXdtWDBQZEl5ZStQRkR5WGV6KzRpTGwrOThEZ3k3cUdKYzF0Um44T2ZuCllWSzg0L3lmYzhDWHJIalQ5QXh4aUlkRWJ1NmlWV25FbVR1MjcyOGNMY2pHWHYzaC9pQ1dWU2tydTRyTGhuMS8KdHZlNXp3UklSbkVZMjhsaDVSaXJYa3dJN0l3Vkl5MzI5d3JpTGIraUZnSEFGRjFPK29heHplckNrdzUyM09VNQpKMkNWZW0zN3VrUFlqMjRWOWt2akNHdHNxZnNnelEyYlo2dVZsaStxSGVaV2d6NUJQSlNrb2k1M2xKajJWZVVDCkF3RUFBYU5oTUY4d0RnWURWUjBQQVFIL0JBUURBZ0trTUIwR0ExVWRKUVFXTUJRR0NDc0dBUVVGQndNQkJnZ3IKQmdFRkJRY0RBakFQQmdOVkhSTUJBZjhFQlRBREFRSC9NQjBHQTFVZERnUVdCQlNDa0JUTEVqVEZDMEdUL3RTTQpaLzJwUUg1dEdqQU5CZ2txaGtpRzl3MEJBUXNGQUFPQ0FRRUFsSlR2Zkx6dFo2UXJDT3JwYlRuVHBoTGJGK0EyCnl2ZWtlWEl5ZnAra2tZNFA1eGRiemZ6M29ScG1OKzZLWjJmd0l3MzhiWHNyTHpSMGp2aTZxejdhV0pjWis3TGUKc0pqeWkrOG1PUVJqQ1lmWDIvZFA4QlJidEh0OGlhcTkyWW9sejNnQ280QXFXVHZ1MlA1eGp5SGxQeHdOeWE5agpYUkpEL3NvUm1nTDgzTWF5N29FTXh5TkV3SE9PMXIwOUs2djBMT3pCQUZ1eU1ITFM0UkNiWUR5dzQwWlBPRWFoCkpDcnZlYXpIQWRSTThsdGlabk5Pa0lteEN6cE5LOCs3NWdpV0MwSyttUW9HZkFOWS9QMFFCaUc2U0FITmJOWTcKTWtZQTd3TngyTTVRUTluQ29mNGRJb1pkUGNpaS9FZlc5OHQzVzNzNmZZKzdjWUNBVVZGM1ZuM2t6UT09Ci0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0K",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 64,
+                  "Content": "      service:",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": true
+                },
+                {
+                  "Number": 65,
+                  "Content": "",
+                  "IsCause": false,
+                  "Annotation": "",
+                  "Truncated": true,
+                  "FirstCause": false,
+                  "LastCause": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "Type": "Helm Security Check",
+          "ID": "KSV016",
+          "AVDID": "AVD-KSV-0016",
+          "Title": "Memory requests not specified",
+          "Description": "When containers have memory requests specified, the scheduler can make better decisions about which nodes to place pods on, and how to deal with resource contention.",
+          "Message": "Container 'rabbitmq-cluster-operator' of Deployment 'rabbitmq-cluster-operator' should set 'resources.requests.memory'",
+          "Namespace": "builtin.kubernetes.KSV016",
+          "Query": "data.builtin.kubernetes.KSV016.deny",
+          "Resolution": "Set 'containers[].resources.requests.memory'.",
+          "Severity": "LOW",
+          "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv016",
+          "References": [
+            "https://kubesec.io/basics/containers-resources-limits-memory/",
+            "https://avd.aquasec.com/misconfig/ksv016"
+          ],
+          "Status": "FAIL",
+          "Layer": {},
+          "CauseMetadata": {
+            "Provider": "Kubernetes",
+            "Service": "general",
+            "StartLine": 56,
+            "EndLine": 108,
+            "Code": {
+              "Lines": [
+                {
+                  "Number": 56,
+                  "Content": "          - UPDATE",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": true,
+                  "LastCause": false
+                },
+                {
+                  "Number": 57,
+                  "Content": "        resources:",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 58,
+                  "Content": "          - exchanges",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 59,
+                  "Content": "    sideEffects: None",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 60,
+                  "Content": "  - admissionReviewVersions:",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 61,
+                  "Content": "      - v1",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 62,
+                  "Content": "    clientConfig:",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 63,
+                  "Content": "      caBundle: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURKekNDQWcrZ0F3SUJBZ0lRQ2c4VXpXaVVlc3oyVFd4SklUclJBakFOQmdrcWhraUc5dzBCQVFzRkFEQWUKTVJ3d0dnWURWUVFERXhOeWJYRXRiWE5uTFhSdmNHOXNiMmQ1TFdOaE1CNFhEVEkwTURFeU5UQXdOVGd3T0ZvWApEVEkxTURFeU5EQXdOVGd3T0Zvd0hqRWNNQm9HQTFVRUF4TVRjbTF4TFcxelp5MTBiM0J2Ykc5bmVTMWpZVENDCkFTSXdEUVlKS29aSWh2Y05BUUVCQlFBRGdnRVBBRENDQVFvQ2dnRUJBS1lkRXdhYXdvdC84SUEzY1lpK1hGenkKS2NTSmdXSTdBcjh0Rm5lSzNnZEFGYXpBZ2pGTUxNdXhzR000blpBSU1yaUFRL20zd3YvTERPR1ljM0wxMFp5bgpmc3RyUldIUDIrd05HeFN5YU9uTWVFRXdtWDBQZEl5ZStQRkR5WGV6KzRpTGwrOThEZ3k3cUdKYzF0Um44T2ZuCllWSzg0L3lmYzhDWHJIalQ5QXh4aUlkRWJ1NmlWV25FbVR1MjcyOGNMY2pHWHYzaC9pQ1dWU2tydTRyTGhuMS8KdHZlNXp3UklSbkVZMjhsaDVSaXJYa3dJN0l3Vkl5MzI5d3JpTGIraUZnSEFGRjFPK29heHplckNrdzUyM09VNQpKMkNWZW0zN3VrUFlqMjRWOWt2akNHdHNxZnNnelEyYlo2dVZsaStxSGVaV2d6NUJQSlNrb2k1M2xKajJWZVVDCkF3RUFBYU5oTUY4d0RnWURWUjBQQVFIL0JBUURBZ0trTUIwR0ExVWRKUVFXTUJRR0NDc0dBUVVGQndNQkJnZ3IKQmdFRkJRY0RBakFQQmdOVkhSTUJBZjhFQlRBREFRSC9NQjBHQTFVZERnUVdCQlNDa0JUTEVqVEZDMEdUL3RTTQpaLzJwUUg1dEdqQU5CZ2txaGtpRzl3MEJBUXNGQUFPQ0FRRUFsSlR2Zkx6dFo2UXJDT3JwYlRuVHBoTGJGK0EyCnl2ZWtlWEl5ZnAra2tZNFA1eGRiemZ6M29ScG1OKzZLWjJmd0l3MzhiWHNyTHpSMGp2aTZxejdhV0pjWis3TGUKc0pqeWkrOG1PUVJqQ1lmWDIvZFA4QlJidEh0OGlhcTkyWW9sejNnQ280QXFXVHZ1MlA1eGp5SGxQeHdOeWE5agpYUkpEL3NvUm1nTDgzTWF5N29FTXh5TkV3SE9PMXIwOUs2djBMT3pCQUZ1eU1ITFM0UkNiWUR5dzQwWlBPRWFoCkpDcnZlYXpIQWRSTThsdGlabk5Pa0lteEN6cE5LOCs3NWdpV0MwSyttUW9HZkFOWS9QMFFCaUc2U0FITmJOWTcKTWtZQTd3TngyTTVRUTluQ29mNGRJb1pkUGNpaS9FZlc5OHQzVzNzNmZZKzdjWUNBVVZGM1ZuM2t6UT09Ci0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0K",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 64,
+                  "Content": "      service:",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": true
+                },
+                {
+                  "Number": 65,
+                  "Content": "",
+                  "IsCause": false,
+                  "Annotation": "",
+                  "Truncated": true,
+                  "FirstCause": false,
+                  "LastCause": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "Type": "Helm Security Check",
+          "ID": "KSV018",
+          "AVDID": "AVD-KSV-0018",
+          "Title": "Memory not limited",
+          "Description": "Enforcing memory limits prevents DoS via resource exhaustion.",
+          "Message": "Container 'rabbitmq-cluster-operator' of Deployment 'rabbitmq-cluster-operator' should set 'resources.limits.memory'",
+          "Namespace": "builtin.kubernetes.KSV018",
+          "Query": "data.builtin.kubernetes.KSV018.deny",
+          "Resolution": "Set a limit value under 'containers[].resources.limits.memory'.",
+          "Severity": "LOW",
+          "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv018",
+          "References": [
+            "https://kubesec.io/basics/containers-resources-limits-memory/",
+            "https://avd.aquasec.com/misconfig/ksv018"
+          ],
+          "Status": "FAIL",
+          "Layer": {},
+          "CauseMetadata": {
+            "Provider": "Kubernetes",
+            "Service": "general",
+            "StartLine": 56,
+            "EndLine": 108,
+            "Code": {
+              "Lines": [
+                {
+                  "Number": 56,
+                  "Content": "          - UPDATE",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": true,
+                  "LastCause": false
+                },
+                {
+                  "Number": 57,
+                  "Content": "        resources:",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 58,
+                  "Content": "          - exchanges",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 59,
+                  "Content": "    sideEffects: None",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 60,
+                  "Content": "  - admissionReviewVersions:",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 61,
+                  "Content": "      - v1",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 62,
+                  "Content": "    clientConfig:",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 63,
+                  "Content": "      caBundle: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURKekNDQWcrZ0F3SUJBZ0lRQ2c4VXpXaVVlc3oyVFd4SklUclJBakFOQmdrcWhraUc5dzBCQVFzRkFEQWUKTVJ3d0dnWURWUVFERXhOeWJYRXRiWE5uTFhSdmNHOXNiMmQ1TFdOaE1CNFhEVEkwTURFeU5UQXdOVGd3T0ZvWApEVEkxTURFeU5EQXdOVGd3T0Zvd0hqRWNNQm9HQTFVRUF4TVRjbTF4TFcxelp5MTBiM0J2Ykc5bmVTMWpZVENDCkFTSXdEUVlKS29aSWh2Y05BUUVCQlFBRGdnRVBBRENDQVFvQ2dnRUJBS1lkRXdhYXdvdC84SUEzY1lpK1hGenkKS2NTSmdXSTdBcjh0Rm5lSzNnZEFGYXpBZ2pGTUxNdXhzR000blpBSU1yaUFRL20zd3YvTERPR1ljM0wxMFp5bgpmc3RyUldIUDIrd05HeFN5YU9uTWVFRXdtWDBQZEl5ZStQRkR5WGV6KzRpTGwrOThEZ3k3cUdKYzF0Um44T2ZuCllWSzg0L3lmYzhDWHJIalQ5QXh4aUlkRWJ1NmlWV25FbVR1MjcyOGNMY2pHWHYzaC9pQ1dWU2tydTRyTGhuMS8KdHZlNXp3UklSbkVZMjhsaDVSaXJYa3dJN0l3Vkl5MzI5d3JpTGIraUZnSEFGRjFPK29heHplckNrdzUyM09VNQpKMkNWZW0zN3VrUFlqMjRWOWt2akNHdHNxZnNnelEyYlo2dVZsaStxSGVaV2d6NUJQSlNrb2k1M2xKajJWZVVDCkF3RUFBYU5oTUY4d0RnWURWUjBQQVFIL0JBUURBZ0trTUIwR0ExVWRKUVFXTUJRR0NDc0dBUVVGQndNQkJnZ3IKQmdFRkJRY0RBakFQQmdOVkhSTUJBZjhFQlRBREFRSC9NQjBHQTFVZERnUVdCQlNDa0JUTEVqVEZDMEdUL3RTTQpaLzJwUUg1dEdqQU5CZ2txaGtpRzl3MEJBUXNGQUFPQ0FRRUFsSlR2Zkx6dFo2UXJDT3JwYlRuVHBoTGJGK0EyCnl2ZWtlWEl5ZnAra2tZNFA1eGRiemZ6M29ScG1OKzZLWjJmd0l3MzhiWHNyTHpSMGp2aTZxejdhV0pjWis3TGUKc0pqeWkrOG1PUVJqQ1lmWDIvZFA4QlJidEh0OGlhcTkyWW9sejNnQ280QXFXVHZ1MlA1eGp5SGxQeHdOeWE5agpYUkpEL3NvUm1nTDgzTWF5N29FTXh5TkV3SE9PMXIwOUs2djBMT3pCQUZ1eU1ITFM0UkNiWUR5dzQwWlBPRWFoCkpDcnZlYXpIQWRSTThsdGlabk5Pa0lteEN6cE5LOCs3NWdpV0MwSyttUW9HZkFOWS9QMFFCaUc2U0FITmJOWTcKTWtZQTd3TngyTTVRUTluQ29mNGRJb1pkUGNpaS9FZlc5OHQzVzNzNmZZKzdjWUNBVVZGM1ZuM2t6UT09Ci0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0K",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 64,
+                  "Content": "      service:",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": true
+                },
+                {
+                  "Number": 65,
+                  "Content": "",
+                  "IsCause": false,
+                  "Annotation": "",
+                  "Truncated": true,
+                  "FirstCause": false,
+                  "LastCause": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "Type": "Helm Security Check",
+          "ID": "KSV020",
+          "AVDID": "AVD-KSV-0020",
+          "Title": "Runs with UID \u003c= 10000",
+          "Description": "Force the container to run with user ID \u003e 10000 to avoid conflicts with the host’s user table.",
+          "Message": "Container 'rabbitmq-cluster-operator' of Deployment 'rabbitmq-cluster-operator' should set 'securityContext.runAsUser' \u003e 10000",
+          "Namespace": "builtin.kubernetes.KSV020",
+          "Query": "data.builtin.kubernetes.KSV020.deny",
+          "Resolution": "Set 'containers[].securityContext.runAsUser' to an integer \u003e 10000.",
+          "Severity": "LOW",
+          "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv020",
+          "References": [
+            "https://kubesec.io/basics/containers-securitycontext-runasuser/",
+            "https://avd.aquasec.com/misconfig/ksv020"
+          ],
+          "Status": "FAIL",
+          "Layer": {},
+          "CauseMetadata": {
+            "Provider": "Kubernetes",
+            "Service": "general",
+            "StartLine": 56,
+            "EndLine": 108,
+            "Code": {
+              "Lines": [
+                {
+                  "Number": 56,
+                  "Content": "          - UPDATE",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": true,
+                  "LastCause": false
+                },
+                {
+                  "Number": 57,
+                  "Content": "        resources:",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 58,
+                  "Content": "          - exchanges",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 59,
+                  "Content": "    sideEffects: None",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 60,
+                  "Content": "  - admissionReviewVersions:",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 61,
+                  "Content": "      - v1",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 62,
+                  "Content": "    clientConfig:",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 63,
+                  "Content": "      caBundle: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURKekNDQWcrZ0F3SUJBZ0lRQ2c4VXpXaVVlc3oyVFd4SklUclJBakFOQmdrcWhraUc5dzBCQVFzRkFEQWUKTVJ3d0dnWURWUVFERXhOeWJYRXRiWE5uTFhSdmNHOXNiMmQ1TFdOaE1CNFhEVEkwTURFeU5UQXdOVGd3T0ZvWApEVEkxTURFeU5EQXdOVGd3T0Zvd0hqRWNNQm9HQTFVRUF4TVRjbTF4TFcxelp5MTBiM0J2Ykc5bmVTMWpZVENDCkFTSXdEUVlKS29aSWh2Y05BUUVCQlFBRGdnRVBBRENDQVFvQ2dnRUJBS1lkRXdhYXdvdC84SUEzY1lpK1hGenkKS2NTSmdXSTdBcjh0Rm5lSzNnZEFGYXpBZ2pGTUxNdXhzR000blpBSU1yaUFRL20zd3YvTERPR1ljM0wxMFp5bgpmc3RyUldIUDIrd05HeFN5YU9uTWVFRXdtWDBQZEl5ZStQRkR5WGV6KzRpTGwrOThEZ3k3cUdKYzF0Um44T2ZuCllWSzg0L3lmYzhDWHJIalQ5QXh4aUlkRWJ1NmlWV25FbVR1MjcyOGNMY2pHWHYzaC9pQ1dWU2tydTRyTGhuMS8KdHZlNXp3UklSbkVZMjhsaDVSaXJYa3dJN0l3Vkl5MzI5d3JpTGIraUZnSEFGRjFPK29heHplckNrdzUyM09VNQpKMkNWZW0zN3VrUFlqMjRWOWt2akNHdHNxZnNnelEyYlo2dVZsaStxSGVaV2d6NUJQSlNrb2k1M2xKajJWZVVDCkF3RUFBYU5oTUY4d0RnWURWUjBQQVFIL0JBUURBZ0trTUIwR0ExVWRKUVFXTUJRR0NDc0dBUVVGQndNQkJnZ3IKQmdFRkJRY0RBakFQQmdOVkhSTUJBZjhFQlRBREFRSC9NQjBHQTFVZERnUVdCQlNDa0JUTEVqVEZDMEdUL3RTTQpaLzJwUUg1dEdqQU5CZ2txaGtpRzl3MEJBUXNGQUFPQ0FRRUFsSlR2Zkx6dFo2UXJDT3JwYlRuVHBoTGJGK0EyCnl2ZWtlWEl5ZnAra2tZNFA1eGRiemZ6M29ScG1OKzZLWjJmd0l3MzhiWHNyTHpSMGp2aTZxejdhV0pjWis3TGUKc0pqeWkrOG1PUVJqQ1lmWDIvZFA4QlJidEh0OGlhcTkyWW9sejNnQ280QXFXVHZ1MlA1eGp5SGxQeHdOeWE5agpYUkpEL3NvUm1nTDgzTWF5N29FTXh5TkV3SE9PMXIwOUs2djBMT3pCQUZ1eU1ITFM0UkNiWUR5dzQwWlBPRWFoCkpDcnZlYXpIQWRSTThsdGlabk5Pa0lteEN6cE5LOCs3NWdpV0MwSyttUW9HZkFOWS9QMFFCaUc2U0FITmJOWTcKTWtZQTd3TngyTTVRUTluQ29mNGRJb1pkUGNpaS9FZlc5OHQzVzNzNmZZKzdjWUNBVVZGM1ZuM2t6UT09Ci0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0K",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 64,
+                  "Content": "      service:",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": true
+                },
+                {
+                  "Number": 65,
+                  "Content": "",
+                  "IsCause": false,
+                  "Annotation": "",
+                  "Truncated": true,
+                  "FirstCause": false,
+                  "LastCause": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "Type": "Helm Security Check",
+          "ID": "KSV021",
+          "AVDID": "AVD-KSV-0021",
+          "Title": "Runs with GID \u003c= 10000",
+          "Description": "Force the container to run with group ID \u003e 10000 to avoid conflicts with the host’s user table.",
+          "Message": "Container 'rabbitmq-cluster-operator' of Deployment 'rabbitmq-cluster-operator' should set 'securityContext.runAsGroup' \u003e 10000",
+          "Namespace": "builtin.kubernetes.KSV021",
+          "Query": "data.builtin.kubernetes.KSV021.deny",
+          "Resolution": "Set 'containers[].securityContext.runAsGroup' to an integer \u003e 10000.",
+          "Severity": "LOW",
+          "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv021",
+          "References": [
+            "https://kubesec.io/basics/containers-securitycontext-runasuser/",
+            "https://avd.aquasec.com/misconfig/ksv021"
+          ],
+          "Status": "FAIL",
+          "Layer": {},
+          "CauseMetadata": {
+            "Provider": "Kubernetes",
+            "Service": "general",
+            "StartLine": 56,
+            "EndLine": 108,
+            "Code": {
+              "Lines": [
+                {
+                  "Number": 56,
+                  "Content": "          - UPDATE",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": true,
+                  "LastCause": false
+                },
+                {
+                  "Number": 57,
+                  "Content": "        resources:",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 58,
+                  "Content": "          - exchanges",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 59,
+                  "Content": "    sideEffects: None",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 60,
+                  "Content": "  - admissionReviewVersions:",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 61,
+                  "Content": "      - v1",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 62,
+                  "Content": "    clientConfig:",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 63,
+                  "Content": "      caBundle: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURKekNDQWcrZ0F3SUJBZ0lRQ2c4VXpXaVVlc3oyVFd4SklUclJBakFOQmdrcWhraUc5dzBCQVFzRkFEQWUKTVJ3d0dnWURWUVFERXhOeWJYRXRiWE5uTFhSdmNHOXNiMmQ1TFdOaE1CNFhEVEkwTURFeU5UQXdOVGd3T0ZvWApEVEkxTURFeU5EQXdOVGd3T0Zvd0hqRWNNQm9HQTFVRUF4TVRjbTF4TFcxelp5MTBiM0J2Ykc5bmVTMWpZVENDCkFTSXdEUVlKS29aSWh2Y05BUUVCQlFBRGdnRVBBRENDQVFvQ2dnRUJBS1lkRXdhYXdvdC84SUEzY1lpK1hGenkKS2NTSmdXSTdBcjh0Rm5lSzNnZEFGYXpBZ2pGTUxNdXhzR000blpBSU1yaUFRL20zd3YvTERPR1ljM0wxMFp5bgpmc3RyUldIUDIrd05HeFN5YU9uTWVFRXdtWDBQZEl5ZStQRkR5WGV6KzRpTGwrOThEZ3k3cUdKYzF0Um44T2ZuCllWSzg0L3lmYzhDWHJIalQ5QXh4aUlkRWJ1NmlWV25FbVR1MjcyOGNMY2pHWHYzaC9pQ1dWU2tydTRyTGhuMS8KdHZlNXp3UklSbkVZMjhsaDVSaXJYa3dJN0l3Vkl5MzI5d3JpTGIraUZnSEFGRjFPK29heHplckNrdzUyM09VNQpKMkNWZW0zN3VrUFlqMjRWOWt2akNHdHNxZnNnelEyYlo2dVZsaStxSGVaV2d6NUJQSlNrb2k1M2xKajJWZVVDCkF3RUFBYU5oTUY4d0RnWURWUjBQQVFIL0JBUURBZ0trTUIwR0ExVWRKUVFXTUJRR0NDc0dBUVVGQndNQkJnZ3IKQmdFRkJRY0RBakFQQmdOVkhSTUJBZjhFQlRBREFRSC9NQjBHQTFVZERnUVdCQlNDa0JUTEVqVEZDMEdUL3RTTQpaLzJwUUg1dEdqQU5CZ2txaGtpRzl3MEJBUXNGQUFPQ0FRRUFsSlR2Zkx6dFo2UXJDT3JwYlRuVHBoTGJGK0EyCnl2ZWtlWEl5ZnAra2tZNFA1eGRiemZ6M29ScG1OKzZLWjJmd0l3MzhiWHNyTHpSMGp2aTZxejdhV0pjWis3TGUKc0pqeWkrOG1PUVJqQ1lmWDIvZFA4QlJidEh0OGlhcTkyWW9sejNnQ280QXFXVHZ1MlA1eGp5SGxQeHdOeWE5agpYUkpEL3NvUm1nTDgzTWF5N29FTXh5TkV3SE9PMXIwOUs2djBMT3pCQUZ1eU1ITFM0UkNiWUR5dzQwWlBPRWFoCkpDcnZlYXpIQWRSTThsdGlabk5Pa0lteEN6cE5LOCs3NWdpV0MwSyttUW9HZkFOWS9QMFFCaUc2U0FITmJOWTcKTWtZQTd3TngyTTVRUTluQ29mNGRJb1pkUGNpaS9FZlc5OHQzVzNzNmZZKzdjWUNBVVZGM1ZuM2t6UT09Ci0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0K",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 64,
+                  "Content": "      service:",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": true
+                },
+                {
+                  "Number": 65,
+                  "Content": "",
+                  "IsCause": false,
+                  "Annotation": "",
+                  "Truncated": true,
+                  "FirstCause": false,
+                  "LastCause": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "Type": "Helm Security Check",
+          "ID": "KSV116",
+          "AVDID": "AVD-KSV-0116",
+          "Title": "Runs with a root primary or supplementary GID",
+          "Description": "According to pod security standard 'Non-root groups', containers should be forbidden from running with a root primary or supplementary GID.",
+          "Message": "deployment rabbitmq-cluster-operator in  namespace should set spec.securityContext.runAsGroup, spec.securityContext.supplementalGroups[*] and spec.securityContext.fsGroup to integer greater than 0",
+          "Namespace": "builtin.kubernetes.KSV116",
+          "Query": "data.builtin.kubernetes.KSV116.deny",
+          "Resolution": "Set 'containers[].securityContext.runAsGroup' to a non-zero integer or leave undefined.",
+          "Severity": "LOW",
+          "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv116",
+          "References": [
+            "https://kubesec.io/basics/containers-securitycontext-runasuser/",
+            "https://avd.aquasec.com/misconfig/ksv116"
+          ],
+          "Status": "FAIL",
+          "Layer": {},
+          "CauseMetadata": {
+            "Provider": "Kubernetes",
+            "Service": "general",
+            "Code": {
+              "Lines": null
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Target": "rabbitmq-cluster-operator-3.10.3.tgz:templates/cluster-operator/role.yaml",
+      "Class": "config",
+      "Type": "helm",
+      "MisconfSummary": {
+        "Successes": 151,
+        "Failures": 1,
+        "Exceptions": 0
+      },
+      "Misconfigurations": [
+        {
+          "Type": "Helm Security Check",
+          "ID": "KSV116",
+          "AVDID": "AVD-KSV-0116",
+          "Title": "Runs with a root primary or supplementary GID",
+          "Description": "According to pod security standard 'Non-root groups', containers should be forbidden from running with a root primary or supplementary GID.",
+          "Message": "role rabbitmq-cluster-operator in  namespace should set spec.securityContext.runAsGroup, spec.securityContext.supplementalGroups[*] and spec.securityContext.fsGroup to integer greater than 0",
+          "Namespace": "builtin.kubernetes.KSV116",
+          "Query": "data.builtin.kubernetes.KSV116.deny",
+          "Resolution": "Set 'containers[].securityContext.runAsGroup' to a non-zero integer or leave undefined.",
+          "Severity": "LOW",
+          "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv116",
+          "References": [
+            "https://kubesec.io/basics/containers-securitycontext-runasuser/",
+            "https://avd.aquasec.com/misconfig/ksv116"
+          ],
+          "Status": "FAIL",
+          "Layer": {},
+          "CauseMetadata": {
+            "Provider": "Kubernetes",
+            "Service": "general",
+            "Code": {
+              "Lines": null
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Target": "rabbitmq-cluster-operator-3.10.3.tgz:templates/cluster-operator/rolebinding.yaml",
+      "Class": "config",
+      "Type": "helm",
+      "MisconfSummary": {
+        "Successes": 151,
+        "Failures": 1,
+        "Exceptions": 0
+      },
+      "Misconfigurations": [
+        {
+          "Type": "Helm Security Check",
+          "ID": "KSV116",
+          "AVDID": "AVD-KSV-0116",
+          "Title": "Runs with a root primary or supplementary GID",
+          "Description": "According to pod security standard 'Non-root groups', containers should be forbidden from running with a root primary or supplementary GID.",
+          "Message": "rolebinding rabbitmq-cluster-operator in  namespace should set spec.securityContext.runAsGroup, spec.securityContext.supplementalGroups[*] and spec.securityContext.fsGroup to integer greater than 0",
+          "Namespace": "builtin.kubernetes.KSV116",
+          "Query": "data.builtin.kubernetes.KSV116.deny",
+          "Resolution": "Set 'containers[].securityContext.runAsGroup' to a non-zero integer or leave undefined.",
+          "Severity": "LOW",
+          "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv116",
+          "References": [
+            "https://kubesec.io/basics/containers-securitycontext-runasuser/",
+            "https://avd.aquasec.com/misconfig/ksv116"
+          ],
+          "Status": "FAIL",
+          "Layer": {},
+          "CauseMetadata": {
+            "Provider": "Kubernetes",
+            "Service": "general",
+            "Code": {
+              "Lines": null
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Target": "rabbitmq-cluster-operator-3.10.3.tgz:templates/cluster-operator/service-account.yaml",
+      "Class": "config",
+      "Type": "helm",
+      "MisconfSummary": {
+        "Successes": 151,
+        "Failures": 1,
+        "Exceptions": 0
+      },
+      "Misconfigurations": [
+        {
+          "Type": "Helm Security Check",
+          "ID": "KSV116",
+          "AVDID": "AVD-KSV-0116",
+          "Title": "Runs with a root primary or supplementary GID",
+          "Description": "According to pod security standard 'Non-root groups', containers should be forbidden from running with a root primary or supplementary GID.",
+          "Message": "serviceaccount rabbitmq-cluster-operator in  namespace should set spec.securityContext.runAsGroup, spec.securityContext.supplementalGroups[*] and spec.securityContext.fsGroup to integer greater than 0",
+          "Namespace": "builtin.kubernetes.KSV116",
+          "Query": "data.builtin.kubernetes.KSV116.deny",
+          "Resolution": "Set 'containers[].securityContext.runAsGroup' to a non-zero integer or leave undefined.",
+          "Severity": "LOW",
+          "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv116",
+          "References": [
+            "https://kubesec.io/basics/containers-securitycontext-runasuser/",
+            "https://avd.aquasec.com/misconfig/ksv116"
+          ],
+          "Status": "FAIL",
+          "Layer": {},
+          "CauseMetadata": {
+            "Provider": "Kubernetes",
+            "Service": "general",
+            "Code": {
+              "Lines": null
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Target": "rabbitmq-cluster-operator-3.10.3.tgz:templates/messaging-topology-operator/clusterrole.yaml",
+      "Class": "config",
+      "Type": "helm",
+      "MisconfSummary": {
+        "Successes": 150,
+        "Failures": 2,
+        "Exceptions": 0
+      },
+      "Misconfigurations": [
+        {
+          "Type": "Helm Security Check",
+          "ID": "KSV041",
+          "AVDID": "AVD-KSV-0041",
+          "Title": "Manage secrets",
+          "Description": "Viewing secrets at the cluster-scope is akin to cluster-admin in most clusters as there are typically at least one service accounts (their token stored in a secret) bound to cluster-admin directly or a role/clusterrole that gives similar permissions.",
+          "Message": "ClusterRole 'rabbitmq-cluster-operator-rabbitmq-messaging-topology-operator' shouldn't have access to manage resource 'secrets'",
+          "Namespace": "builtin.kubernetes.KSV041",
+          "Query": "data.builtin.kubernetes.KSV041.deny",
+          "Resolution": "Manage secrets are not allowed. Remove resource 'secrets' from cluster role",
+          "Severity": "CRITICAL",
+          "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv041",
+          "References": [
+            "https://kubernetes.io/docs/concepts/security/rbac-good-practices/",
+            "https://avd.aquasec.com/misconfig/ksv041"
+          ],
+          "Status": "FAIL",
+          "Layer": {},
+          "CauseMetadata": {
+            "Provider": "Kubernetes",
+            "Service": "general",
+            "StartLine": 23,
+            "EndLine": 33,
+            "Code": {
+              "Lines": [
+                {
+                  "Number": 23,
+                  "Content": "        path: /validate-rabbitmq-com-v1beta1-binding",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": true,
+                  "LastCause": false
+                },
+                {
+                  "Number": 24,
+                  "Content": "        port: 443",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 25,
+                  "Content": "    failurePolicy: Fail",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 26,
+                  "Content": "    name: vbinding.kb.io",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 27,
+                  "Content": "    rules:",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 28,
+                  "Content": "      - apiGroups:",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 29,
+                  "Content": "          - rabbitmq.com",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 30,
+                  "Content": "        apiVersions:",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 31,
+                  "Content": "          - v1beta1",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": true
+                },
+                {
+                  "Number": 32,
+                  "Content": "",
+                  "IsCause": false,
+                  "Annotation": "",
+                  "Truncated": true,
+                  "FirstCause": false,
+                  "LastCause": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "Type": "Helm Security Check",
+          "ID": "KSV116",
+          "AVDID": "AVD-KSV-0116",
+          "Title": "Runs with a root primary or supplementary GID",
+          "Description": "According to pod security standard 'Non-root groups', containers should be forbidden from running with a root primary or supplementary GID.",
+          "Message": "clusterrole rabbitmq-cluster-operator-rabbitmq-messaging-topology-operator in default namespace should set spec.securityContext.runAsGroup, spec.securityContext.supplementalGroups[*] and spec.securityContext.fsGroup to integer greater than 0",
+          "Namespace": "builtin.kubernetes.KSV116",
+          "Query": "data.builtin.kubernetes.KSV116.deny",
+          "Resolution": "Set 'containers[].securityContext.runAsGroup' to a non-zero integer or leave undefined.",
+          "Severity": "LOW",
+          "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv116",
+          "References": [
+            "https://kubesec.io/basics/containers-securitycontext-runasuser/",
+            "https://avd.aquasec.com/misconfig/ksv116"
+          ],
+          "Status": "FAIL",
+          "Layer": {},
+          "CauseMetadata": {
+            "Provider": "Kubernetes",
+            "Service": "general",
+            "Code": {
+              "Lines": null
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Target": "rabbitmq-cluster-operator-3.10.3.tgz:templates/messaging-topology-operator/clusterrolebinding.yaml",
+      "Class": "config",
+      "Type": "helm",
+      "MisconfSummary": {
+        "Successes": 151,
+        "Failures": 1,
+        "Exceptions": 0
+      },
+      "Misconfigurations": [
+        {
+          "Type": "Helm Security Check",
+          "ID": "KSV116",
+          "AVDID": "AVD-KSV-0116",
+          "Title": "Runs with a root primary or supplementary GID",
+          "Description": "According to pod security standard 'Non-root groups', containers should be forbidden from running with a root primary or supplementary GID.",
+          "Message": "clusterrolebinding rabbitmq-cluster-operator-rabbitmq-messaging-topology-operator in default namespace should set spec.securityContext.runAsGroup, spec.securityContext.supplementalGroups[*] and spec.securityContext.fsGroup to integer greater than 0",
+          "Namespace": "builtin.kubernetes.KSV116",
+          "Query": "data.builtin.kubernetes.KSV116.deny",
+          "Resolution": "Set 'containers[].securityContext.runAsGroup' to a non-zero integer or leave undefined.",
+          "Severity": "LOW",
+          "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv116",
+          "References": [
+            "https://kubesec.io/basics/containers-securitycontext-runasuser/",
+            "https://avd.aquasec.com/misconfig/ksv116"
+          ],
+          "Status": "FAIL",
+          "Layer": {},
+          "CauseMetadata": {
+            "Provider": "Kubernetes",
+            "Service": "general",
+            "Code": {
+              "Lines": null
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Target": "rabbitmq-cluster-operator-3.10.3.tgz:templates/messaging-topology-operator/deployment.yaml",
+      "Class": "config",
+      "Type": "helm",
+      "MisconfSummary": {
+        "Successes": 144,
+        "Failures": 8,
+        "Exceptions": 0
+      },
+      "Misconfigurations": [
+        {
+          "Type": "Helm Security Check",
+          "ID": "KSV011",
+          "AVDID": "AVD-KSV-0011",
+          "Title": "CPU not limited",
+          "Description": "Enforcing CPU limits prevents DoS via resource exhaustion.",
+          "Message": "Container 'rabbitmq-cluster-operator' of Deployment 'rabbitmq-cluster-operator-rabbitmq-messaging-topology-operator' should set 'resources.limits.cpu'",
+          "Namespace": "builtin.kubernetes.KSV011",
+          "Query": "data.builtin.kubernetes.KSV011.deny",
+          "Resolution": "Set a limit value under 'containers[].resources.limits.cpu'.",
+          "Severity": "LOW",
+          "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv011",
+          "References": [
+            "https://cloud.google.com/blog/products/containers-kubernetes/kubernetes-best-practices-resource-requests-and-limits",
+            "https://avd.aquasec.com/misconfig/ksv011"
+          ],
+          "Status": "FAIL",
+          "Layer": {},
+          "CauseMetadata": {
+            "Provider": "Kubernetes",
+            "Service": "general",
+            "StartLine": 58,
+            "EndLine": 113,
+            "Code": {
+              "Lines": [
+                {
+                  "Number": 58,
+                  "Content": "          - exchanges",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": true,
+                  "LastCause": false
+                },
+                {
+                  "Number": 59,
+                  "Content": "    sideEffects: None",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 60,
+                  "Content": "  - admissionReviewVersions:",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 61,
+                  "Content": "      - v1",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 62,
+                  "Content": "    clientConfig:",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 63,
+                  "Content": "      caBundle: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURKekNDQWcrZ0F3SUJBZ0lRQ2c4VXpXaVVlc3oyVFd4SklUclJBakFOQmdrcWhraUc5dzBCQVFzRkFEQWUKTVJ3d0dnWURWUVFERXhOeWJYRXRiWE5uTFhSdmNHOXNiMmQ1TFdOaE1CNFhEVEkwTURFeU5UQXdOVGd3T0ZvWApEVEkxTURFeU5EQXdOVGd3T0Zvd0hqRWNNQm9HQTFVRUF4TVRjbTF4TFcxelp5MTBiM0J2Ykc5bmVTMWpZVENDCkFTSXdEUVlKS29aSWh2Y05BUUVCQlFBRGdnRVBBRENDQVFvQ2dnRUJBS1lkRXdhYXdvdC84SUEzY1lpK1hGenkKS2NTSmdXSTdBcjh0Rm5lSzNnZEFGYXpBZ2pGTUxNdXhzR000blpBSU1yaUFRL20zd3YvTERPR1ljM0wxMFp5bgpmc3RyUldIUDIrd05HeFN5YU9uTWVFRXdtWDBQZEl5ZStQRkR5WGV6KzRpTGwrOThEZ3k3cUdKYzF0Um44T2ZuCllWSzg0L3lmYzhDWHJIalQ5QXh4aUlkRWJ1NmlWV25FbVR1MjcyOGNMY2pHWHYzaC9pQ1dWU2tydTRyTGhuMS8KdHZlNXp3UklSbkVZMjhsaDVSaXJYa3dJN0l3Vkl5MzI5d3JpTGIraUZnSEFGRjFPK29heHplckNrdzUyM09VNQpKMkNWZW0zN3VrUFlqMjRWOWt2akNHdHNxZnNnelEyYlo2dVZsaStxSGVaV2d6NUJQSlNrb2k1M2xKajJWZVVDCkF3RUFBYU5oTUY4d0RnWURWUjBQQVFIL0JBUURBZ0trTUIwR0ExVWRKUVFXTUJRR0NDc0dBUVVGQndNQkJnZ3IKQmdFRkJRY0RBakFQQmdOVkhSTUJBZjhFQlRBREFRSC9NQjBHQTFVZERnUVdCQlNDa0JUTEVqVEZDMEdUL3RTTQpaLzJwUUg1dEdqQU5CZ2txaGtpRzl3MEJBUXNGQUFPQ0FRRUFsSlR2Zkx6dFo2UXJDT3JwYlRuVHBoTGJGK0EyCnl2ZWtlWEl5ZnAra2tZNFA1eGRiemZ6M29ScG1OKzZLWjJmd0l3MzhiWHNyTHpSMGp2aTZxejdhV0pjWis3TGUKc0pqeWkrOG1PUVJqQ1lmWDIvZFA4QlJidEh0OGlhcTkyWW9sejNnQ280QXFXVHZ1MlA1eGp5SGxQeHdOeWE5agpYUkpEL3NvUm1nTDgzTWF5N29FTXh5TkV3SE9PMXIwOUs2djBMT3pCQUZ1eU1ITFM0UkNiWUR5dzQwWlBPRWFoCkpDcnZlYXpIQWRSTThsdGlabk5Pa0lteEN6cE5LOCs3NWdpV0MwSyttUW9HZkFOWS9QMFFCaUc2U0FITmJOWTcKTWtZQTd3TngyTTVRUTluQ29mNGRJb1pkUGNpaS9FZlc5OHQzVzNzNmZZKzdjWUNBVVZGM1ZuM2t6UT09Ci0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0K",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 64,
+                  "Content": "      service:",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 65,
+                  "Content": "        name: rabbitmq-cluster-operator-rabbitmq-messaging-topology-operator",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 66,
+                  "Content": "        namespace: \"\"",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": true
+                },
+                {
+                  "Number": 67,
+                  "Content": "",
+                  "IsCause": false,
+                  "Annotation": "",
+                  "Truncated": true,
+                  "FirstCause": false,
+                  "LastCause": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "Type": "Helm Security Check",
+          "ID": "KSV014",
+          "AVDID": "AVD-KSV-0014",
+          "Title": "Root file system is not read-only",
+          "Description": "An immutable root file system prevents applications from writing to their local disk. This can limit intrusions, as attackers will not be able to tamper with the file system or write foreign executables to disk.",
+          "Message": "Container 'rabbitmq-cluster-operator' of Deployment 'rabbitmq-cluster-operator-rabbitmq-messaging-topology-operator' should set 'securityContext.readOnlyRootFilesystem' to true",
+          "Namespace": "builtin.kubernetes.KSV014",
+          "Query": "data.builtin.kubernetes.KSV014.deny",
+          "Resolution": "Change 'containers[].securityContext.readOnlyRootFilesystem' to 'true'.",
+          "Severity": "LOW",
+          "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv014",
+          "References": [
+            "https://kubesec.io/basics/containers-securitycontext-readonlyrootfilesystem-true/",
+            "https://avd.aquasec.com/misconfig/ksv014"
+          ],
+          "Status": "FAIL",
+          "Layer": {},
+          "CauseMetadata": {
+            "Provider": "Kubernetes",
+            "Service": "general",
+            "StartLine": 58,
+            "EndLine": 113,
+            "Code": {
+              "Lines": [
+                {
+                  "Number": 58,
+                  "Content": "          - exchanges",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": true,
+                  "LastCause": false
+                },
+                {
+                  "Number": 59,
+                  "Content": "    sideEffects: None",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 60,
+                  "Content": "  - admissionReviewVersions:",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 61,
+                  "Content": "      - v1",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 62,
+                  "Content": "    clientConfig:",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 63,
+                  "Content": "      caBundle: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURKekNDQWcrZ0F3SUJBZ0lRQ2c4VXpXaVVlc3oyVFd4SklUclJBakFOQmdrcWhraUc5dzBCQVFzRkFEQWUKTVJ3d0dnWURWUVFERXhOeWJYRXRiWE5uTFhSdmNHOXNiMmQ1TFdOaE1CNFhEVEkwTURFeU5UQXdOVGd3T0ZvWApEVEkxTURFeU5EQXdOVGd3T0Zvd0hqRWNNQm9HQTFVRUF4TVRjbTF4TFcxelp5MTBiM0J2Ykc5bmVTMWpZVENDCkFTSXdEUVlKS29aSWh2Y05BUUVCQlFBRGdnRVBBRENDQVFvQ2dnRUJBS1lkRXdhYXdvdC84SUEzY1lpK1hGenkKS2NTSmdXSTdBcjh0Rm5lSzNnZEFGYXpBZ2pGTUxNdXhzR000blpBSU1yaUFRL20zd3YvTERPR1ljM0wxMFp5bgpmc3RyUldIUDIrd05HeFN5YU9uTWVFRXdtWDBQZEl5ZStQRkR5WGV6KzRpTGwrOThEZ3k3cUdKYzF0Um44T2ZuCllWSzg0L3lmYzhDWHJIalQ5QXh4aUlkRWJ1NmlWV25FbVR1MjcyOGNMY2pHWHYzaC9pQ1dWU2tydTRyTGhuMS8KdHZlNXp3UklSbkVZMjhsaDVSaXJYa3dJN0l3Vkl5MzI5d3JpTGIraUZnSEFGRjFPK29heHplckNrdzUyM09VNQpKMkNWZW0zN3VrUFlqMjRWOWt2akNHdHNxZnNnelEyYlo2dVZsaStxSGVaV2d6NUJQSlNrb2k1M2xKajJWZVVDCkF3RUFBYU5oTUY4d0RnWURWUjBQQVFIL0JBUURBZ0trTUIwR0ExVWRKUVFXTUJRR0NDc0dBUVVGQndNQkJnZ3IKQmdFRkJRY0RBakFQQmdOVkhSTUJBZjhFQlRBREFRSC9NQjBHQTFVZERnUVdCQlNDa0JUTEVqVEZDMEdUL3RTTQpaLzJwUUg1dEdqQU5CZ2txaGtpRzl3MEJBUXNGQUFPQ0FRRUFsSlR2Zkx6dFo2UXJDT3JwYlRuVHBoTGJGK0EyCnl2ZWtlWEl5ZnAra2tZNFA1eGRiemZ6M29ScG1OKzZLWjJmd0l3MzhiWHNyTHpSMGp2aTZxejdhV0pjWis3TGUKc0pqeWkrOG1PUVJqQ1lmWDIvZFA4QlJidEh0OGlhcTkyWW9sejNnQ280QXFXVHZ1MlA1eGp5SGxQeHdOeWE5agpYUkpEL3NvUm1nTDgzTWF5N29FTXh5TkV3SE9PMXIwOUs2djBMT3pCQUZ1eU1ITFM0UkNiWUR5dzQwWlBPRWFoCkpDcnZlYXpIQWRSTThsdGlabk5Pa0lteEN6cE5LOCs3NWdpV0MwSyttUW9HZkFOWS9QMFFCaUc2U0FITmJOWTcKTWtZQTd3TngyTTVRUTluQ29mNGRJb1pkUGNpaS9FZlc5OHQzVzNzNmZZKzdjWUNBVVZGM1ZuM2t6UT09Ci0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0K",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 64,
+                  "Content": "      service:",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 65,
+                  "Content": "        name: rabbitmq-cluster-operator-rabbitmq-messaging-topology-operator",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 66,
+                  "Content": "        namespace: \"\"",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": true
+                },
+                {
+                  "Number": 67,
+                  "Content": "",
+                  "IsCause": false,
+                  "Annotation": "",
+                  "Truncated": true,
+                  "FirstCause": false,
+                  "LastCause": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "Type": "Helm Security Check",
+          "ID": "KSV015",
+          "AVDID": "AVD-KSV-0015",
+          "Title": "CPU requests not specified",
+          "Description": "When containers have resource requests specified, the scheduler can make better decisions about which nodes to place pods on, and how to deal with resource contention.",
+          "Message": "Container 'rabbitmq-cluster-operator' of Deployment 'rabbitmq-cluster-operator-rabbitmq-messaging-topology-operator' should set 'resources.requests.cpu'",
+          "Namespace": "builtin.kubernetes.KSV015",
+          "Query": "data.builtin.kubernetes.KSV015.deny",
+          "Resolution": "Set 'containers[].resources.requests.cpu'.",
+          "Severity": "LOW",
+          "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv015",
+          "References": [
+            "https://cloud.google.com/blog/products/containers-kubernetes/kubernetes-best-practices-resource-requests-and-limits",
+            "https://avd.aquasec.com/misconfig/ksv015"
+          ],
+          "Status": "FAIL",
+          "Layer": {},
+          "CauseMetadata": {
+            "Provider": "Kubernetes",
+            "Service": "general",
+            "StartLine": 58,
+            "EndLine": 113,
+            "Code": {
+              "Lines": [
+                {
+                  "Number": 58,
+                  "Content": "          - exchanges",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": true,
+                  "LastCause": false
+                },
+                {
+                  "Number": 59,
+                  "Content": "    sideEffects: None",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 60,
+                  "Content": "  - admissionReviewVersions:",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 61,
+                  "Content": "      - v1",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 62,
+                  "Content": "    clientConfig:",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 63,
+                  "Content": "      caBundle: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURKekNDQWcrZ0F3SUJBZ0lRQ2c4VXpXaVVlc3oyVFd4SklUclJBakFOQmdrcWhraUc5dzBCQVFzRkFEQWUKTVJ3d0dnWURWUVFERXhOeWJYRXRiWE5uTFhSdmNHOXNiMmQ1TFdOaE1CNFhEVEkwTURFeU5UQXdOVGd3T0ZvWApEVEkxTURFeU5EQXdOVGd3T0Zvd0hqRWNNQm9HQTFVRUF4TVRjbTF4TFcxelp5MTBiM0J2Ykc5bmVTMWpZVENDCkFTSXdEUVlKS29aSWh2Y05BUUVCQlFBRGdnRVBBRENDQVFvQ2dnRUJBS1lkRXdhYXdvdC84SUEzY1lpK1hGenkKS2NTSmdXSTdBcjh0Rm5lSzNnZEFGYXpBZ2pGTUxNdXhzR000blpBSU1yaUFRL20zd3YvTERPR1ljM0wxMFp5bgpmc3RyUldIUDIrd05HeFN5YU9uTWVFRXdtWDBQZEl5ZStQRkR5WGV6KzRpTGwrOThEZ3k3cUdKYzF0Um44T2ZuCllWSzg0L3lmYzhDWHJIalQ5QXh4aUlkRWJ1NmlWV25FbVR1MjcyOGNMY2pHWHYzaC9pQ1dWU2tydTRyTGhuMS8KdHZlNXp3UklSbkVZMjhsaDVSaXJYa3dJN0l3Vkl5MzI5d3JpTGIraUZnSEFGRjFPK29heHplckNrdzUyM09VNQpKMkNWZW0zN3VrUFlqMjRWOWt2akNHdHNxZnNnelEyYlo2dVZsaStxSGVaV2d6NUJQSlNrb2k1M2xKajJWZVVDCkF3RUFBYU5oTUY4d0RnWURWUjBQQVFIL0JBUURBZ0trTUIwR0ExVWRKUVFXTUJRR0NDc0dBUVVGQndNQkJnZ3IKQmdFRkJRY0RBakFQQmdOVkhSTUJBZjhFQlRBREFRSC9NQjBHQTFVZERnUVdCQlNDa0JUTEVqVEZDMEdUL3RTTQpaLzJwUUg1dEdqQU5CZ2txaGtpRzl3MEJBUXNGQUFPQ0FRRUFsSlR2Zkx6dFo2UXJDT3JwYlRuVHBoTGJGK0EyCnl2ZWtlWEl5ZnAra2tZNFA1eGRiemZ6M29ScG1OKzZLWjJmd0l3MzhiWHNyTHpSMGp2aTZxejdhV0pjWis3TGUKc0pqeWkrOG1PUVJqQ1lmWDIvZFA4QlJidEh0OGlhcTkyWW9sejNnQ280QXFXVHZ1MlA1eGp5SGxQeHdOeWE5agpYUkpEL3NvUm1nTDgzTWF5N29FTXh5TkV3SE9PMXIwOUs2djBMT3pCQUZ1eU1ITFM0UkNiWUR5dzQwWlBPRWFoCkpDcnZlYXpIQWRSTThsdGlabk5Pa0lteEN6cE5LOCs3NWdpV0MwSyttUW9HZkFOWS9QMFFCaUc2U0FITmJOWTcKTWtZQTd3TngyTTVRUTluQ29mNGRJb1pkUGNpaS9FZlc5OHQzVzNzNmZZKzdjWUNBVVZGM1ZuM2t6UT09Ci0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0K",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 64,
+                  "Content": "      service:",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 65,
+                  "Content": "        name: rabbitmq-cluster-operator-rabbitmq-messaging-topology-operator",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 66,
+                  "Content": "        namespace: \"\"",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": true
+                },
+                {
+                  "Number": 67,
+                  "Content": "",
+                  "IsCause": false,
+                  "Annotation": "",
+                  "Truncated": true,
+                  "FirstCause": false,
+                  "LastCause": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "Type": "Helm Security Check",
+          "ID": "KSV016",
+          "AVDID": "AVD-KSV-0016",
+          "Title": "Memory requests not specified",
+          "Description": "When containers have memory requests specified, the scheduler can make better decisions about which nodes to place pods on, and how to deal with resource contention.",
+          "Message": "Container 'rabbitmq-cluster-operator' of Deployment 'rabbitmq-cluster-operator-rabbitmq-messaging-topology-operator' should set 'resources.requests.memory'",
+          "Namespace": "builtin.kubernetes.KSV016",
+          "Query": "data.builtin.kubernetes.KSV016.deny",
+          "Resolution": "Set 'containers[].resources.requests.memory'.",
+          "Severity": "LOW",
+          "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv016",
+          "References": [
+            "https://kubesec.io/basics/containers-resources-limits-memory/",
+            "https://avd.aquasec.com/misconfig/ksv016"
+          ],
+          "Status": "FAIL",
+          "Layer": {},
+          "CauseMetadata": {
+            "Provider": "Kubernetes",
+            "Service": "general",
+            "StartLine": 58,
+            "EndLine": 113,
+            "Code": {
+              "Lines": [
+                {
+                  "Number": 58,
+                  "Content": "          - exchanges",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": true,
+                  "LastCause": false
+                },
+                {
+                  "Number": 59,
+                  "Content": "    sideEffects: None",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 60,
+                  "Content": "  - admissionReviewVersions:",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 61,
+                  "Content": "      - v1",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 62,
+                  "Content": "    clientConfig:",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 63,
+                  "Content": "      caBundle: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURKekNDQWcrZ0F3SUJBZ0lRQ2c4VXpXaVVlc3oyVFd4SklUclJBakFOQmdrcWhraUc5dzBCQVFzRkFEQWUKTVJ3d0dnWURWUVFERXhOeWJYRXRiWE5uTFhSdmNHOXNiMmQ1TFdOaE1CNFhEVEkwTURFeU5UQXdOVGd3T0ZvWApEVEkxTURFeU5EQXdOVGd3T0Zvd0hqRWNNQm9HQTFVRUF4TVRjbTF4TFcxelp5MTBiM0J2Ykc5bmVTMWpZVENDCkFTSXdEUVlKS29aSWh2Y05BUUVCQlFBRGdnRVBBRENDQVFvQ2dnRUJBS1lkRXdhYXdvdC84SUEzY1lpK1hGenkKS2NTSmdXSTdBcjh0Rm5lSzNnZEFGYXpBZ2pGTUxNdXhzR000blpBSU1yaUFRL20zd3YvTERPR1ljM0wxMFp5bgpmc3RyUldIUDIrd05HeFN5YU9uTWVFRXdtWDBQZEl5ZStQRkR5WGV6KzRpTGwrOThEZ3k3cUdKYzF0Um44T2ZuCllWSzg0L3lmYzhDWHJIalQ5QXh4aUlkRWJ1NmlWV25FbVR1MjcyOGNMY2pHWHYzaC9pQ1dWU2tydTRyTGhuMS8KdHZlNXp3UklSbkVZMjhsaDVSaXJYa3dJN0l3Vkl5MzI5d3JpTGIraUZnSEFGRjFPK29heHplckNrdzUyM09VNQpKMkNWZW0zN3VrUFlqMjRWOWt2akNHdHNxZnNnelEyYlo2dVZsaStxSGVaV2d6NUJQSlNrb2k1M2xKajJWZVVDCkF3RUFBYU5oTUY4d0RnWURWUjBQQVFIL0JBUURBZ0trTUIwR0ExVWRKUVFXTUJRR0NDc0dBUVVGQndNQkJnZ3IKQmdFRkJRY0RBakFQQmdOVkhSTUJBZjhFQlRBREFRSC9NQjBHQTFVZERnUVdCQlNDa0JUTEVqVEZDMEdUL3RTTQpaLzJwUUg1dEdqQU5CZ2txaGtpRzl3MEJBUXNGQUFPQ0FRRUFsSlR2Zkx6dFo2UXJDT3JwYlRuVHBoTGJGK0EyCnl2ZWtlWEl5ZnAra2tZNFA1eGRiemZ6M29ScG1OKzZLWjJmd0l3MzhiWHNyTHpSMGp2aTZxejdhV0pjWis3TGUKc0pqeWkrOG1PUVJqQ1lmWDIvZFA4QlJidEh0OGlhcTkyWW9sejNnQ280QXFXVHZ1MlA1eGp5SGxQeHdOeWE5agpYUkpEL3NvUm1nTDgzTWF5N29FTXh5TkV3SE9PMXIwOUs2djBMT3pCQUZ1eU1ITFM0UkNiWUR5dzQwWlBPRWFoCkpDcnZlYXpIQWRSTThsdGlabk5Pa0lteEN6cE5LOCs3NWdpV0MwSyttUW9HZkFOWS9QMFFCaUc2U0FITmJOWTcKTWtZQTd3TngyTTVRUTluQ29mNGRJb1pkUGNpaS9FZlc5OHQzVzNzNmZZKzdjWUNBVVZGM1ZuM2t6UT09Ci0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0K",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 64,
+                  "Content": "      service:",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 65,
+                  "Content": "        name: rabbitmq-cluster-operator-rabbitmq-messaging-topology-operator",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 66,
+                  "Content": "        namespace: \"\"",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": true
+                },
+                {
+                  "Number": 67,
+                  "Content": "",
+                  "IsCause": false,
+                  "Annotation": "",
+                  "Truncated": true,
+                  "FirstCause": false,
+                  "LastCause": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "Type": "Helm Security Check",
+          "ID": "KSV018",
+          "AVDID": "AVD-KSV-0018",
+          "Title": "Memory not limited",
+          "Description": "Enforcing memory limits prevents DoS via resource exhaustion.",
+          "Message": "Container 'rabbitmq-cluster-operator' of Deployment 'rabbitmq-cluster-operator-rabbitmq-messaging-topology-operator' should set 'resources.limits.memory'",
+          "Namespace": "builtin.kubernetes.KSV018",
+          "Query": "data.builtin.kubernetes.KSV018.deny",
+          "Resolution": "Set a limit value under 'containers[].resources.limits.memory'.",
+          "Severity": "LOW",
+          "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv018",
+          "References": [
+            "https://kubesec.io/basics/containers-resources-limits-memory/",
+            "https://avd.aquasec.com/misconfig/ksv018"
+          ],
+          "Status": "FAIL",
+          "Layer": {},
+          "CauseMetadata": {
+            "Provider": "Kubernetes",
+            "Service": "general",
+            "StartLine": 58,
+            "EndLine": 113,
+            "Code": {
+              "Lines": [
+                {
+                  "Number": 58,
+                  "Content": "          - exchanges",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": true,
+                  "LastCause": false
+                },
+                {
+                  "Number": 59,
+                  "Content": "    sideEffects: None",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 60,
+                  "Content": "  - admissionReviewVersions:",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 61,
+                  "Content": "      - v1",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 62,
+                  "Content": "    clientConfig:",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 63,
+                  "Content": "      caBundle: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURKekNDQWcrZ0F3SUJBZ0lRQ2c4VXpXaVVlc3oyVFd4SklUclJBakFOQmdrcWhraUc5dzBCQVFzRkFEQWUKTVJ3d0dnWURWUVFERXhOeWJYRXRiWE5uTFhSdmNHOXNiMmQ1TFdOaE1CNFhEVEkwTURFeU5UQXdOVGd3T0ZvWApEVEkxTURFeU5EQXdOVGd3T0Zvd0hqRWNNQm9HQTFVRUF4TVRjbTF4TFcxelp5MTBiM0J2Ykc5bmVTMWpZVENDCkFTSXdEUVlKS29aSWh2Y05BUUVCQlFBRGdnRVBBRENDQVFvQ2dnRUJBS1lkRXdhYXdvdC84SUEzY1lpK1hGenkKS2NTSmdXSTdBcjh0Rm5lSzNnZEFGYXpBZ2pGTUxNdXhzR000blpBSU1yaUFRL20zd3YvTERPR1ljM0wxMFp5bgpmc3RyUldIUDIrd05HeFN5YU9uTWVFRXdtWDBQZEl5ZStQRkR5WGV6KzRpTGwrOThEZ3k3cUdKYzF0Um44T2ZuCllWSzg0L3lmYzhDWHJIalQ5QXh4aUlkRWJ1NmlWV25FbVR1MjcyOGNMY2pHWHYzaC9pQ1dWU2tydTRyTGhuMS8KdHZlNXp3UklSbkVZMjhsaDVSaXJYa3dJN0l3Vkl5MzI5d3JpTGIraUZnSEFGRjFPK29heHplckNrdzUyM09VNQpKMkNWZW0zN3VrUFlqMjRWOWt2akNHdHNxZnNnelEyYlo2dVZsaStxSGVaV2d6NUJQSlNrb2k1M2xKajJWZVVDCkF3RUFBYU5oTUY4d0RnWURWUjBQQVFIL0JBUURBZ0trTUIwR0ExVWRKUVFXTUJRR0NDc0dBUVVGQndNQkJnZ3IKQmdFRkJRY0RBakFQQmdOVkhSTUJBZjhFQlRBREFRSC9NQjBHQTFVZERnUVdCQlNDa0JUTEVqVEZDMEdUL3RTTQpaLzJwUUg1dEdqQU5CZ2txaGtpRzl3MEJBUXNGQUFPQ0FRRUFsSlR2Zkx6dFo2UXJDT3JwYlRuVHBoTGJGK0EyCnl2ZWtlWEl5ZnAra2tZNFA1eGRiemZ6M29ScG1OKzZLWjJmd0l3MzhiWHNyTHpSMGp2aTZxejdhV0pjWis3TGUKc0pqeWkrOG1PUVJqQ1lmWDIvZFA4QlJidEh0OGlhcTkyWW9sejNnQ280QXFXVHZ1MlA1eGp5SGxQeHdOeWE5agpYUkpEL3NvUm1nTDgzTWF5N29FTXh5TkV3SE9PMXIwOUs2djBMT3pCQUZ1eU1ITFM0UkNiWUR5dzQwWlBPRWFoCkpDcnZlYXpIQWRSTThsdGlabk5Pa0lteEN6cE5LOCs3NWdpV0MwSyttUW9HZkFOWS9QMFFCaUc2U0FITmJOWTcKTWtZQTd3TngyTTVRUTluQ29mNGRJb1pkUGNpaS9FZlc5OHQzVzNzNmZZKzdjWUNBVVZGM1ZuM2t6UT09Ci0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0K",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 64,
+                  "Content": "      service:",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 65,
+                  "Content": "        name: rabbitmq-cluster-operator-rabbitmq-messaging-topology-operator",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 66,
+                  "Content": "        namespace: \"\"",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": true
+                },
+                {
+                  "Number": 67,
+                  "Content": "",
+                  "IsCause": false,
+                  "Annotation": "",
+                  "Truncated": true,
+                  "FirstCause": false,
+                  "LastCause": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "Type": "Helm Security Check",
+          "ID": "KSV020",
+          "AVDID": "AVD-KSV-0020",
+          "Title": "Runs with UID \u003c= 10000",
+          "Description": "Force the container to run with user ID \u003e 10000 to avoid conflicts with the host’s user table.",
+          "Message": "Container 'rabbitmq-cluster-operator' of Deployment 'rabbitmq-cluster-operator-rabbitmq-messaging-topology-operator' should set 'securityContext.runAsUser' \u003e 10000",
+          "Namespace": "builtin.kubernetes.KSV020",
+          "Query": "data.builtin.kubernetes.KSV020.deny",
+          "Resolution": "Set 'containers[].securityContext.runAsUser' to an integer \u003e 10000.",
+          "Severity": "LOW",
+          "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv020",
+          "References": [
+            "https://kubesec.io/basics/containers-securitycontext-runasuser/",
+            "https://avd.aquasec.com/misconfig/ksv020"
+          ],
+          "Status": "FAIL",
+          "Layer": {},
+          "CauseMetadata": {
+            "Provider": "Kubernetes",
+            "Service": "general",
+            "StartLine": 58,
+            "EndLine": 113,
+            "Code": {
+              "Lines": [
+                {
+                  "Number": 58,
+                  "Content": "          - exchanges",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": true,
+                  "LastCause": false
+                },
+                {
+                  "Number": 59,
+                  "Content": "    sideEffects: None",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 60,
+                  "Content": "  - admissionReviewVersions:",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 61,
+                  "Content": "      - v1",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 62,
+                  "Content": "    clientConfig:",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 63,
+                  "Content": "      caBundle: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURKekNDQWcrZ0F3SUJBZ0lRQ2c4VXpXaVVlc3oyVFd4SklUclJBakFOQmdrcWhraUc5dzBCQVFzRkFEQWUKTVJ3d0dnWURWUVFERXhOeWJYRXRiWE5uTFhSdmNHOXNiMmQ1TFdOaE1CNFhEVEkwTURFeU5UQXdOVGd3T0ZvWApEVEkxTURFeU5EQXdOVGd3T0Zvd0hqRWNNQm9HQTFVRUF4TVRjbTF4TFcxelp5MTBiM0J2Ykc5bmVTMWpZVENDCkFTSXdEUVlKS29aSWh2Y05BUUVCQlFBRGdnRVBBRENDQVFvQ2dnRUJBS1lkRXdhYXdvdC84SUEzY1lpK1hGenkKS2NTSmdXSTdBcjh0Rm5lSzNnZEFGYXpBZ2pGTUxNdXhzR000blpBSU1yaUFRL20zd3YvTERPR1ljM0wxMFp5bgpmc3RyUldIUDIrd05HeFN5YU9uTWVFRXdtWDBQZEl5ZStQRkR5WGV6KzRpTGwrOThEZ3k3cUdKYzF0Um44T2ZuCllWSzg0L3lmYzhDWHJIalQ5QXh4aUlkRWJ1NmlWV25FbVR1MjcyOGNMY2pHWHYzaC9pQ1dWU2tydTRyTGhuMS8KdHZlNXp3UklSbkVZMjhsaDVSaXJYa3dJN0l3Vkl5MzI5d3JpTGIraUZnSEFGRjFPK29heHplckNrdzUyM09VNQpKMkNWZW0zN3VrUFlqMjRWOWt2akNHdHNxZnNnelEyYlo2dVZsaStxSGVaV2d6NUJQSlNrb2k1M2xKajJWZVVDCkF3RUFBYU5oTUY4d0RnWURWUjBQQVFIL0JBUURBZ0trTUIwR0ExVWRKUVFXTUJRR0NDc0dBUVVGQndNQkJnZ3IKQmdFRkJRY0RBakFQQmdOVkhSTUJBZjhFQlRBREFRSC9NQjBHQTFVZERnUVdCQlNDa0JUTEVqVEZDMEdUL3RTTQpaLzJwUUg1dEdqQU5CZ2txaGtpRzl3MEJBUXNGQUFPQ0FRRUFsSlR2Zkx6dFo2UXJDT3JwYlRuVHBoTGJGK0EyCnl2ZWtlWEl5ZnAra2tZNFA1eGRiemZ6M29ScG1OKzZLWjJmd0l3MzhiWHNyTHpSMGp2aTZxejdhV0pjWis3TGUKc0pqeWkrOG1PUVJqQ1lmWDIvZFA4QlJidEh0OGlhcTkyWW9sejNnQ280QXFXVHZ1MlA1eGp5SGxQeHdOeWE5agpYUkpEL3NvUm1nTDgzTWF5N29FTXh5TkV3SE9PMXIwOUs2djBMT3pCQUZ1eU1ITFM0UkNiWUR5dzQwWlBPRWFoCkpDcnZlYXpIQWRSTThsdGlabk5Pa0lteEN6cE5LOCs3NWdpV0MwSyttUW9HZkFOWS9QMFFCaUc2U0FITmJOWTcKTWtZQTd3TngyTTVRUTluQ29mNGRJb1pkUGNpaS9FZlc5OHQzVzNzNmZZKzdjWUNBVVZGM1ZuM2t6UT09Ci0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0K",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 64,
+                  "Content": "      service:",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 65,
+                  "Content": "        name: rabbitmq-cluster-operator-rabbitmq-messaging-topology-operator",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 66,
+                  "Content": "        namespace: \"\"",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": true
+                },
+                {
+                  "Number": 67,
+                  "Content": "",
+                  "IsCause": false,
+                  "Annotation": "",
+                  "Truncated": true,
+                  "FirstCause": false,
+                  "LastCause": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "Type": "Helm Security Check",
+          "ID": "KSV021",
+          "AVDID": "AVD-KSV-0021",
+          "Title": "Runs with GID \u003c= 10000",
+          "Description": "Force the container to run with group ID \u003e 10000 to avoid conflicts with the host’s user table.",
+          "Message": "Container 'rabbitmq-cluster-operator' of Deployment 'rabbitmq-cluster-operator-rabbitmq-messaging-topology-operator' should set 'securityContext.runAsGroup' \u003e 10000",
+          "Namespace": "builtin.kubernetes.KSV021",
+          "Query": "data.builtin.kubernetes.KSV021.deny",
+          "Resolution": "Set 'containers[].securityContext.runAsGroup' to an integer \u003e 10000.",
+          "Severity": "LOW",
+          "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv021",
+          "References": [
+            "https://kubesec.io/basics/containers-securitycontext-runasuser/",
+            "https://avd.aquasec.com/misconfig/ksv021"
+          ],
+          "Status": "FAIL",
+          "Layer": {},
+          "CauseMetadata": {
+            "Provider": "Kubernetes",
+            "Service": "general",
+            "StartLine": 58,
+            "EndLine": 113,
+            "Code": {
+              "Lines": [
+                {
+                  "Number": 58,
+                  "Content": "          - exchanges",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": true,
+                  "LastCause": false
+                },
+                {
+                  "Number": 59,
+                  "Content": "    sideEffects: None",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 60,
+                  "Content": "  - admissionReviewVersions:",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 61,
+                  "Content": "      - v1",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 62,
+                  "Content": "    clientConfig:",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 63,
+                  "Content": "      caBundle: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURKekNDQWcrZ0F3SUJBZ0lRQ2c4VXpXaVVlc3oyVFd4SklUclJBakFOQmdrcWhraUc5dzBCQVFzRkFEQWUKTVJ3d0dnWURWUVFERXhOeWJYRXRiWE5uTFhSdmNHOXNiMmQ1TFdOaE1CNFhEVEkwTURFeU5UQXdOVGd3T0ZvWApEVEkxTURFeU5EQXdOVGd3T0Zvd0hqRWNNQm9HQTFVRUF4TVRjbTF4TFcxelp5MTBiM0J2Ykc5bmVTMWpZVENDCkFTSXdEUVlKS29aSWh2Y05BUUVCQlFBRGdnRVBBRENDQVFvQ2dnRUJBS1lkRXdhYXdvdC84SUEzY1lpK1hGenkKS2NTSmdXSTdBcjh0Rm5lSzNnZEFGYXpBZ2pGTUxNdXhzR000blpBSU1yaUFRL20zd3YvTERPR1ljM0wxMFp5bgpmc3RyUldIUDIrd05HeFN5YU9uTWVFRXdtWDBQZEl5ZStQRkR5WGV6KzRpTGwrOThEZ3k3cUdKYzF0Um44T2ZuCllWSzg0L3lmYzhDWHJIalQ5QXh4aUlkRWJ1NmlWV25FbVR1MjcyOGNMY2pHWHYzaC9pQ1dWU2tydTRyTGhuMS8KdHZlNXp3UklSbkVZMjhsaDVSaXJYa3dJN0l3Vkl5MzI5d3JpTGIraUZnSEFGRjFPK29heHplckNrdzUyM09VNQpKMkNWZW0zN3VrUFlqMjRWOWt2akNHdHNxZnNnelEyYlo2dVZsaStxSGVaV2d6NUJQSlNrb2k1M2xKajJWZVVDCkF3RUFBYU5oTUY4d0RnWURWUjBQQVFIL0JBUURBZ0trTUIwR0ExVWRKUVFXTUJRR0NDc0dBUVVGQndNQkJnZ3IKQmdFRkJRY0RBakFQQmdOVkhSTUJBZjhFQlRBREFRSC9NQjBHQTFVZERnUVdCQlNDa0JUTEVqVEZDMEdUL3RTTQpaLzJwUUg1dEdqQU5CZ2txaGtpRzl3MEJBUXNGQUFPQ0FRRUFsSlR2Zkx6dFo2UXJDT3JwYlRuVHBoTGJGK0EyCnl2ZWtlWEl5ZnAra2tZNFA1eGRiemZ6M29ScG1OKzZLWjJmd0l3MzhiWHNyTHpSMGp2aTZxejdhV0pjWis3TGUKc0pqeWkrOG1PUVJqQ1lmWDIvZFA4QlJidEh0OGlhcTkyWW9sejNnQ280QXFXVHZ1MlA1eGp5SGxQeHdOeWE5agpYUkpEL3NvUm1nTDgzTWF5N29FTXh5TkV3SE9PMXIwOUs2djBMT3pCQUZ1eU1ITFM0UkNiWUR5dzQwWlBPRWFoCkpDcnZlYXpIQWRSTThsdGlabk5Pa0lteEN6cE5LOCs3NWdpV0MwSyttUW9HZkFOWS9QMFFCaUc2U0FITmJOWTcKTWtZQTd3TngyTTVRUTluQ29mNGRJb1pkUGNpaS9FZlc5OHQzVzNzNmZZKzdjWUNBVVZGM1ZuM2t6UT09Ci0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0K",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 64,
+                  "Content": "      service:",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 65,
+                  "Content": "        name: rabbitmq-cluster-operator-rabbitmq-messaging-topology-operator",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 66,
+                  "Content": "        namespace: \"\"",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": true
+                },
+                {
+                  "Number": 67,
+                  "Content": "",
+                  "IsCause": false,
+                  "Annotation": "",
+                  "Truncated": true,
+                  "FirstCause": false,
+                  "LastCause": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "Type": "Helm Security Check",
+          "ID": "KSV116",
+          "AVDID": "AVD-KSV-0116",
+          "Title": "Runs with a root primary or supplementary GID",
+          "Description": "According to pod security standard 'Non-root groups', containers should be forbidden from running with a root primary or supplementary GID.",
+          "Message": "deployment rabbitmq-cluster-operator-rabbitmq-messaging-topology-operator in  namespace should set spec.securityContext.runAsGroup, spec.securityContext.supplementalGroups[*] and spec.securityContext.fsGroup to integer greater than 0",
+          "Namespace": "builtin.kubernetes.KSV116",
+          "Query": "data.builtin.kubernetes.KSV116.deny",
+          "Resolution": "Set 'containers[].securityContext.runAsGroup' to a non-zero integer or leave undefined.",
+          "Severity": "LOW",
+          "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv116",
+          "References": [
+            "https://kubesec.io/basics/containers-securitycontext-runasuser/",
+            "https://avd.aquasec.com/misconfig/ksv116"
+          ],
+          "Status": "FAIL",
+          "Layer": {},
+          "CauseMetadata": {
+            "Provider": "Kubernetes",
+            "Service": "general",
+            "Code": {
+              "Lines": null
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Target": "rabbitmq-cluster-operator-3.10.3.tgz:templates/messaging-topology-operator/role.yaml",
+      "Class": "config",
+      "Type": "helm",
+      "MisconfSummary": {
+        "Successes": 150,
+        "Failures": 2,
+        "Exceptions": 0
+      },
+      "Misconfigurations": [
+        {
+          "Type": "Helm Security Check",
+          "ID": "KSV049",
+          "AVDID": "AVD-KSV-0049",
+          "Title": "Manage configmaps",
+          "Description": "Some workloads leverage configmaps to store sensitive data or configuration parameters that affect runtime behavior that can be modified by an attacker or combined with another issue to potentially lead to compromise.",
+          "Message": "Role 'rabbitmq-cluster-operator-rabbitmq-messaging-topology-operator' should not have access to resource 'configmaps' for verbs [\"create\", \"update\", \"patch\", \"delete\", \"deletecollection\", \"impersonate\", \"*\"]",
+          "Namespace": "builtin.kubernetes.KSV049",
+          "Query": "data.builtin.kubernetes.KSV049.deny",
+          "Resolution": "Remove write permission verbs for resource 'configmaps'",
+          "Severity": "MEDIUM",
+          "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv049",
+          "References": [
+            "https://kubernetes.io/docs/concepts/security/rbac-good-practices/",
+            "https://avd.aquasec.com/misconfig/ksv049"
+          ],
+          "Status": "FAIL",
+          "Layer": {},
+          "CauseMetadata": {
+            "Provider": "Kubernetes",
+            "Service": "general",
+            "StartLine": 34,
+            "EndLine": 45,
+            "Code": {
+              "Lines": [
+                {
+                  "Number": 34,
+                  "Content": "          - UPDATE",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": true,
+                  "LastCause": false
+                },
+                {
+                  "Number": 35,
+                  "Content": "        resources:",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 36,
+                  "Content": "          - bindings",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 37,
+                  "Content": "    sideEffects: None",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 38,
+                  "Content": "  - admissionReviewVersions:",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 39,
+                  "Content": "      - v1",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 40,
+                  "Content": "    clientConfig:",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 41,
+                  "Content": "      caBundle: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURKekNDQWcrZ0F3SUJBZ0lRQ2c4VXpXaVVlc3oyVFd4SklUclJBakFOQmdrcWhraUc5dzBCQVFzRkFEQWUKTVJ3d0dnWURWUVFERXhOeWJYRXRiWE5uTFhSdmNHOXNiMmQ1TFdOaE1CNFhEVEkwTURFeU5UQXdOVGd3T0ZvWApEVEkxTURFeU5EQXdOVGd3T0Zvd0hqRWNNQm9HQTFVRUF4TVRjbTF4TFcxelp5MTBiM0J2Ykc5bmVTMWpZVENDCkFTSXdEUVlKS29aSWh2Y05BUUVCQlFBRGdnRVBBRENDQVFvQ2dnRUJBS1lkRXdhYXdvdC84SUEzY1lpK1hGenkKS2NTSmdXSTdBcjh0Rm5lSzNnZEFGYXpBZ2pGTUxNdXhzR000blpBSU1yaUFRL20zd3YvTERPR1ljM0wxMFp5bgpmc3RyUldIUDIrd05HeFN5YU9uTWVFRXdtWDBQZEl5ZStQRkR5WGV6KzRpTGwrOThEZ3k3cUdKYzF0Um44T2ZuCllWSzg0L3lmYzhDWHJIalQ5QXh4aUlkRWJ1NmlWV25FbVR1MjcyOGNMY2pHWHYzaC9pQ1dWU2tydTRyTGhuMS8KdHZlNXp3UklSbkVZMjhsaDVSaXJYa3dJN0l3Vkl5MzI5d3JpTGIraUZnSEFGRjFPK29heHplckNrdzUyM09VNQpKMkNWZW0zN3VrUFlqMjRWOWt2akNHdHNxZnNnelEyYlo2dVZsaStxSGVaV2d6NUJQSlNrb2k1M2xKajJWZVVDCkF3RUFBYU5oTUY4d0RnWURWUjBQQVFIL0JBUURBZ0trTUIwR0ExVWRKUVFXTUJRR0NDc0dBUVVGQndNQkJnZ3IKQmdFRkJRY0RBakFQQmdOVkhSTUJBZjhFQlRBREFRSC9NQjBHQTFVZERnUVdCQlNDa0JUTEVqVEZDMEdUL3RTTQpaLzJwUUg1dEdqQU5CZ2txaGtpRzl3MEJBUXNGQUFPQ0FRRUFsSlR2Zkx6dFo2UXJDT3JwYlRuVHBoTGJGK0EyCnl2ZWtlWEl5ZnAra2tZNFA1eGRiemZ6M29ScG1OKzZLWjJmd0l3MzhiWHNyTHpSMGp2aTZxejdhV0pjWis3TGUKc0pqeWkrOG1PUVJqQ1lmWDIvZFA4QlJidEh0OGlhcTkyWW9sejNnQ280QXFXVHZ1MlA1eGp5SGxQeHdOeWE5agpYUkpEL3NvUm1nTDgzTWF5N29FTXh5TkV3SE9PMXIwOUs2djBMT3pCQUZ1eU1ITFM0UkNiWUR5dzQwWlBPRWFoCkpDcnZlYXpIQWRSTThsdGlabk5Pa0lteEN6cE5LOCs3NWdpV0MwSyttUW9HZkFOWS9QMFFCaUc2U0FITmJOWTcKTWtZQTd3TngyTTVRUTluQ29mNGRJb1pkUGNpaS9FZlc5OHQzVzNzNmZZKzdjWUNBVVZGM1ZuM2t6UT09Ci0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0K",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 42,
+                  "Content": "      service:",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "FirstCause": false,
+                  "LastCause": true
+                },
+                {
+                  "Number": 43,
+                  "Content": "",
+                  "IsCause": false,
+                  "Annotation": "",
+                  "Truncated": true,
+                  "FirstCause": false,
+                  "LastCause": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "Type": "Helm Security Check",
+          "ID": "KSV116",
+          "AVDID": "AVD-KSV-0116",
+          "Title": "Runs with a root primary or supplementary GID",
+          "Description": "According to pod security standard 'Non-root groups', containers should be forbidden from running with a root primary or supplementary GID.",
+          "Message": "role rabbitmq-cluster-operator-rabbitmq-messaging-topology-operator in  namespace should set spec.securityContext.runAsGroup, spec.securityContext.supplementalGroups[*] and spec.securityContext.fsGroup to integer greater than 0",
+          "Namespace": "builtin.kubernetes.KSV116",
+          "Query": "data.builtin.kubernetes.KSV116.deny",
+          "Resolution": "Set 'containers[].securityContext.runAsGroup' to a non-zero integer or leave undefined.",
+          "Severity": "LOW",
+          "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv116",
+          "References": [
+            "https://kubesec.io/basics/containers-securitycontext-runasuser/",
+            "https://avd.aquasec.com/misconfig/ksv116"
+          ],
+          "Status": "FAIL",
+          "Layer": {},
+          "CauseMetadata": {
+            "Provider": "Kubernetes",
+            "Service": "general",
+            "Code": {
+              "Lines": null
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Target": "rabbitmq-cluster-operator-3.10.3.tgz:templates/messaging-topology-operator/rolebinding.yaml",
+      "Class": "config",
+      "Type": "helm",
+      "MisconfSummary": {
+        "Successes": 151,
+        "Failures": 1,
+        "Exceptions": 0
+      },
+      "Misconfigurations": [
+        {
+          "Type": "Helm Security Check",
+          "ID": "KSV116",
+          "AVDID": "AVD-KSV-0116",
+          "Title": "Runs with a root primary or supplementary GID",
+          "Description": "According to pod security standard 'Non-root groups', containers should be forbidden from running with a root primary or supplementary GID.",
+          "Message": "rolebinding rabbitmq-cluster-operator-rabbitmq-messaging-topology-operator in  namespace should set spec.securityContext.runAsGroup, spec.securityContext.supplementalGroups[*] and spec.securityContext.fsGroup to integer greater than 0",
+          "Namespace": "builtin.kubernetes.KSV116",
+          "Query": "data.builtin.kubernetes.KSV116.deny",
+          "Resolution": "Set 'containers[].securityContext.runAsGroup' to a non-zero integer or leave undefined.",
+          "Severity": "LOW",
+          "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv116",
+          "References": [
+            "https://kubesec.io/basics/containers-securitycontext-runasuser/",
+            "https://avd.aquasec.com/misconfig/ksv116"
+          ],
+          "Status": "FAIL",
+          "Layer": {},
+          "CauseMetadata": {
+            "Provider": "Kubernetes",
+            "Service": "general",
+            "Code": {
+              "Lines": null
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Target": "rabbitmq-cluster-operator-3.10.3.tgz:templates/messaging-topology-operator/service-account.yaml",
+      "Class": "config",
+      "Type": "helm",
+      "MisconfSummary": {
+        "Successes": 151,
+        "Failures": 1,
+        "Exceptions": 0
+      },
+      "Misconfigurations": [
+        {
+          "Type": "Helm Security Check",
+          "ID": "KSV116",
+          "AVDID": "AVD-KSV-0116",
+          "Title": "Runs with a root primary or supplementary GID",
+          "Description": "According to pod security standard 'Non-root groups', containers should be forbidden from running with a root primary or supplementary GID.",
+          "Message": "serviceaccount rabbitmq-cluster-operator-rabbitmq-messaging-topology-operator in  namespace should set spec.securityContext.runAsGroup, spec.securityContext.supplementalGroups[*] and spec.securityContext.fsGroup to integer greater than 0",
+          "Namespace": "builtin.kubernetes.KSV116",
+          "Query": "data.builtin.kubernetes.KSV116.deny",
+          "Resolution": "Set 'containers[].securityContext.runAsGroup' to a non-zero integer or leave undefined.",
+          "Severity": "LOW",
+          "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv116",
+          "References": [
+            "https://kubesec.io/basics/containers-securitycontext-runasuser/",
+            "https://avd.aquasec.com/misconfig/ksv116"
+          ],
+          "Status": "FAIL",
+          "Layer": {},
+          "CauseMetadata": {
+            "Provider": "Kubernetes",
+            "Service": "general",
+            "Code": {
+              "Lines": null
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Target": "rabbitmq-cluster-operator-3.10.3.tgz:templates/messaging-topology-operator/validating-webhook-configuration.yaml",
+      "Class": "config",
+      "Type": "helm",
+      "MisconfSummary": {
+        "Successes": 151,
+        "Failures": 2,
+        "Exceptions": 0
+      },
+      "Misconfigurations": [
+        {
+          "Type": "Helm Security Check",
+          "ID": "KSV116",
+          "AVDID": "AVD-KSV-0116",
+          "Title": "Runs with a root primary or supplementary GID",
+          "Description": "According to pod security standard 'Non-root groups', containers should be forbidden from running with a root primary or supplementary GID.",
+          "Message": "secret rabbitmq-cluster-operator-rabbitmq-messaging-topology-operator in  namespace should set spec.securityContext.runAsGroup, spec.securityContext.supplementalGroups[*] and spec.securityContext.fsGroup to integer greater than 0",
+          "Namespace": "builtin.kubernetes.KSV116",
+          "Query": "data.builtin.kubernetes.KSV116.deny",
+          "Resolution": "Set 'containers[].securityContext.runAsGroup' to a non-zero integer or leave undefined.",
+          "Severity": "LOW",
+          "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv116",
+          "References": [
+            "https://kubesec.io/basics/containers-securitycontext-runasuser/",
+            "https://avd.aquasec.com/misconfig/ksv116"
+          ],
+          "Status": "FAIL",
+          "Layer": {},
+          "CauseMetadata": {
+            "Provider": "Kubernetes",
+            "Service": "general",
+            "Code": {
+              "Lines": null
+            }
+          }
+        },
+        {
+          "Type": "Helm Security Check",
+          "ID": "KSV116",
+          "AVDID": "AVD-KSV-0116",
+          "Title": "Runs with a root primary or supplementary GID",
+          "Description": "According to pod security standard 'Non-root groups', containers should be forbidden from running with a root primary or supplementary GID.",
+          "Message": "validatingwebhookconfiguration rabbitmq-cluster-operator-rabbitmq-messaging-topology-operator in default namespace should set spec.securityContext.runAsGroup, spec.securityContext.supplementalGroups[*] and spec.securityContext.fsGroup to integer greater than 0",
+          "Namespace": "builtin.kubernetes.KSV116",
+          "Query": "data.builtin.kubernetes.KSV116.deny",
+          "Resolution": "Set 'containers[].securityContext.runAsGroup' to a non-zero integer or leave undefined.",
+          "Severity": "LOW",
+          "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv116",
+          "References": [
+            "https://kubesec.io/basics/containers-securitycontext-runasuser/",
+            "https://avd.aquasec.com/misconfig/ksv116"
+          ],
+          "Status": "FAIL",
+          "Layer": {},
+          "CauseMetadata": {
+            "Provider": "Kubernetes",
+            "Service": "general",
+            "Code": {
+              "Lines": null
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Target": "rabbitmq-cluster-operator-3.10.3.tgz:templates/messaging-topology-operator/webhook-service.yaml",
+      "Class": "config",
+      "Type": "helm",
+      "MisconfSummary": {
+        "Successes": 151,
+        "Failures": 1,
+        "Exceptions": 0
+      },
+      "Misconfigurations": [
+        {
+          "Type": "Helm Security Check",
+          "ID": "KSV116",
+          "AVDID": "AVD-KSV-0116",
+          "Title": "Runs with a root primary or supplementary GID",
+          "Description": "According to pod security standard 'Non-root groups', containers should be forbidden from running with a root primary or supplementary GID.",
+          "Message": "service rabbitmq-cluster-operator-rabbitmq-messaging-topology-operator in  namespace should set spec.securityContext.runAsGroup, spec.securityContext.supplementalGroups[*] and spec.securityContext.fsGroup to integer greater than 0",
+          "Namespace": "builtin.kubernetes.KSV116",
+          "Query": "data.builtin.kubernetes.KSV116.deny",
+          "Resolution": "Set 'containers[].securityContext.runAsGroup' to a non-zero integer or leave undefined.",
+          "Severity": "LOW",
+          "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv116",
+          "References": [
+            "https://kubesec.io/basics/containers-securitycontext-runasuser/",
+            "https://avd.aquasec.com/misconfig/ksv116"
+          ],
+          "Status": "FAIL",
+          "Layer": {},
+          "CauseMetadata": {
+            "Provider": "Kubernetes",
+            "Service": "general",
+            "Code": {
+              "Lines": null
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+{{- $app := .Values.deployment.application }}
+{{- $app = set $app "image" .Values.image -}}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "12factor.fullname" . }}
+  labels:
+    {{- include "12factor.labels" . | nindent 4 }}
+spec:
+  {{- if not .Values.deployment.autoscaling.enabled }}
+  replicas: {{ .Values.deployment.replicaCount }}
+  {{- end }}
+  selector:
+    matchLabels:
+      app.kubernetes.io/component: app
+      {{- include "12factor.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      {{- with .Values.deployment.annotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      labels:
+        app.kubernetes.io/component: app
+        {{- include "12factor.labels" . | nindent 8 }}
+    spec:
+      {{- if .Values.imagePullSecrets | or .Values.deployment.imagePullSecrets }}
+      imagePullSecrets:
+        {{- if .Values.imagePullSecrets }}
+        - name: {{ include "12factor.fullname" . }}-pull-secrets
+        {{- end }}
+        {{- with .Values.deployment.imagePullSecrets }}
+        {{- toYaml . | nindent 8 }}
+        {{- end }}
+      {{- end }}
+      serviceAccountName: {{ include "12factor.serviceAccountName" . }}
+      {{- with .Values.deployment.volumes }}
+      volumes:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      containers:
+        {{- include "12factor.container" $app | nindent 8 }}
+        {{- range .Values.deployment.sidecars }}
+        {{- include "12factor.container" . | nindent 8 }}
+        {{- end }}
+      {{- with .Values.deployment.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.deployment.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.deployment.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.deployment.topologySpreadConstraints }}
+      topologySpreadConstraints:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}

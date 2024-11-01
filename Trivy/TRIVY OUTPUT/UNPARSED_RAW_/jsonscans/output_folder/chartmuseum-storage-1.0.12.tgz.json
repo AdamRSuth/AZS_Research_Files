@@ -1,0 +1,39 @@
+{
+  "SchemaVersion": 2,
+  "ArtifactName": "/home/kali/Desktop/SharedFiles/chartmuseum-storage-1.0.12.tgz",
+  "ArtifactType": "filesystem",
+  "Metadata": {
+    "ImageConfig": {
+      "architecture": "",
+      "created": "0001-01-01T00:00:00Z",
+      "os": "",
+      "rootfs": {
+        "type": "",
+        "diff_ids": null
+      },
+      "config": {}
+    }
+  },
+  "Results": [
+    {
+      "Target": "chartmuseum-storage-1.0.12.tgz:templates/pv.yaml",
+      "Class": "config",
+      "Type": "helm",
+      "MisconfSummary": {
+        "Successes": 152,
+        "Failures": 0,
+        "Exceptions": 0
+      }
+    },
+    {
+      "Target": "chartmuseum-storage-1.0.12.tgz:templates/pvc.yaml",
+      "Class": "config",
+      "Type": "helm",
+      "MisconfSummary": {
+        "Successes": 152,
+        "Failures": 0,
+        "Exceptions": 0
+      }
+    }
+  ]
+}
