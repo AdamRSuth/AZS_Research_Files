@@ -1,0 +1,54 @@
+{
+    "securityContext": {
+        "allowPrivilegeEscalation": false,
+        "capabilities": {
+            "drop": ["ALL"],
+            "add": []
+        },
+        "runAsNonRoot": true,
+        "readOnlyRootFilesystem": true,
+        "runAsUser": 10001,
+        "runAsGroup": 10001,
+        "seLinuxOptions": null,
+        "seccompProfile": {
+            "type": "RuntimeDefault"
+        }
+    },
+    "resources": {
+        "limits": {
+            "cpu": "500m",
+            "memory": "1Gi"
+        },
+        "requests": {
+            "cpu": "200m",
+            "memory": "512Mi"
+        }
+    },
+    "hostNetwork": false,
+    "hostPID": false,
+    "hostIPC": false,
+    "volumes": [
+        {
+            "hostPath": null
+        }
+    ],
+    "externalIPs": null,
+    "podAnnotations": {
+        "container.apparmor.security.beta.kubernetes.io": "runtime/default"
+    },
+    "rules": {
+        "resources": [],
+        "verbs": ["list", "watch", "get"]
+    },
+    "serviceAccount": {
+        "anonymous-auth": false
+    },
+    "clusterRole": {
+        "secrets": false,
+        "wildcard": false
+    },
+    "image": {
+        "pullPolicy": "IfNotPresent",
+        "tag": "1.0.0"
+    }
+}

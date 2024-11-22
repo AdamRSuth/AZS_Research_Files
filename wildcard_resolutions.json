@@ -1,0 +1,46 @@
+remediations = {
+    # General securityContext configurations (applied universally)
+    "*.securityContext.allowPrivilegeEscalation": False,
+    "*.securityContext.capabilities.drop": ["ALL"],
+    "*.securityContext.capabilities.add": [],
+    "*.securityContext.runAsNonRoot": True,
+    "*.securityContext.readOnlyRootFilesystem": True,
+    "*.securityContext.runAsUser": 10001,
+    "*.securityContext.runAsGroup": 10001,
+    "*.securityContext.seccompProfile.type": "RuntimeDefault",
+    "*.securityContext.seLinuxOptions": None,
+    
+    # Specific cases
+    "initContainers.securityContext.seccompProfile.type": "RuntimeDefault",
+    "initContainers.securityContext.seLinuxOptions": None,
+    "spec.securityContext.seccompProfile.type": "RuntimeDefault",
+    "spec.securityContext.seLinuxOptions": None,
+
+    # Pod-level configurations
+    "podAnnotations.container.apparmor.security.beta.kubernetes.io": "runtime/default",
+
+    # Resource configurations
+    "*.resources.limits.cpu": "500m",
+    "*.resources.limits.memory": "1Gi",
+    "*.resources.requests.cpu": "200m",
+    "*.resources.requests.memory": "512Mi",
+
+    # Rules and roles
+    "rules.resources": [],
+    "rules.verbs": ["list", "watch", "get"],
+    "clusterRole.secrets": False,
+    "clusterRole.wildcard": False,
+
+    # Service account configuration
+    "serviceAccount.anonymous-auth": False,
+
+    # Image configuration
+    "image.tag": "1.0.0",
+
+    # Template spec configurations
+    "spec.template.spec.hostNetwork": False,
+    "spec.template.spec.hostPID": False,
+    "spec.template.spec.hostIPC": False,
+    "spec.template.spec.volumes.hostPath": None,
+    "spec.externalIPs": None
+}
