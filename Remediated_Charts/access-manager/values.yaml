@@ -1,0 +1,48 @@
+# Default values for access-manager.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+replicas: 1
+
+image:
+  repository: ghcr.io/ckotzbauer/access-manager
+  tag: ""
+  pullPolicy: IfNotPresent
+
+podAnnotations: {}
+
+priorityClassName: ""
+
+resources:
+  requests:
+    cpu: 10m
+    memory: 128Mi
+  limits:
+    cpu: 50m
+    memory: 128Mi
+
+securityContext:
+  privileged: false
+  runAsUser: 1001
+  runAsNonRoot: true
+  allowPrivilegeEscalation: false
+  readOnlyRootFilesystem: true
+  seccompProfile:
+    type: RuntimeDefault
+  capabilities:
+    drop:
+      - ALL
+
+serviceAccount:
+  # Specifies whether a ServiceAccount should be created
+  create: true
+
+  # The name of the ServiceAccount to use.
+  # If not set and create is true, a name is generated using the fullname template
+  name:
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}

@@ -1,0 +1,14 @@
+apiVersion: v2
+appVersion: 1.2.3
+description: Restorecommerce access-control-srv
+home: https://docs.restorecommerce.io/access-control-srv/index.html
+icon: https://avatars0.githubusercontent.com/u/8339525
+maintainers:
+- email: info@restorecommerce.io
+  name: restorecommerce
+  url: https://restorecommerce.io/
+name: access-control-srv
+sources:
+- https://github.com/restorecommerce/access-control-srv
+type: application
+version: 0.1.15

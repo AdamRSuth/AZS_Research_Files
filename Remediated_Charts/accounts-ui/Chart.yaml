@@ -1,0 +1,13 @@
+apiVersion: v2
+appVersion: v2023.10.30
+description: A Helm chart for Kubernetes
+home: https://github.com/bytebuilders
+icon: https://cdn.appscode.com/images/products/bytebuilders/icons/android-icon-192x192.png
+maintainers:
+- email: support@appscode.com
+  name: appscode
+name: accounts-ui
+sources:
+- https://github.com/bytebuilders
+type: application
+version: v2023.10.18
